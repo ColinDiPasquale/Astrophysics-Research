@@ -1,0 +1,13 @@
+Total Photons Tracked: 3138
+
+Total Listed Photons: 3138
+Direct Escape Photons: 0
+Unmodified Escape Count: 0
+Modified Escape Count: 0
+
+Bremsstrahlung: 3138
+Compton: 0
+
+Optical depth (tau) for 1 MeV photon: 0.261367
+Fraction of direct escape of gamma-line   : 0.769998
+Elapsed time: 21.6586 seconds
