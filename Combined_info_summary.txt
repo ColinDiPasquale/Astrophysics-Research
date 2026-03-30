@@ -1,0 +1,10 @@
+Total Photons Tracked: 1741832
+
+Total Listed Photons: 1741832
+Direct Escape Photons: 1668403
+Unmodified Escape Count: 165702
+Modified Escape Count: 1502701
+
+Bremsstrahlung: 20533
+Compton: 1502701
+Annihilation: 52896
