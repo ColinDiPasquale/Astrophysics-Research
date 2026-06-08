@@ -58,7 +58,7 @@ def plot_three_spectra(edges1, counts1, widths1, label1,
     plt.yscale('log')
     plt.ylim(1e0, 1e4)
     plt.xlabel('Energy (keV)')
-    plt.ylabel('Counts / Bin Width')
+    plt.ylabel('Photons/sec/keV')
     plt.title('Brems, Compton, & Direct Escape at 40 Days')
 
     plt.grid(True, which='both', ls='--', lw=0.5)

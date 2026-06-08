@@ -143,6 +143,8 @@ modified_escape = 0
 brems = 0
 compton = 0
 annihilation = 0
+nickelDecays = 0
+cobaltDecays = 0
 
 for f in infoFiles:
     with open(f, 'r') as file:
@@ -159,6 +161,10 @@ for f in infoFiles:
                 compton += int(line.split(':')[1].strip())
             elif 'Annihilation:' in line:
                 annihilation += int(line.split(':')[1].strip())
+            elif 'Nickel Decays:' in line:
+                nickelDecays += int(line.split(':')[1].strip())
+            elif 'Cobalt Decays:' in line:
+                cobaltDecays += int(line.split(':')[1].strip())
 
 # Compute derived value
 direct_escape = unmodified_escape + modified_escape
@@ -173,7 +179,9 @@ with open('../Combined_info_summary.txt', 'w') as out:
     out.write(f"Modified Escape Count: {modified_escape}\n\n")
     out.write(f"Bremsstrahlung: {brems}\n")
     out.write(f"Compton: {compton}\n")
-    out.write(f"Annihilation: {annihilation}\n")
+    out.write(f"Annihilation: {annihilation}\n\n")
+    out.write(f"Nickel Decays: {nickelDecays}\n")
+    out.write(f"Cobalt Decays: {cobaltDecays}\n")
 
 # Optional: delete original files
 for f in infoFiles:
