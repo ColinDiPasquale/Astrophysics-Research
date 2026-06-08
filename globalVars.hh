@@ -44,6 +44,8 @@ extern G4ThreadLocal G4double counter;
 extern G4ThreadLocal G4double totalPhotons;
 extern G4ThreadLocal G4double totalElectronsKilled;
 extern G4ThreadLocal G4double totalElectronRadius;
+extern G4ThreadLocal G4double nickelDecays;
+extern G4ThreadLocal G4double cobaltDecays;
 
 // Binning constants
 extern const G4double gEmin;

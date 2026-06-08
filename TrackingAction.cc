@@ -34,7 +34,9 @@ TrackingAction::~TrackingAction() {
     (*outFileInfo) << "Modified Escape Count: " << modifiedEscapeCounter << "\n" << std::endl;
     (*outFileInfo) << "Bremsstrahlung: " << bremsstrahlungPhotons << std::endl;
     (*outFileInfo) << "Compton: " << comptonPhotons << std::endl;
-    (*outFileInfo) << "Annihilation: " << annihilationPhotons << std::endl;
+    (*outFileInfo) << "Annihilation: " << annihilationPhotons << "\n" << std::endl;
+    (*outFileInfo) << "Nickel Decays: " << nickelDecays << std::endl;
+    (*outFileInfo) << "Cobalt Decays: " << cobaltDecays << std::endl;
 
     outFileInfo->close();
     delete outFileInfo;
@@ -166,9 +168,7 @@ G4int TrackingAction::GetLogBinIndex(G4double energy) const {
     return static_cast<G4int>(std::log10(energy / gEmin) / gLogBinWidth);
 }
 
-// Need to find ratio between ni56 and co56
-// Then make twice as many bins as currently, so i can have all photons from ni and all from cobalt
-// Then apply the ratio, then combine the ni and co bins back together, then divide by the # of source particles
-// Then graph. 
-// Remeber, we are taking a snapshot at t=40 days, not cumulative 0->40 days. So thats why we divide by # of source particles,
-// because we want as many simulations as possible so its accurate but the # of source particles shouldn't affect the flux
+// photons/cm^2/s/keV
+// we already have photons/keV
+// get seconds from dividing the # of source particles by n (i.e. 2 million source particles -> 2 seconds, 1 billion -> 1000 seconds)
+// get cm^2 from the portion of the sphere with a radius of 1 MPSC

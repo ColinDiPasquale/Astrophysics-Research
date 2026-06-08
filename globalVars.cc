@@ -19,7 +19,7 @@ const bool zoneOptimization = false;
 
 const G4int optimalZone = 10;
 
-const G4String particleName = "Ni56";
+const G4String particleName = "Decays";
 const G4double particleEnergy = 1 * MeV; // Automatically 0 if Ni56
 
 const G4int energyLowerLimit = 1 * keV;
@@ -48,6 +48,8 @@ G4ThreadLocal G4double counter = 0;
 G4ThreadLocal G4double totalPhotons = 0;
 G4ThreadLocal G4double totalElectronsKilled = 0;
 G4ThreadLocal G4double totalElectronRadius = 0;
+G4ThreadLocal G4double nickelDecays = 0;
+G4ThreadLocal G4double cobaltDecays = 0;
 
 // Histograms
 G4ThreadLocal std::vector<G4int>* bremsstrahlungHistogram = nullptr;
