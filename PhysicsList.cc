@@ -17,6 +17,7 @@ PhysicsList::PhysicsList()
 {
     RegisterPhysics(new G4EmStandardPhysics());
     RegisterPhysics(new G4RadioactiveDecayPhysics());
+    RegisterPhysics(new G4DecayPhysics());
 }
 
 PhysicsList::~PhysicsList() {}
