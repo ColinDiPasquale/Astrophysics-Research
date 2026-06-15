@@ -141,6 +141,9 @@ void createGeometry(const std::string& filename,
         X_Si /= X_sum;
         X_Ni /= X_sum;
 
+        zoneNi56Fractions.push_back(X_Ni);
+        zoneDensitiesGCC.push_back(zoneDensity);
+
         // Create material
         G4Material* zoneMaterial = new G4Material(materialName,
                                                   zoneDensity * g / cm3,

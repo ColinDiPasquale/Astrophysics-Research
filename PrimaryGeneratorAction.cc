@@ -9,6 +9,9 @@
 #include "G4IonTable.hh"
 #include "G4GenericIon.hh"
 
+#include <algorithm>
+#include <numeric>
+
 PrimaryGeneratorAction::PrimaryGeneratorAction() {
     fParticleGun = new G4ParticleGun(1);
 
@@ -26,11 +29,44 @@ PrimaryGeneratorAction::~PrimaryGeneratorAction() {
 }
 
 void PrimaryGeneratorAction::GeneratePrimaries(G4Event* Event) {
-    // Random position inside the sphere, uniform in volume
-    G4double r    = sphereRadius * std::cbrt(G4UniformRand());
-    G4double cosT = 1.0 - 2.0 * G4UniformRand();
-    G4double sinT = std::sqrt(1.0 - cosT * cosT);
-    G4double phi  = CLHEP::twopi * G4UniformRand();
+    // Build cumulative Ni-56 mass weight distribution on first call (geometry is ready by then)
+    if (fCumWeights.empty() && !zoneNi56Fractions.empty()) {
+        fCumWeights.resize(zoneNi56Fractions.size());
+        for (size_t i = 0; i < zoneNi56Fractions.size(); i++) {
+            G4double rIn  = innerRadii[i];
+            G4double rOut = outerRadii[i];
+            G4double shellVol = rOut*rOut*rOut - rIn*rIn*rIn; // proportional to 4/3 pi (r_out^3 - r_in^3)
+            fCumWeights[i] = zoneDensitiesGCC[i] * zoneNi56Fractions[i] * shellVol;
+        }
+        // Convert to cumulative distribution
+        for (size_t i = 1; i < fCumWeights.size(); i++)
+            fCumWeights[i] += fCumWeights[i-1];
+        G4double total = fCumWeights.back();
+        for (auto& w : fCumWeights) w /= total;
+    }
+
+    G4double r, cosT, sinT, phi;
+    if (!fCumWeights.empty() && (particleName == "Decays" || particleName == "Ni56")) {
+        // Sample zone weighted by Ni-56 mass
+        G4double u = G4UniformRand();
+        int zone = (int)(std::lower_bound(fCumWeights.begin(), fCumWeights.end(), u) - fCumWeights.begin());
+        zone = std::min(zone, (int)fCumWeights.size() - 1);
+
+        // Sample uniform position within that shell
+        G4double rIn3  = innerRadii[zone] * innerRadii[zone] * innerRadii[zone];
+        G4double rOut3 = outerRadii[zone] * outerRadii[zone] * outerRadii[zone];
+        r    = std::cbrt(rIn3 + G4UniformRand() * (rOut3 - rIn3));
+        cosT = 1.0 - 2.0 * G4UniformRand();
+        sinT = std::sqrt(1.0 - cosT * cosT);
+        phi  = CLHEP::twopi * G4UniformRand();
+    } else {
+        // Uniform in volume (photon/electron modes)
+        r    = sphereRadius * std::cbrt(G4UniformRand());
+        cosT = 1.0 - 2.0 * G4UniformRand();
+        sinT = std::sqrt(1.0 - cosT * cosT);
+        phi  = CLHEP::twopi * G4UniformRand();
+    }
+
     fParticleGun->SetParticlePosition(G4ThreeVector(
         r * sinT * std::cos(phi),
         r * sinT * std::sin(phi),
