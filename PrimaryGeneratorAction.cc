@@ -2,7 +2,6 @@
 #include "globalVars.hh"
 
 #include "G4ParticleGun.hh"
-#include "G4Electron.hh"
 #include "G4Gamma.hh"
 #include "G4SystemOfUnits.hh"
 #include "Randomize.hh"
@@ -17,8 +16,6 @@ PrimaryGeneratorAction::PrimaryGeneratorAction() {
 
     if (particleName == "photon")
         fParticleGun->SetParticleDefinition(G4Gamma::GammaDefinition());
-    else if (particleName == "electron")
-        fParticleGun->SetParticleDefinition(G4Electron::ElectronDefinition());
 
     fParticleGun->SetParticleEnergy(particleEnergy);
 
@@ -60,7 +57,7 @@ void PrimaryGeneratorAction::GeneratePrimaries(G4Event* Event) {
         sinT = std::sqrt(1.0 - cosT * cosT);
         phi  = CLHEP::twopi * G4UniformRand();
     } else {
-        // Uniform in volume (photon/electron modes)
+        // Uniform in volume (photon modes)
         r    = sphereRadius * std::cbrt(G4UniformRand());
         cosT = 1.0 - 2.0 * G4UniformRand();
         sinT = std::sqrt(1.0 - cosT * cosT);
@@ -108,7 +105,7 @@ void PrimaryGeneratorAction::GeneratePrimaries(G4Event* Event) {
         fParticleGun->SetParticleEnergy(0 * MeV);
         fParticleGun->SetParticleMomentumDirection(G4ThreeVector(1, 0, 0));
     } else {
-        // photon / electron — direction matters
+        // photon — direction matters
         G4double cosTheta = 1.0 - 2.0 * G4UniformRand();
         G4double sinTheta = std::sqrt(1.0 - cosTheta * cosTheta);
         G4double phiDir   = CLHEP::twopi * G4UniformRand();
