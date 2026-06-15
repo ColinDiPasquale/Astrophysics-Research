@@ -6,7 +6,8 @@
 class PhysicsList : public G4VModularPhysicsList {
 public:
     PhysicsList();
-    virtual ~PhysicsList();
+    ~PhysicsList();
+    void ConstructProcess() override;   // add this if missing
 };
 
 #endif
