@@ -103,21 +103,21 @@ void TrackingAction::PostUserTrackingAction(const G4Track* track) {
     G4String processName = process->GetProcessName();
     auto info = (PhotonTrackInfo*) track->GetUserInformation();
 
-    if (processName == "eBrem") {
+    if (processName == "eBrem") { // Bremsstrahlung
         (*bremsstrahlungHistogram)[binIndex]++;
         bremsstrahlungPhotons++;
-    } else if (processName == "Radioactivation") {
+    } else if (processName == "Radioactivation") { // Nuclear decay
         (*directEscapeHistogram)[binIndex]++;
-        if (info && info->hasCompton) {
+        if (info && info->hasCompton) { // Compton photon
             modifiedEscapeCounter++;
             (*comptonizedHistogram)[binIndex]++;
             comptonPhotons++;
-        } else {
+        } else { // Direct escape
             unmodifiedEscapeCounter++;
         }
-    } else if (processName == "annihil") {
+    } else if (processName == "annihil") { // Annihilation
         annihilationPhotons++;
-    } else {
+    } else { // Misc
         G4cout << "Unhandled process: " << processName << "  Energy: " << energy << G4endl;
     }
 }

@@ -27,11 +27,7 @@ int main(int argc, char** argv) {
     delete runManager;
 
     std::system("python3 \"../Python Files/combineFiles.py\"");
-    std::system("python3 \"../Python Files/rebinAndPlotEverything.py\"");
-    std::system("python3 \"../Python Files/rebinAndPlotBremsCompton.py\"");
-    std::system("python3 \"../Python Files/rebinAndPlotBremsDirect.py\"");
-    std::system("python3 \"../Python Files/rebinAndPlotBremsComptonDirect.py\"");
-    std::system("python3 \"../Python Files/temp.py\"");
+    std::system("python3 \"../Python Files/plotSpectra.py\"");
 
     G4cout << "Done" << G4endl;
     return 0;

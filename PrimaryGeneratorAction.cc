@@ -18,6 +18,7 @@ PrimaryGeneratorAction::PrimaryGeneratorAction() {
         fParticleGun->SetParticleDefinition(G4Electron::ElectronDefinition());
 
     fParticleGun->SetParticleEnergy(particleEnergy);
+
 }
 
 PrimaryGeneratorAction::~PrimaryGeneratorAction() {
@@ -35,6 +36,15 @@ void PrimaryGeneratorAction::GeneratePrimaries(G4Event* Event) {
         r * sinT * std::sin(phi),
         r * cosT));
 
+    // Lazy init — ion table is only ready after G4RunManager::Initialize()
+    if (!fNi56 && (particleName == "Decays" || particleName == "Ni56")) {
+        G4GenericIon::GenericIonDefinition();
+        G4IonTable* ionTable = G4IonTable::GetIonTable();
+        fNi56 = ionTable->GetIon(28, 56, 0.0);
+        if (particleName == "Decays")
+            fCo56 = ionTable->GetIon(27, 56, 0.0);
+    }
+
     if (particleName == "Decays") {
         const G4double lambda_Ni = 1.319e-6; // 1/s
         const G4double lambda_Co = 1.039e-7; // 1/s
@@ -47,36 +57,28 @@ void PrimaryGeneratorAction::GeneratePrimaries(G4Event* Event) {
         G4double R_tot = R_Ni + lambda_Co * N_Co;
         G4double p_Ni  = R_Ni / R_tot;
 
-        G4IonTable* ionTable = G4IonTable::GetIonTable();
-        G4GenericIon::GenericIonDefinition();
-
         if (G4UniformRand() < p_Ni) {
             nickelDecays++;
-            G4ParticleDefinition* Ni56 = ionTable->GetIon(28, 56, 0.0);
-            if (!Ni56) { G4cerr << "Error: Ni-56 not found" << G4endl; return; }
-            fParticleGun->SetParticleDefinition(Ni56);
+            fParticleGun->SetParticleDefinition(fNi56);
         } else {
             cobaltDecays++;
-            G4ParticleDefinition* Co56 = ionTable->GetIon(27, 56, 0.0);
-            if (!Co56) { G4cerr << "Error: Co-56 not found" << G4endl; return; }
-            fParticleGun->SetParticleDefinition(Co56);
+            fParticleGun->SetParticleDefinition(fCo56);
         }
         fParticleGun->SetParticleEnergy(0 * MeV);
-    }
-
-    if (particleName == "Ni56") {
-        G4GenericIon::GenericIonDefinition();
-        G4ParticleDefinition* Ni56 = G4IonTable::GetIonTable()->GetIon(28, 56, 0.0);
-        if (!Ni56) { G4cerr << "Error: Ni-56 not found" << G4endl; return; }
-        fParticleGun->SetParticleDefinition(Ni56);
+        // No direction needed — ion at rest decays isotropically via G4RadioactiveDecayPhysics
+        fParticleGun->SetParticleMomentumDirection(G4ThreeVector(1, 0, 0));
+    } else if (particleName == "Ni56") {
+        fParticleGun->SetParticleDefinition(fNi56);
         fParticleGun->SetParticleEnergy(0 * MeV);
+        fParticleGun->SetParticleMomentumDirection(G4ThreeVector(1, 0, 0));
+    } else {
+        // photon / electron — direction matters
+        G4double cosTheta = 1.0 - 2.0 * G4UniformRand();
+        G4double sinTheta = std::sqrt(1.0 - cosTheta * cosTheta);
+        G4double phiDir   = CLHEP::twopi * G4UniformRand();
+        fParticleGun->SetParticleMomentumDirection(
+            G4ThreeVector(sinTheta * std::cos(phiDir), sinTheta * std::sin(phiDir), cosTheta));
     }
-
-    G4double cosTheta = 1.0 - 2.0 * G4UniformRand();
-    G4double sinTheta = std::sqrt(1.0 - cosTheta * cosTheta);
-    G4double phiDir   = CLHEP::twopi * G4UniformRand();
-    fParticleGun->SetParticleMomentumDirection(
-        G4ThreeVector(sinTheta * std::cos(phiDir), sinTheta * std::sin(phiDir), cosTheta));
 
     fParticleGun->GeneratePrimaryVertex(Event);
 }

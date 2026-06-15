@@ -21,8 +21,6 @@ extern const G4long eventCount;
 extern const G4String particleName;
 extern const G4double particleEnergy;
 extern const G4int energyLowerLimit;
-extern const G4int minZone;
-extern const G4int maxZone;
 extern const G4double timeSinceSupernova;
 
 // Particle counters
