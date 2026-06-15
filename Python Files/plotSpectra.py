@@ -3,24 +3,40 @@ import matplotlib.pyplot as plt
 import os
 import re
 
-# ── Output directory ───────────────────────────────────────────────────────────
-OUT_DIR = "../Graphs/Current"
+# ── Paths relative to this script's location ──────────────────────────────────
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+BUILD_DIR  = os.path.join(SCRIPT_DIR, "../build")
+OUT_DIR    = os.path.join(SCRIPT_DIR, "../Graphs/Current")
 os.makedirs(OUT_DIR, exist_ok=True)
 
 # ── Read simulation parameters from globalVars.cc ─────────────────────────────
-def read_globalvars(path="../globalVars.cc"):
+def read_globalvars(path=os.path.join(SCRIPT_DIR, "../globalVars.cc")):
     with open(path) as f:
         src = f.read()
     event_count = float(re.search(r'eventCount\s*=\s*([0-9eE+\-.]+)\s*;', src).group(1))
     t_obs       = float(re.search(r'timeSinceSupernova\s*=\s*([0-9eE+\-.]+)', src).group(1))
     return event_count, t_obs
 
-N_EVENTS, T_OBS_DAYS = read_globalvars()
-print(f"Read from globalVars.cc — eventCount: {N_EVENTS:,.0f}. Time since supernova: {T_OBS_DAYS} days")
+_, T_OBS_DAYS = read_globalvars()
+
+def read_n_events(path=os.path.join(SCRIPT_DIR, "../Combined_info_summary.txt")):
+    ni, co = 0.0, 0.0
+    with open(path) as f:
+        for line in f:
+            if 'Nickel Decays:' in line:
+                ni = float(line.split(':')[1].strip())
+            elif 'Cobalt Decays:' in line:
+                co = float(line.split(':')[1].strip())
+    return ni + co
+
+N_EVENTS = read_n_events()
+print(f"Read from globalVars.cc      — Time since supernova: {T_OBS_DAYS} days")
+print(f"Read from Combined_info_summary.txt — N_EVENTS: {N_EVENTS:,.0f}")
 
 # ── Fixed simulation parameters ────────────────────────────────────────────────
 M_NI56_SOLAR = 0.58         # initial Ni-56 mass in solar masses (W7)
-DISTANCE_CM  = 3.5 * 3.086e24  # 3.5 Mpc in cm
+MEGAPARSECS = 1.0
+DISTANCE_CM  = MEGAPARSECS * 3.086e24  # in cm
 
 # ── Binning ────────────────────────────────────────────────────────────────────
 N_BINS    = 187
@@ -90,17 +106,17 @@ dN_Ni, dN_Co    = compute_decay_rates(M_NI56_SOLAR, T_OBS_DAYS)
 decay_rate_total = dN_Ni + dN_Co
 sphere_area      = 4 * np.pi * DISTANCE_CM**2
 
-print(f"Ni-56 decay rate at {T_OBS_DAYS} days: {dN_Ni:.3e} decays/s")
-print(f"Co-56 decay rate at {T_OBS_DAYS} days: {dN_Co:.3e} decays/s")
+print(f"Ni-56 decay rate at {T_OBS_DAYS} days:  {dN_Ni:.3e} decays/s")
+print(f"Co-56 decay rate at {T_OBS_DAYS} days:  {dN_Co:.3e} decays/s")
 print(f"Total decay rate:                       {decay_rate_total:.3e} decays/s")
 
 # ── New bin edges ──────────────────────────────────────────────────────────────
 new_edges = np.logspace(np.log10(E_MIN_KEV), np.log10(E_MAX_KEV), N_BINS + 1)
 
 # ── Load, rebin, convert ───────────────────────────────────────────────────────
-b_counts, b_widths = rebin(*load_combined("All_brems_spectrum_combined.txt"),   new_edges)
-c_counts, c_widths = rebin(*load_combined("All_compton_spectrum_combined.txt"),  new_edges)
-d_counts, d_widths = rebin(*load_combined("All_direct_escape_combined.txt"),     new_edges)
+b_counts, b_widths = rebin(*load_combined(os.path.join(BUILD_DIR, "All_brems_spectrum_combined.txt")),  new_edges)
+c_counts, c_widths = rebin(*load_combined(os.path.join(BUILD_DIR, "All_compton_spectrum_combined.txt")), new_edges)
+d_counts, d_widths = rebin(*load_combined(os.path.join(BUILD_DIR, "All_direct_escape_combined.txt")),    new_edges)
 
 b_flux = to_flux(b_counts, b_widths, decay_rate_total, sphere_area)
 c_flux = to_flux(c_counts, c_widths, decay_rate_total, sphere_area)
@@ -110,30 +126,30 @@ day_label = f"{int(T_OBS_DAYS)} Days (W7)"
 
 # ── Plots ──────────────────────────────────────────────────────────────────────
 save_plot(
-    "brems_compton_direct.png",
-    f"Bremsstrahlung, Compton & Direct Escape at {day_label}",
+    f"brems_compton_direct_{int(T_OBS_DAYS)}.png",
+    f"Bremsstrahlung, Compton & Direct Escape at {day_label} at {MEGAPARSECS} Mpc",
     [(b_flux, 'red',   'Bremsstrahlung'),
      (c_flux, 'blue',  'Compton'),
      (d_flux, 'green', 'Direct Escape')],
 )
 
 save_plot(
-    "brems_compton.png",
-    f"Bremsstrahlung & Compton at {day_label}",
+    f"brems_compton_{int(T_OBS_DAYS)}.png",
+    f"Bremsstrahlung & Compton at {day_label} at {MEGAPARSECS} Mpc",
     [(b_flux, 'red',  'Bremsstrahlung'),
      (c_flux, 'blue', 'Compton')],
 )
 
 save_plot(
-    "brems_direct.png",
-    f"Bremsstrahlung & Direct Escape at {day_label}",
+    f"brems_direct_{int(T_OBS_DAYS)}.png",
+    f"Bremsstrahlung & Direct Escape at {day_label} at {MEGAPARSECS} Mpc",
     [(b_flux, 'red',   'Bremsstrahlung'),
      (d_flux, 'green', 'Direct Escape')],
 )
 
 save_plot(
-    "compton_direct.png",
-    f"Compton & Direct Escape at {day_label}",
+    f"compton_direct_{int(T_OBS_DAYS)}.png",
+    f"Compton & Direct Escape at {day_label} at {MEGAPARSECS} Mpc",
     [(c_flux, 'blue',  'Compton'),
      (d_flux, 'green', 'Direct Escape')],
 )

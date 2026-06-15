@@ -124,21 +124,21 @@ for f in infoFiles:
     with open(f, 'r') as file:
         for line in file:
             if 'Total Photons Tracked:' in line:
-                total_photons += int(line.split(':')[1].strip())
+                total_photons += float(line.split(':')[1].strip())
             elif 'Unmodified Escape Count:' in line:
-                unmodified_escape += int(line.split(':')[1].strip())
+                unmodified_escape += float(line.split(':')[1].strip())
             elif 'Modified Escape Count:' in line:
-                modified_escape += int(line.split(':')[1].strip())
+                modified_escape += float(line.split(':')[1].strip())
             elif 'Bremsstrahlung:' in line:
-                brems += int(line.split(':')[1].strip())
+                brems += float(line.split(':')[1].strip())
             elif 'Compton:' in line:
-                compton += int(line.split(':')[1].strip())
+                compton += float(line.split(':')[1].strip())
             elif 'Annihilation:' in line:
-                annihilation += int(line.split(':')[1].strip())
+                annihilation += float(line.split(':')[1].strip())
             elif 'Nickel Decays:' in line:
-                nickelDecays += int(line.split(':')[1].strip())
+                nickelDecays += float(line.split(':')[1].strip())
             elif 'Cobalt Decays:' in line:
-                cobaltDecays += int(line.split(':')[1].strip())
+                cobaltDecays += float(line.split(':')[1].strip())
 
 # Compute derived value
 direct_escape = unmodified_escape + modified_escape
