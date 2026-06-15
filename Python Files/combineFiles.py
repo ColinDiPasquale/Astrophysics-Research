@@ -107,32 +107,6 @@ if directEscapeFiles:
 else:
     print("No Direct Escape files found.")
 
-# === Combine binned electron files ===
-electronFiles = glob.glob('binned_electrons_*.txt')
-
-if electronFiles:
-    combined_energy = None
-    combined_counts = None
-
-    for f in electronFiles:
-        data = np.loadtxt(f)
-        if combined_energy is None:
-            combined_energy = data[:, 0]
-            combined_counts = data[:, 1]
-        else:
-            combined_counts += data[:, 1]
-
-    # Save combined Compton data
-    np.savetxt('All_electrons_combined.txt',
-               np.column_stack((combined_energy, combined_counts)),
-               header='Energy(keV) Counts', fmt='%.6e %.6e')
-
-    # Remove original files
-    for f in electronFiles:
-        os.remove(f)
-else:
-    print("No Electron files found.")
-
 # === Combine info files ===
 infoFiles = glob.glob('info_*.txt')
 
