@@ -1,0 +1,4 @@
+t=30d  events=1e5  time=2m 33s  date=2026-06-15 18:56
+t=40d  events=1e5  time=1m 47s  date=2026-06-15 18:58
+t=50d  events=1e5  time=1m 36s  date=2026-06-15 19:00
+t=60d  events=1e5  time=1m 6s  date=2026-06-15 19:01
