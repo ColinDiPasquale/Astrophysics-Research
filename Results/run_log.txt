@@ -2,3 +2,7 @@ t=30d  events=1e5  time=2m 33s  date=2026-06-15 18:56
 t=40d  events=1e5  time=1m 47s  date=2026-06-15 18:58
 t=50d  events=1e5  time=1m 36s  date=2026-06-15 19:00
 t=60d  events=1e5  time=1m 6s  date=2026-06-15 19:01
+t=30d  events=1e7  time=216m 25s  date=2026-06-15 22:47
+t=40d  events=1e7  time=153m 51s  date=2026-06-16 01:21
+t=50d  events=1e7  time=116m 30s  date=2026-06-16 03:17
+t=60d  events=1e7  time=89m 28s  date=2026-06-16 04:47

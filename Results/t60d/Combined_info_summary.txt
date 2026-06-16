@@ -1,13 +1,13 @@
-Total Photons Tracked: 242765.0
+Total Photons Tracked: 24211730.0
 
-Total Listed Photons: 242765.0
-Direct Escape Photons: 210356.0
-Unmodified Escape Count: 120905.0
-Modified Escape Count: 89451.0
+Total Listed Photons: 24211727.0
+Direct Escape Photons: 20993632.0
+Unmodified Escape Count: 12074989.0
+Modified Escape Count: 8918643.0
 
-Bremsstrahlung: 2071.0
-Compton: 89451.0
-Annihilation: 30338.0
+Bremsstrahlung: 204577.0
+Compton: 8918643.0
+Annihilation: 3013518.0
 
-Nickel Decays: 2202.0
-Cobalt Decays: 97798.0
+Nickel Decays: 210724.0
+Cobalt Decays: 9789276.0
