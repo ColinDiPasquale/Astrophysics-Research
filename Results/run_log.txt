@@ -6,3 +6,11 @@ t=30d  events=1e7  time=216m 25s  date=2026-06-15 22:47
 t=40d  events=1e7  time=153m 51s  date=2026-06-16 01:21
 t=50d  events=1e7  time=116m 30s  date=2026-06-16 03:17
 t=60d  events=1e7  time=89m 28s  date=2026-06-16 04:47
+t=30d  events=1e7  time=260m 47s  date=2026-06-22 03:40
+t=40d  events=1e7  time=186m 4s  date=2026-06-22 06:46
+t=50d  events=1e7  time=140m 57s  date=2026-06-22 09:07
+t=60d  events=1e7  time=109m 15s  date=2026-06-22 10:56
+t=30d  events=1e5  time=3m 34s  date=2026-06-22 11:56
+t=40d  events=1e5  time=2m 5s  date=2026-06-22 11:58
+t=50d  events=1e5  time=1m 45s  date=2026-06-22 12:00
+t=60d  events=1e5  time=1m 23s  date=2026-06-22 12:01
