@@ -1,140 +1,173 @@
+"""
+Overplot Geant4 escape spectra with the plW7 and BplW7 analytical reference
+spectra for each available time step in Results/.
+
+Run this script after all batch simulations are complete.
+Outputs one PNG per time step into Graphs/Current/.
+"""
 import numpy as np
 import matplotlib.pyplot as plt
 import glob
 import os
+import re
 
+SCRIPT_DIR  = os.path.dirname(os.path.abspath(__file__))
+PROJECT_DIR = os.path.join(SCRIPT_DIR, "..")
+RESULTS_DIR = os.path.join(PROJECT_DIR, "Results")
+PLBPL_DIR   = os.path.join(PROJECT_DIR, "PlBpl")
+OUT_DIR     = os.path.join(PROJECT_DIR, "Graphs", "Current")
+os.makedirs(OUT_DIR, exist_ok=True)
 
-# ── Configuration — edit these before running ─────────────────────────────────
-TIME_DAYS    = 60.0                                  # days since supernova (match your run)
-EVENT_COUNT  = 1e7                                   # events per thread (from globalVars.cc)
-THREAD_COUNT = 16                                    # threads (from globalVars.cc)
-DISTANCE_MPC = 3.5
-SIM_DIR      = f"/home/cdipasq/simProfTheMT/Results/t{int(TIME_DAYS)}d"  # directory containing combined spectrum files
+DISTANCE_MPC = 1
+MPC_TO_CM    = 3.0857e24
 
-REF_FILE_BPL = f"/home/cdipasq/simProfTheMT/PlBpl/BplW7.{int(TIME_DAYS)}"
-REF_FILE_PL  = f"/home/cdipasq/simProfTheMT/PlBpl/plW7.{int(TIME_DAYS)}"
-# ─────────────────────────────────────────────────────────────────────────────
-
-# Decay chain constants (must match PrimaryGeneratorAction.cc)
-LAMBDA_NI = 1.319e-6   # 1/s
-LAMBDA_CO = 1.039e-7   # 1/s
-N0_NI     = 1.3e55
-MPC_TO_CM = 3.0857e24
+LAM_NI = 1.319e-6   # 1/s
+LAM_CO = 1.039e-7   # 1/s
+N0_NI  = 1.3e55
 
 
 def decay_rate(t_days):
     t    = t_days * 86400.0
-    R_Ni = LAMBDA_NI * N0_NI * np.exp(-LAMBDA_NI * t)
-    N_Co = (LAMBDA_NI * N0_NI / (LAMBDA_CO - LAMBDA_NI)) * \
-           (np.exp(-LAMBDA_NI * t) - np.exp(-LAMBDA_CO * t))
-    return R_Ni + LAMBDA_CO * N_Co
+    R_Ni = LAM_NI * N0_NI * np.exp(-LAM_NI * t)
+    N_Co = (LAM_NI * N0_NI / (LAM_CO - LAM_NI)) * \
+           (np.exp(-LAM_NI * t) - np.exp(-LAM_CO * t))
+    return R_Ni + LAM_CO * N_Co
 
 
-def load_sim_histogram(prefix):
-    """Load a combined spectrum file."""
-    files = sorted(glob.glob(os.path.join(SIM_DIR, f"{prefix}.txt")))
-    if not files:
-        raise FileNotFoundError(
-            f"No file matching '{prefix}.txt' found in {SIM_DIR!r}.\n"
-            "Make sure SIM_DIR points to the results directory containing the combined files."
-        )
-    data = np.loadtxt(files[0], comments='#')
-    energies = data[:, 0]
-    counts   = data[:, 1]
-    print(f"  {prefix}: {counts.sum():.0f} total counts")
-    return energies, counts
+def load_sim_histogram(path):
+    data    = np.loadtxt(path, comments='#')
+    return data[:, 0], data[:, 1]
 
 
-def counts_to_flux(energies_keV, counts, R_total, n_events, distance_mpc):
-    """
-    Convert raw simulation counts to photons/cm²/s/keV.
+def rebin(energies_keV, counts, n_bins=187):
+    e_min  = energies_keV[0]
+    e_max  = energies_keV[-1]
+    edges  = np.logspace(np.log10(e_min), np.log10(e_max), n_bins + 1)
+    new_counts = np.zeros(n_bins)
+    indices = np.searchsorted(edges, energies_keV, side='right') - 1
+    indices = np.clip(indices, 0, n_bins - 1)
+    for i, c in zip(indices, counts):
+        new_counts[i] += c
+    return edges[:-1], new_counts, np.diff(edges)
 
-    flux = (counts / n_events) * R_total / (4π D²) / ΔE
-    """
-    D_cm   = distance_mpc * MPC_TO_CM
-    # bin widths from consecutive log-spaced centers
-    widths        = np.empty_like(energies_keV)
-    widths[:-1]   = np.diff(energies_keV)
-    widths[-1]    = widths[-2]             # repeat last width for final bin
-    flux = (counts / n_events) * R_total / (4.0 * np.pi * D_cm**2) / widths
-    return flux
+
+def counts_to_flux(widths, counts, R_total, n_events, distance_mpc):
+    D_cm = distance_mpc * MPC_TO_CM
+    return (counts / n_events) * R_total / (4.0 * np.pi * D_cm**2) / widths
 
 
 def load_reference(filepath):
-    """
-    Parse a reference spectrum file.
-    Returns arrays of mid-energy (keV) and flux (photons/cm²/s/keV).
-    Skips rows where flux <= 0 or that can't be parsed as floats.
-    """
-    energies, fluxes = [], []
+    lo_edges, fluxes = [], []
     with open(filepath) as f:
         for line in f:
             cols = line.split()
-            if len(cols) != 11:        # main data rows have exactly 11 columns
+            if len(cols) != 11:
                 continue
             try:
-                e    = float(cols[1])   # mid-energy bin (keV)
-                flux = float(cols[2])   # photon flux (photons/cm²/s/keV)
+                lo   = float(cols[0])
+                flux = float(cols[2])
             except ValueError:
                 continue
-            if flux > 1e-10:   # 1e-30 is a placeholder for zero in these files
-                energies.append(e)
+            if flux > 1e-10:
+                lo_edges.append(lo)
                 fluxes.append(flux)
-    return np.array(energies), np.array(fluxes)
+    return np.array(lo_edges), np.array(fluxes)
 
 
-# ── Main ─────────────────────────────────────────────────────────────────────
-R_total  = decay_rate(TIME_DAYS)
-N_events = EVENT_COUNT * THREAD_COUNT
+def process_time_step(t_day, sim_dir, n_events):
+    print(f"\n--- t = {t_day} days ---")
 
-print(f"Time:     {TIME_DAYS:.0f} days")
-print(f"R_total:  {R_total:.3e} decays/s")
-print(f"N_events: {N_events:.3e} total\n")
+    # Check reference files exist
+    ref_bpl = os.path.join(PLBPL_DIR, f"BplW7.{t_day}")
+    ref_pl  = os.path.join(PLBPL_DIR, f"plW7.{t_day}")
+    if not os.path.isfile(ref_bpl) or not os.path.isfile(ref_pl):
+        print(f"  Reference files missing for t={t_day}d, skipping.")
+        return
 
-print("Loading simulation histograms...")
-e_brems,  c_brems  = load_sim_histogram("All_brems_spectrum_combined")
-e_compt,  c_compt  = load_sim_histogram("All_compton_spectrum_combined")
-e_direct, c_direct = load_sim_histogram("All_direct_escape_combined")
+    R_tot = decay_rate(t_day)
+    print(f"  R_total = {R_tot:.3e} decays/s")
 
-flux_brems  = counts_to_flux(e_brems,  c_brems,  R_total, N_events, DISTANCE_MPC)
-flux_compt  = counts_to_flux(e_compt,  c_compt,  R_total, N_events, DISTANCE_MPC)
-flux_direct = counts_to_flux(e_direct, c_direct, R_total, N_events, DISTANCE_MPC)
+    # Load simulation spectra
+    loaded = {}
+    for prefix, label in [
+        ("All_brems_spectrum_combined",  "brems"),
+        ("All_compton_spectrum_combined", "compt"),
+        ("All_direct_escape_combined",    "direct"),
+    ]:
+        fpath = os.path.join(sim_dir, f"{prefix}.txt")
+        if not os.path.isfile(fpath):
+            print(f"  Missing {prefix}.txt — skipping component.")
+            loaded[label] = None
+            continue
+        e, c = load_sim_histogram(fpath)
+        e, c, w = rebin(e, c)
+        loaded[label] = (e, counts_to_flux(w, c, R_tot, n_events, DISTANCE_MPC))
+        print(f"  {prefix}: {c.sum():.0f} counts")
 
-print("\nLoading reference files...")
-e_bpl, f_bpl = load_reference(REF_FILE_BPL)
-e_pl,  f_pl  = load_reference(REF_FILE_PL)
-print(f"  BplW7: {len(e_bpl)} points")
-print(f"  plW7:  {len(e_pl)} points")
+    # Load reference spectra
+    e_bpl, f_bpl = load_reference(ref_bpl)
+    e_pl,  f_pl  = load_reference(ref_pl)
+    print(f"  BplW7: {len(e_bpl)} points  |  plW7: {len(e_pl)} points")
 
-# ── Plot ─────────────────────────────────────────────────────────────────────
-fig, ax = plt.subplots(figsize=(11, 6))
+    fig, ax = plt.subplots(figsize=(11, 6))
 
-# Simulation lines — mask out zero bins to keep the log plot clean
-for energies, flux, label, color in [
-    (e_brems,  flux_brems,  "Bremsstrahlung", "tab:blue"),
-    (e_compt,  flux_compt,  "Compton",        "tab:orange"),
-    (e_direct, flux_direct, "Direct Escape",  "tab:green"),
-]:
-    mask = flux > 0
-    ax.plot(energies[mask], flux[mask], label=label, color=color, lw=1.2)
+    sim_series = [
+        ("brems",  "Bremsstrahlung", "tab:red"),
+        ("compt",  "Compton",        "tab:blue"),
+        ("direct", "Direct Escape",  "tab:green"),
+    ]
+    for key, label, color in sim_series:
+        if loaded[key] is None:
+            continue
+        energies, flux = loaded[key]
+        mask = flux > 0
+        ax.step(energies[mask], flux[mask], where='post',
+                label=label, color=color, lw=1.2)
 
-# Reference lines
-ax.plot(e_bpl, f_bpl, label="BplW7 (ref)", color="tab:red",    lw=1.2, ls="--")
-ax.plot(e_pl,  f_pl,  label="plW7 (ref)",  color="tab:purple", lw=1.2, ls="--")
+    ax.step(e_bpl, f_bpl, where='post', label="BplW7 (ref)", color="tab:orange", lw=1.4, ls="--")
+    ax.step(e_pl,  f_pl,  where='post', label="plW7 (ref)",  color="tab:purple", lw=1.4, ls="--")
 
-ax.set_xscale("log")
-ax.set_yscale("log")
-ax.set_xlabel("Energy (keV)", fontsize=12)
-ax.set_ylabel(r"Flux (photons cm$^{-2}$ s$^{-1}$ keV$^{-1}$)", fontsize=12)
-ax.set_title(
-    f"X-ray Spectrum — W7 model, t = {TIME_DAYS:.0f} days, D = {DISTANCE_MPC} Mpc",
-    fontsize=13
-)
-ax.legend(fontsize=10)
-ax.grid(True, which="both", alpha=0.25)
+    ax.set_xscale('log')
+    ax.set_yscale('log')
+    ax.set_xlabel('Energy (keV)', fontsize=12)
+    ax.set_ylabel(r"Flux (photons cm$^{-2}$ s$^{-1}$ keV$^{-1}$)", fontsize=12)
+    ax.set_title(f"Escape Spectrum — W7, t = {t_day} days, D = {DISTANCE_MPC} Mpc", fontsize=13)
+    ax.grid(True, which='both', ls='--', lw=0.5)
+    ax.legend(fontsize=10)
+    fig.tight_layout()
 
-plt.tight_layout()
-outfile = f"spectrum_{TIME_DAYS:.0f}d.png"
-plt.savefig(outfile, dpi=150)
-plt.show()
-print(f"\nSaved {outfile}")
+    outfile = os.path.join(OUT_DIR, f"spectrum_vs_ref_{t_day}d.png")
+    fig.savefig(outfile, dpi=300)
+    plt.close(fig)
+    print(f"  Saved: {outfile}")
+
+
+# ── Main: loop over all Results/t<N>d directories ────────────────────────────
+TARGET_DAYS = [20, 30, 40, 60, 80, 100]   # as requested by professor
+
+for entry in sorted(os.listdir(RESULTS_DIR)):
+    match = re.match(r'^t(\d+)d$', entry)
+    if not match:
+        continue
+    t_day   = int(match.group(1))
+    if t_day not in TARGET_DAYS:
+        continue
+    sim_dir = os.path.join(RESULTS_DIR, entry)
+
+    # Read n_events from the Combined_info_summary.txt
+    summary = os.path.join(sim_dir, "Combined_info_summary.txt")
+    n_events = 0
+    if os.path.isfile(summary):
+        with open(summary) as sf:
+            for line in sf:
+                if line.startswith('Nickel Decays:'):
+                    n_events += float(line.split(':')[1].strip())
+                elif line.startswith('Cobalt Decays:'):
+                    n_events += float(line.split(':')[1].strip())
+    if n_events == 0:
+        print(f"t={t_day}d: could not determine n_events from summary, skipping.")
+        continue
+
+    process_time_step(t_day, sim_dir, n_events)
+
+print("\nAll done.")
