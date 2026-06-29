@@ -32,6 +32,15 @@ extern G4ThreadLocal G4double annihilationPhotons;
 extern G4ThreadLocal G4double totalPhotons;
 extern G4ThreadLocal G4double nickelDecays;
 extern G4ThreadLocal G4double cobaltDecays;
+extern G4ThreadLocal G4double totalDecayPhotonEnergy;
+extern G4ThreadLocal G4double count158keV;
+extern G4ThreadLocal G4double count812keV;
+extern G4ThreadLocal G4double count847keV;
+extern G4ThreadLocal G4double count1238keV;
+extern G4ThreadLocal G4double escape158keV;
+extern G4ThreadLocal G4double escape812keV;
+extern G4ThreadLocal G4double escape847keV;
+extern G4ThreadLocal G4double escape1238keV;
 
 // Binning constants
 extern const G4double gEmin;

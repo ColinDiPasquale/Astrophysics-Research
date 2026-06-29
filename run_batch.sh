@@ -4,7 +4,7 @@
 
 # ── Configure here ─────────────────────────────────────────────────────────────
 DAYS=(30 40 50 60)  # days since supernova to simulate
-EVENTS=1e4          # number of decay events per run
+EVENTS=1e7          # total decay events passed to /run/beamOn (distributed across threads by Geant4)
 THREADS=16          # must match threadCount in globalVars.cc
 # ──────────────────────────────────────────────────────────────────────────────
 

@@ -34,7 +34,16 @@ TrackingAction::~TrackingAction() {
     (*outFileInfo) << "Compton: " << comptonPhotons << "\n";
     (*outFileInfo) << "Annihilation: " << annihilationPhotons << "\n\n";
     (*outFileInfo) << "Nickel Decays: " << nickelDecays << "\n";
-    (*outFileInfo) << "Cobalt Decays: " << cobaltDecays << "\n";
+    (*outFileInfo) << "Cobalt Decays: " << cobaltDecays << "\n\n";
+    (*outFileInfo) << "Total Decay Photon Energy (MeV): " << totalDecayPhotonEnergy / CLHEP::MeV << "\n";
+    (*outFileInfo) << "158.58 keV Decay Photons: " << count158keV << "\n";
+    (*outFileInfo) << "811.85 keV Decay Photons: " << count812keV << "\n";
+    (*outFileInfo) << "847 keV Decay Photons: " << count847keV << "\n";
+    (*outFileInfo) << "1238.3 keV Decay Photons: " << count1238keV << "\n";
+    (*outFileInfo) << "158.58 keV Direct Escape: " << escape158keV << "\n";
+    (*outFileInfo) << "811.85 keV Direct Escape: " << escape812keV << "\n";
+    (*outFileInfo) << "847 keV Direct Escape: " << escape847keV << "\n";
+    (*outFileInfo) << "1238.3 keV Direct Escape: " << escape1238keV << "\n";
 
     outFileInfo->close();
     delete outFileInfo;
@@ -75,10 +84,22 @@ TrackingAction::~TrackingAction() {
 }
 
 void TrackingAction::PreUserTrackingAction(const G4Track* track) {
-    if (track->GetDefinition() == G4Gamma::GammaDefinition()) {
-        auto info = new PhotonTrackInfo();
-        const_cast<G4Track*>(track)->SetUserInformation(info);
-    }
+    if (track->GetDefinition() != G4Gamma::GammaDefinition()) return;
+
+    auto info = new PhotonTrackInfo();
+    const_cast<G4Track*>(track)->SetUserInformation(info);
+
+    const G4VProcess* process = track->GetCreatorProcess();
+    if (!process || process->GetProcessName() != "Radioactivation") return;
+
+    G4double energy = track->GetKineticEnergy();
+    totalDecayPhotonEnergy += energy;
+
+    G4double energyKeV = energy / CLHEP::keV;
+    if (std::abs(energyKeV - 158.58) < 1.0)  count158keV++;
+    if (std::abs(energyKeV - 811.85) < 2.0)  count812keV++;
+    if (std::abs(energyKeV - 847.0)  < 2.0)  count847keV++;
+    if (std::abs(energyKeV - 1238.3) < 2.0)  count1238keV++;
 }
 
 void TrackingAction::PostUserTrackingAction(const G4Track* track) {
@@ -112,8 +133,13 @@ void TrackingAction::PostUserTrackingAction(const G4Track* track) {
             modifiedEscapeCounter++;
             (*comptonizedHistogram)[binIndex]++;
             comptonPhotons++;
-        } else { // Direct escape
+        } else { // Direct (unmodified) escape — count specific gamma lines
             unmodifiedEscapeCounter++;
+            G4double eKeV = energy / CLHEP::keV;
+            if (std::abs(eKeV - 158.58) < 1.0)  escape158keV++;
+            if (std::abs(eKeV - 811.85) < 2.0)  escape812keV++;
+            if (std::abs(eKeV - 847.0)  < 2.0)  escape847keV++;
+            if (std::abs(eKeV - 1238.3) < 2.0)  escape1238keV++;
         }
     } else if (processName == "annihil") { // Annihilation
         annihilationPhotons++;
