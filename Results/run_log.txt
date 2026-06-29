@@ -14,3 +14,7 @@ t=30d  events=1e5  time=3m 34s  date=2026-06-22 11:56
 t=40d  events=1e5  time=2m 5s  date=2026-06-22 11:58
 t=50d  events=1e5  time=1m 45s  date=2026-06-22 12:00
 t=60d  events=1e5  time=1m 23s  date=2026-06-22 12:01
+t=30d  events=1e7  time=258m 17s  date=2026-06-29 00:31
+t=40d  events=1e7  time=185m 2s  date=2026-06-29 03:36
+t=50d  events=1e7  time=141m 53s  date=2026-06-29 05:58
+t=60d  events=1e7  time=110m 48s  date=2026-06-29 07:49
