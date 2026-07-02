@@ -1,0 +1,35 @@
+Total Photons Tracked: 2558829.0
+
+Total Listed Photons: 2558829.0
+Direct Escape Photons: 2209806.0
+Unmodified Escape Count: 1390388.0
+Modified Escape Count: 819418.0
+
+Bremsstrahlung: 19968.0
+Compton: 819418.0
+Annihilation: 329055.0
+
+Nickel Decays: 7475.0
+Cobalt Decays: 992525.0
+
+Total Decay Photon Energy (MeV): 3326949.0
+158.58 keV Decay Photons: 0.0
+811.85 keV Decay Photons: 13910.0
+847 keV Decay Photons: 969192.0
+1238.3 keV Decay Photons: 643451.0
+158.58 keV Direct Escape: 0.0
+811.85 keV Direct Escape: 6875.0
+847 keV Direct Escape: 501307.0
+1238.3 keV Direct Escape: 364151.0
+
+--- Simulated Photon Line Rates at t=70d (photons/s) ---
+N158keVLineCreated: 0.000000e+00
+N812keVLineCreated: 1.045688e+46
+N847keVLineCreated: 7.285926e+47
+N1238keVLineCreated: 4.837160e+47
+
+--- Simulated Escape Fluxes at t=70d (ph/cm^2/s) ---
+F158keVDirectEscape: 0.000000e+00
+F812keVDirectEscape: 4.318629e-05
+F847keVDirectEscape: 3.149031e-03
+F1238keVDirectEscape: 2.287466e-03
