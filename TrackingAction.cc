@@ -96,10 +96,10 @@ void TrackingAction::PreUserTrackingAction(const G4Track* track) {
     totalDecayPhotonEnergy += energy;
 
     G4double energyKeV = energy / CLHEP::keV;
-    if (std::abs(energyKeV - 158.58) < 1.0)  count158keV++;
-    if (std::abs(energyKeV - 811.85) < 2.0)  count812keV++;
-    if (std::abs(energyKeV - 847.0)  < 2.0)  count847keV++;
-    if (std::abs(energyKeV - 1238.3) < 2.0)  count1238keV++;
+    if (std::abs(energyKeV - 158.58) < .05)  count158keV++;
+    if (std::abs(energyKeV - 811.85) < .05)  count812keV++;
+    if (std::abs(energyKeV - 846.77)  < .05)  count847keV++;
+    if (std::abs(energyKeV - 1238.28) < .05)  count1238keV++;
 }
 
 void TrackingAction::PostUserTrackingAction(const G4Track* track) {
@@ -136,10 +136,10 @@ void TrackingAction::PostUserTrackingAction(const G4Track* track) {
         } else { // Direct (unmodified) escape — count specific gamma lines
             unmodifiedEscapeCounter++;
             G4double eKeV = energy / CLHEP::keV;
-            if (std::abs(eKeV - 158.58) < 1.0)  escape158keV++;
-            if (std::abs(eKeV - 811.85) < 2.0)  escape812keV++;
-            if (std::abs(eKeV - 847.0)  < 2.0)  escape847keV++;
-            if (std::abs(eKeV - 1238.3) < 2.0)  escape1238keV++;
+            if (std::abs(eKeV - 158.58) < .05)  escape158keV++;
+            if (std::abs(eKeV - 811.85) < .05)  escape812keV++;
+            if (std::abs(eKeV - 846.77)  < .05)  escape847keV++;
+            if (std::abs(eKeV - 1238.28) < .05)  escape1238keV++;
         }
     } else if (processName == "annihil") { // Annihilation
         annihilationPhotons++;

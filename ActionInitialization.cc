@@ -3,6 +3,7 @@
 #include "RunAction.hh"
 #include "SteppingAction.hh"
 #include "TrackingAction.hh"
+#include "StackingAction.hh"
 
 ActionInitialization::ActionInitialization() {}
 ActionInitialization::~ActionInitialization() {}
@@ -16,4 +17,5 @@ void ActionInitialization::Build() const {
     SetUserAction(new RunAction());
     SetUserAction(new SteppingAction());
     SetUserAction(new TrackingAction());
+    SetUserAction(new StackingAction());
 }

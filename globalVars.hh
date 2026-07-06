@@ -32,6 +32,7 @@ extern G4ThreadLocal G4double annihilationPhotons;
 extern G4ThreadLocal G4double totalPhotons;
 extern G4ThreadLocal G4double nickelDecays;
 extern G4ThreadLocal G4double cobaltDecays;
+extern G4ThreadLocal G4bool isNickelEvent;
 extern G4ThreadLocal G4double totalDecayPhotonEnergy;
 extern G4ThreadLocal G4double count158keV;
 extern G4ThreadLocal G4double count812keV;

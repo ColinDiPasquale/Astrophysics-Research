@@ -3,9 +3,9 @@
 
 // Global constants
 const G4int threadCount = 16;
-const G4long eventCount = 1e7;
+const G4long eventCount = 1e6;
 
-const G4double timeSinceSupernova = 60.0; // In days
+const G4double timeSinceSupernova = 200.0; // In days
 const G4double densityMultiplier = 1.0;
 
 const G4String particleName = "Decays";
@@ -27,6 +27,7 @@ G4ThreadLocal G4double annihilationPhotons = 0;
 G4ThreadLocal G4double totalPhotons = 0;
 G4ThreadLocal G4double nickelDecays = 0;
 G4ThreadLocal G4double cobaltDecays = 0;
+G4ThreadLocal G4bool isNickelEvent = false;
 G4ThreadLocal G4double totalDecayPhotonEnergy = 0;
 G4ThreadLocal G4double count158keV = 0;
 G4ThreadLocal G4double count812keV = 0;

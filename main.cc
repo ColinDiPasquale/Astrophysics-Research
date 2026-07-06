@@ -28,6 +28,8 @@ int main(int argc, char** argv) {
 
     std::system("python3 \"../Python Files/combineFiles.py\"");
     std::system("python3 \"../Python Files/plotSpectra.py\"");
+    std::system("python3 \"../Python Files/plot_escape_flux_vs_time.py\"");
+    std::system("python3 \"../Python Files/plot_line_rates_vs_time.py\"");
 
     G4cout << "Done" << G4endl;
     return 0;
