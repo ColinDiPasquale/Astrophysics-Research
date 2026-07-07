@@ -93,13 +93,15 @@ void TrackingAction::PreUserTrackingAction(const G4Track* track) {
     if (!process || process->GetProcessName() != "Radioactivation") return;
 
     G4double energy = track->GetKineticEnergy();
+    G4double energyKeV = energy / CLHEP::keV;
+    info->originalEnergy = energyKeV;
+
     totalDecayPhotonEnergy += energy;
 
-    G4double energyKeV = energy / CLHEP::keV;
-    if (std::abs(energyKeV - 158.58) < .05)  count158keV++;
-    if (std::abs(energyKeV - 811.85) < .05)  count812keV++;
-    if (std::abs(energyKeV - 846.77)  < .05)  count847keV++;
-    if (std::abs(energyKeV - 1238.28) < .05)  count1238keV++;
+    if (std::abs(energyKeV - 158.38) < .05)  count158keV++;
+    if (std::abs(energyKeV - 811.844) < .05)  count812keV++;
+    if (std::abs(energyKeV - 846.771)  < .05)  count847keV++;
+    if (std::abs(energyKeV - 1238.31) < .05)  count1238keV++;
 }
 
 void TrackingAction::PostUserTrackingAction(const G4Track* track) {
@@ -129,18 +131,21 @@ void TrackingAction::PostUserTrackingAction(const G4Track* track) {
         bremsstrahlungPhotons++;
     } else if (processName == "Radioactivation") { // Nuclear decay
         (*directEscapeHistogram)[binIndex]++;
-        if (info && info->hasCompton) { // Compton photon
+        if (info && info->hasCompton) {
             modifiedEscapeCounter++;
             (*comptonizedHistogram)[binIndex]++;
             comptonPhotons++;
-        } else { // Direct (unmodified) escape — count specific gamma lines
+        } else {
             unmodifiedEscapeCounter++;
-            G4double eKeV = energy / CLHEP::keV;
-            if (std::abs(eKeV - 158.58) < .05)  escape158keV++;
-            if (std::abs(eKeV - 811.85) < .05)  escape812keV++;
-            if (std::abs(eKeV - 846.77)  < .05)  escape847keV++;
-            if (std::abs(eKeV - 1238.28) < .05)  escape1238keV++;
         }
+        // Use original emission energy so scattered photons still count toward
+        // the line that produced them (matches analytical escape-fraction definition).
+        G4double eKeV = (info && info->originalEnergy > 0) ? info->originalEnergy
+                                                            : energy / CLHEP::keV;
+        if (std::abs(eKeV - 158.38)  < .05)  escape158keV++;
+        if (std::abs(eKeV - 811.844) < .05)  escape812keV++;
+        if (std::abs(eKeV - 846.771) < .05)  escape847keV++;
+        if (std::abs(eKeV - 1238.31) < .05)  escape1238keV++;
     } else if (processName == "annihil") { // Annihilation
         annihilationPhotons++;
     } else { // Misc
