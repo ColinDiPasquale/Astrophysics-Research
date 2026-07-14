@@ -21,6 +21,9 @@ Total Decay Photon Energy (MeV): 3295340.0
 811.85 keV Direct Escape: 4113.0
 847 keV Direct Escape: 930737.0
 1238.3 keV Direct Escape: 624876.0
+Ni56 Decay Rate (decays/s): 1.817626e+44
+Co56 Decay Rate (decays/s): 5.704713e+47
+
 
 --- Simulated Photon Line Rates at t=100d (photons/s) ---
 N158keVLineCreated: 2.797912e+45
