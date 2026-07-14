@@ -12,7 +12,7 @@ Annihilation: 187.0
 Nickel Decays: 864045.0
 Cobalt Decays: 135955.0
 
-Total Decay Photon Energy (MeV): 1488381.7
+Total Decay Photon Energy (MeV): 1488384.3000000003
 158.58 keV Decay Photons: 544595.0
 811.85 keV Decay Photons: 431870.0
 847 keV Decay Photons: 135047.0
@@ -21,6 +21,9 @@ Total Decay Photon Energy (MeV): 1488381.7
 811.85 keV Direct Escape: 1896.0
 847 keV Direct Escape: 652.0
 1238.3 keV Direct Escape: 714.0
+Ni56 Decay Rate (decays/s): 5.238514e+48
+Co56 Decay Rate (decays/s): 8.319992e+47
+
 
 --- Simulated Photon Line Rates at t=10d (photons/s) ---
 N158keVLineCreated: 3.305971e+48
