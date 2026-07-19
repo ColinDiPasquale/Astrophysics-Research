@@ -1,38 +1,38 @@
-Total Photons Tracked: 8155.0
+Total Photons Tracked: 5478.0
 
-Total Listed Photons: 8155.0
-Direct Escape Photons: 7924.0
-Unmodified Escape Count: 546.0
-Modified Escape Count: 7378.0
+Total Listed Photons: 5478.0
+Direct Escape Photons: 5315.0
+Unmodified Escape Count: 315.0
+Modified Escape Count: 5000.0
 
-Bremsstrahlung: 44.0
-Compton: 7378.0
-Annihilation: 187.0
+Bremsstrahlung: 15.0
+Compton: 5000.0
+Annihilation: 148.0
 
 Nickel Decays: 864045.0
 Cobalt Decays: 135955.0
 
-Total Decay Photon Energy (MeV): 1488384.3000000003
-158.58 keV Decay Photons: 544595.0
-811.85 keV Decay Photons: 431870.0
-847 keV Decay Photons: 135047.0
-1238.3 keV Decay Photons: 89821.0
+Total Decay Photon Energy (MeV): 1062782.0999999999
+158.58 keV Decay Photons: 540602.0
+811.85 keV Decay Photons: 428401.0
+847 keV Decay Photons: 0.0
+1238.3 keV Decay Photons: 0.0
 158.58 keV Direct Escape: 89.0
-811.85 keV Direct Escape: 1896.0
-847 keV Direct Escape: 652.0
-1238.3 keV Direct Escape: 714.0
+811.85 keV Direct Escape: 1891.0
+847 keV Direct Escape: 0.0
+1238.3 keV Direct Escape: 0.0
 Ni56 Decay Rate (decays/s): 5.238514e+48
 Co56 Decay Rate (decays/s): 8.319992e+47
 
 
 --- Simulated Photon Line Rates at t=10d (photons/s) ---
-N158keVLineCreated: 3.305971e+48
-N812keVLineCreated: 2.621673e+48
-N847keVLineCreated: 8.198046e+47
-N1238keVLineCreated: 5.452596e+47
+N158keVLineCreated: 3.281732e+48
+N812keVLineCreated: 2.600614e+48
+N847keVLineCreated: 0.000000e+00
+N1238keVLineCreated: 0.000000e+00
 
 --- Simulated Escape Fluxes at t=10d (ph/cm^2/s) ---
 F158keVDirectEscape: 4.514542e-06
-F812keVDirectEscape: 9.617497e-05
-F847keVDirectEscape: 3.307283e-05
-F1238keVDirectEscape: 3.621779e-05
+F812keVDirectEscape: 9.592134e-05
+F847keVDirectEscape: 0.000000e+00
+F1238keVDirectEscape: 0.000000e+00
