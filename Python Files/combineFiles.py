@@ -129,6 +129,14 @@ escape158keV = 0
 escape812keV = 0
 escape847keV = 0
 escape1238keV = 0
+count158keVNickelOnly = 0
+count812keVNickelOnly = 0
+count847keVCobaltOnly = 0
+count1238keVCobaltOnly = 0
+escape158keVNickelOnly = 0
+escape812keVNickelOnly = 0
+escape847keVCobaltOnly = 0
+escape1238keVCobaltOnly = 0
 
 for f in infoFiles:
     with open(f, 'r') as file:
@@ -167,6 +175,22 @@ for f in infoFiles:
                 escape847keV += float(line.split(':')[1].strip())
             elif '1238.3 keV Direct Escape:' in line:
                 escape1238keV += float(line.split(':')[1].strip())
+            elif '158.58 keV Decay Photons (Nickel only):' in line:
+                count158keVNickelOnly += float(line.split(':')[1].strip())
+            elif '811.85 keV Decay Photons (Nickel only):' in line:
+                count812keVNickelOnly += float(line.split(':')[1].strip())
+            elif '847 keV Decay Photons (Cobalt only):' in line:
+                count847keVCobaltOnly += float(line.split(':')[1].strip())
+            elif '1238.3 keV Decay Photons (Cobalt only):' in line:
+                count1238keVCobaltOnly += float(line.split(':')[1].strip())
+            elif '158.58 keV Direct Escape (Nickel only):' in line:
+                escape158keVNickelOnly += float(line.split(':')[1].strip())
+            elif '811.85 keV Direct Escape (Nickel only):' in line:
+                escape812keVNickelOnly += float(line.split(':')[1].strip())
+            elif '847 keV Direct Escape (Cobalt only):' in line:
+                escape847keVCobaltOnly += float(line.split(':')[1].strip())
+            elif '1238.3 keV Direct Escape (Cobalt only):' in line:
+                escape1238keVCobaltOnly += float(line.split(':')[1].strip())
 
 # Compute derived value
 direct_escape = unmodified_escape + modified_escape
@@ -184,7 +208,7 @@ with open('../Combined_info_summary.txt', 'w') as out:
     out.write(f"Annihilation: {annihilation}\n\n")
     out.write(f"Nickel Decays: {nickelDecays}\n")
     out.write(f"Cobalt Decays: {cobaltDecays}\n\n")
-    out.write(f"Total Decay Photon Energy (MeV): {totalDecayPhotonEnergy}\n")
+    out.write(f"Total Decay Photon Energy (MeV): {totalDecayPhotonEnergy}\n\n")
     out.write(f"158.58 keV Decay Photons: {count158keV}\n")
     out.write(f"811.85 keV Decay Photons: {count812keV}\n")
     out.write(f"847 keV Decay Photons: {count847keV}\n")
@@ -192,7 +216,15 @@ with open('../Combined_info_summary.txt', 'w') as out:
     out.write(f"158.58 keV Direct Escape: {escape158keV}\n")
     out.write(f"811.85 keV Direct Escape: {escape812keV}\n")
     out.write(f"847 keV Direct Escape: {escape847keV}\n")
-    out.write(f"1238.3 keV Direct Escape: {escape1238keV}\n")
+    out.write(f"1238.3 keV Direct Escape: {escape1238keV}\n\n")
+    out.write(f"158.58 keV Decay Photons (Nickel only): {count158keVNickelOnly}\n")
+    out.write(f"811.85 keV Decay Photons (Nickel only): {count812keVNickelOnly}\n")
+    out.write(f"847 keV Decay Photons (Cobalt only): {count847keVCobaltOnly}\n")
+    out.write(f"1238.3 keV Decay Photons (Cobalt only): {count1238keVCobaltOnly}\n")
+    out.write(f"158.58 keV Direct Escape (Nickel only): {escape158keVNickelOnly}\n")
+    out.write(f"811.85 keV Direct Escape (Nickel only): {escape812keVNickelOnly}\n")
+    out.write(f"847 keV Direct Escape (Cobalt only): {escape847keVCobaltOnly}\n")
+    out.write(f"1238.3 keV Direct Escape (Cobalt only): {escape1238keVCobaltOnly}\n\n")
 
     # Photon rates at each time point
     M_SUN_G  = 1.98847e33
@@ -221,6 +253,12 @@ with open('../Combined_info_summary.txt', 'w') as out:
     out.write(f"N847keVLineCreated: {(count847keV / total_decays) * R_tot_sim:.6e}\n")
     out.write(f"N1238keVLineCreated: {(count1238keV / total_decays) * R_tot_sim:.6e}\n")
 
+    out.write(f"\n--- Simulated Photon Line Rates at t={t_sim:.0f}d (photons/s) (Nickel/Cobalt only) ---\n")
+    out.write(f"N158keVLineCreated: {(count158keVNickelOnly / total_decays) * R_tot_sim:.6e}\n")
+    out.write(f"N812keVLineCreated: {(count812keVNickelOnly / total_decays) * R_tot_sim:.6e}\n")
+    out.write(f"N847keVLineCreated: {(count847keVCobaltOnly / total_decays) * R_tot_sim:.6e}\n")
+    out.write(f"N1238keVLineCreated: {(count1238keVCobaltOnly / total_decays) * R_tot_sim:.6e}\n")
+
     DISTANCE_CM = 1.0 * 3.086e24  # 1 Mpc in cm
     sphere_area = 4 * math.pi * DISTANCE_CM**2
     out.write(f"\n--- Simulated Escape Fluxes at t={t_sim:.0f}d (ph/cm^2/s) ---\n")
@@ -228,6 +266,12 @@ with open('../Combined_info_summary.txt', 'w') as out:
     out.write(f"F812keVDirectEscape: {(escape812keV / total_decays) * R_tot_sim / sphere_area:.6e}\n")
     out.write(f"F847keVDirectEscape: {(escape847keV / total_decays) * R_tot_sim / sphere_area:.6e}\n")
     out.write(f"F1238keVDirectEscape: {(escape1238keV / total_decays) * R_tot_sim / sphere_area:.6e}\n")
+
+    out.write(f"\n--- Simulated Escape Fluxes at t={t_sim:.0f}d (ph/cm^2/s) (Nickel/Cobalt only) ---\n")
+    out.write(f"F158keVDirectEscape: {(escape158keVNickelOnly / total_decays) * R_tot_sim / sphere_area:.6e}\n")
+    out.write(f"F812keVDirectEscape: {(escape812keVNickelOnly / total_decays) * R_tot_sim / sphere_area:.6e}\n")
+    out.write(f"F847keVDirectEscape: {(escape847keVCobaltOnly / total_decays) * R_tot_sim / sphere_area:.6e}\n")
+    out.write(f"F1238keVDirectEscape: {(escape1238keVCobaltOnly / total_decays) * R_tot_sim / sphere_area:.6e}\n")
 
 # Optional: delete original files
 for f in infoFiles:

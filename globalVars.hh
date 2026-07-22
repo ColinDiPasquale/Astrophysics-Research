@@ -42,6 +42,14 @@ extern G4ThreadLocal G4double escape158keV;
 extern G4ThreadLocal G4double escape812keV;
 extern G4ThreadLocal G4double escape847keV;
 extern G4ThreadLocal G4double escape1238keV;
+G4ThreadLocal G4double count158keVNickelOnly;
+G4ThreadLocal G4double count812keVNickelOnly;
+G4ThreadLocal G4double count847keVCobaltOnly;
+G4ThreadLocal G4double count1238keVCobaltOnly;
+G4ThreadLocal G4double escape158keVNickelOnly;
+G4ThreadLocal G4double escape812keVNickelOnly;
+G4ThreadLocal G4double escape847keVCobaltOnly;
+G4ThreadLocal G4double escape1238keVCobaltOnly;
 
 // Binning constants
 extern const G4double gEmin;

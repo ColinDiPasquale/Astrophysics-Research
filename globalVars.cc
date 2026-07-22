@@ -37,6 +37,14 @@ G4ThreadLocal G4double escape158keV = 0;
 G4ThreadLocal G4double escape812keV = 0;
 G4ThreadLocal G4double escape847keV = 0;
 G4ThreadLocal G4double escape1238keV = 0;
+G4ThreadLocal G4double count158keVNickelOnly = 0;
+G4ThreadLocal G4double count812keVNickelOnly = 0;
+G4ThreadLocal G4double count847keVCobaltOnly = 0;
+G4ThreadLocal G4double count1238keVCobaltOnly = 0;
+G4ThreadLocal G4double escape158keVNickelOnly = 0;
+G4ThreadLocal G4double escape812keVNickelOnly = 0;
+G4ThreadLocal G4double escape847keVCobaltOnly = 0;
+G4ThreadLocal G4double escape1238keVCobaltOnly = 0;
 
 // Histograms
 G4ThreadLocal std::vector<G4int>* bremsstrahlungHistogram = nullptr;

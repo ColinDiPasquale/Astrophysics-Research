@@ -36,14 +36,22 @@ TrackingAction::~TrackingAction() {
     (*outFileInfo) << "Nickel Decays: " << nickelDecays << "\n";
     (*outFileInfo) << "Cobalt Decays: " << cobaltDecays << "\n\n";
     (*outFileInfo) << "Total Decay Photon Energy (MeV): " << totalDecayPhotonEnergy / CLHEP::MeV << "\n";
-    (*outFileInfo) << "158.58 keV Decay Photons: " << count158keV << "\n";
+    (*outFileInfo) << "158.38 keV Decay Photons: " << count158keV << "\n";
     (*outFileInfo) << "811.85 keV Decay Photons: " << count812keV << "\n";
     (*outFileInfo) << "847 keV Decay Photons: " << count847keV << "\n";
     (*outFileInfo) << "1238.3 keV Decay Photons: " << count1238keV << "\n";
-    (*outFileInfo) << "158.58 keV Direct Escape: " << escape158keV << "\n";
+    (*outFileInfo) << "158.38 keV Direct Escape: " << escape158keV << "\n";
     (*outFileInfo) << "811.85 keV Direct Escape: " << escape812keV << "\n";
     (*outFileInfo) << "847 keV Direct Escape: " << escape847keV << "\n";
-    (*outFileInfo) << "1238.3 keV Direct Escape: " << escape1238keV << "\n";
+    (*outFileInfo) << "1238.3 keV Direct Escape: " << escape1238keV << "\n\n";
+    (*outFileInfo) << "158.38 keV Decay Photons (Nickel only): " << count158keVNickelOnly << "\n";
+    (*outFileInfo) << "811.85 keV Decay Photons (Nickel only): " << count812keVNickelOnly << "\n";
+    (*outFileInfo) << "847 keV Decay Photons (Cobalt only): " << count847keVCobaltOnly << "\n";
+    (*outFileInfo) << "1238.3 keV Decay Photons (Cobalt only): " << count1238keVCobaltOnly << "\n";
+    (*outFileInfo) << "158.38 keV Direct Escape (Nickel only): " << escape158keVNickelOnly << "\n";
+    (*outFileInfo) << "811.85 keV Direct Escape (Nickel only): " << escape812keVNickelOnly << "\n";
+    (*outFileInfo) << "847 keV Direct Escape (Cobalt only): " << escape847keVCobaltOnly << "\n";
+    (*outFileInfo) << "1238.3 keV Direct Escape (Cobalt only): " << escape1238keVCobaltOnly << "\n\n";
 
     outFileInfo->close();
     delete outFileInfo;
@@ -102,6 +110,10 @@ void TrackingAction::PreUserTrackingAction(const G4Track* track) {
     if (std::abs(energyKeV - 811.844) < .05)  count812keV++;
     if (std::abs(energyKeV - 846.771)  < .05)  count847keV++;
     if (std::abs(energyKeV - 1238.31) < .05)  count1238keV++;
+    if (isNickelEvent && std::abs(energyKeV - 158.38) < .05)  count158keVNickelOnly++;
+    if (isNickelEvent && std::abs(energyKeV - 811.844) < .05)  count812keVNickelOnly++;
+    if (isCobaltEvent && std::abs(energyKeV - 846.771)  < .05)  count847keVCobaltOnly++;
+    if (isCobaltEvent && std::abs(energyKeV - 1238.31) < .05)  count1238keVCobaltOnly++;
 }
 
 void TrackingAction::PostUserTrackingAction(const G4Track* track) {
@@ -146,6 +158,10 @@ void TrackingAction::PostUserTrackingAction(const G4Track* track) {
         if (std::abs(eKeV - 811.844) < .05)  escape812keV++;
         if (std::abs(eKeV - 846.771) < .05)  escape847keV++;
         if (std::abs(eKeV - 1238.31) < .05)  escape1238keV++;
+        if (isNickelEvent && std::abs(eKeV - 158.38)  < .05)  escape158keVNickelOnly++;
+        if (isNickelEvent && std::abs(eKeV - 811.844) < .05)  escape812keVNickelOnly++;
+        if (isCobaltEvent && std::abs(eKeV - 846.771) < .05)  escape847keVCobaltOnly++;
+        if (isCobaltEvent && std::abs(eKeV - 1238.31) < .05)  escape1238keVCobaltOnly++;
     } else if (processName == "annihil") { // Annihilation
         annihilationPhotons++;
     } else { // Misc
