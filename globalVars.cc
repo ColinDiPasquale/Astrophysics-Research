@@ -5,7 +5,7 @@
 const G4int threadCount = 16;
 const G4long eventCount = 1e6;
 
-const G4double timeSinceSupernova = 10.0; // In days
+const G4double timeSinceSupernova = 200.0; // In days
 const G4double densityMultiplier = 1.0;
 
 const G4String particleName = "Decays";
@@ -64,10 +64,3 @@ std::vector<double> innerRadii;
 std::vector<double> outerRadii;
 double sphereRadius = 0.0;
 double worldSize = 0.0;
-
-
-// TODO:
-// do the word doc
-// dot plot of numCreated in sim vs time (for 158, 847 kev, etc)
-// dot plot of directEscape in sim vs time (for 158, 847 kev, etc)
-// try to fix the binning offset issue in the plots that are made with plotForPlBpl
