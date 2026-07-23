@@ -5,7 +5,7 @@
 const G4int threadCount = 16;
 const G4long eventCount = 1e6;
 
-const G4double timeSinceSupernova = 200.0; // In days
+const G4double timeSinceSupernova = 10.0; // In days
 const G4double densityMultiplier = 1.0;
 
 const G4String particleName = "Decays";
@@ -57,7 +57,7 @@ G4ThreadLocal std::ofstream* outFileInfo = nullptr;
 // Geometry
 std::vector<double> zoneNi56Fractions;
 std::vector<double> zoneDensitiesGCC;
-const G4String geometryFile = "/home/cdipasq/simProfTheMT/Supernova Models/model52_W7_20shells_CSiNi56_t"
+const G4String geometryFile = "/home/cdipasq/AstrophysicsResearch/Supernova Models/model52_W7_20shells_CSiNi56_t"
     + std::to_string((int)timeSinceSupernova) + "d.dat";
 std::vector<G4Material*> zoneMaterials;
 std::vector<double> innerRadii;
