@@ -1,8 +1,8 @@
 CMakeFiles/SupernovaSimulation.dir/DetectorConstruction.cc.o: \
- /home/cdipasq/simProfTheMT/DetectorConstruction.cc \
+ /home/cdipasq/AstrophysicsResearch/DetectorConstruction.cc \
  /usr/include/stdc-predef.h \
- /home/cdipasq/simProfTheMT/DetectorConstruction.hh \
- /home/cdipasq/simProfTheMT/globalVars.hh \
+ /home/cdipasq/AstrophysicsResearch/DetectorConstruction.hh \
+ /home/cdipasq/AstrophysicsResearch/globalVars.hh \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/globals.hh \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4ios.hh \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4Types.hh \
@@ -456,6 +456,5 @@ CMakeFiles/SupernovaSimulation.dir/DetectorConstruction.cc.o: \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4Visible.hh \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4Visible.icc \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4Sphere.icc \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4Gamma.hh \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4LogicalVolume.hh \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4PVPlacement.hh

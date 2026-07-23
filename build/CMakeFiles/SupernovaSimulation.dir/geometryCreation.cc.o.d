@@ -1,5 +1,5 @@
 CMakeFiles/SupernovaSimulation.dir/geometryCreation.cc.o: \
- /home/cdipasq/simProfTheMT/geometryCreation.cc \
+ /home/cdipasq/AstrophysicsResearch/geometryCreation.cc \
  /usr/include/stdc-predef.h /usr/include/c++/11/fstream \
  /usr/include/c++/11/istream /usr/include/c++/11/ios \
  /usr/include/c++/11/iosfwd \
@@ -281,7 +281,7 @@ CMakeFiles/SupernovaSimulation.dir/geometryCreation.cc.o: \
  /usr/include/c++/11/bits/std_thread.h /usr/include/c++/11/thread \
  /usr/include/c++/11/bits/this_thread_sleep.h \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4ios.hh \
- /home/cdipasq/simProfTheMT/globalVars.hh \
+ /home/cdipasq/AstrophysicsResearch/globalVars.hh \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/globals.hh \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4EmCalculator.hh \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4VAtomDeexcitation.hh \

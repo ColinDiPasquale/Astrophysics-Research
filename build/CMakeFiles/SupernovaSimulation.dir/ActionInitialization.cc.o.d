@@ -1,12 +1,14 @@
 CMakeFiles/SupernovaSimulation.dir/ActionInitialization.cc.o: \
- /home/cdipasq/simProfTheMT/ActionInitialization.cc \
+ /home/cdipasq/AstrophysicsResearch/ActionInitialization.cc \
  /usr/include/stdc-predef.h \
- /home/cdipasq/simProfTheMT/ActionInitialization.hh \
+ /home/cdipasq/AstrophysicsResearch/ActionInitialization.hh \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4VUserActionInitialization.hh \
- /home/cdipasq/simProfTheMT/PrimaryGeneratorAction.hh \
+ /home/cdipasq/AstrophysicsResearch/PrimaryGeneratorAction.hh \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4VUserPrimaryGeneratorAction.hh \
- /home/cdipasq/simProfTheMT/RunAction.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4UserRunAction.hh \
+ /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4ParticleDefinition.hh \
+ /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4PDefManager.hh \
+ /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4AutoLock.hh \
+ /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4Threading.hh \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4Types.hh \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4GlobalConfig.hh \
  /usr/include/c++/11/complex \
@@ -181,7 +183,6 @@ CMakeFiles/SupernovaSimulation.dir/ActionInitialization.cc.o: \
  /usr/include/c++/11/bits/istream.tcc \
  /usr/include/c++/11/bits/sstream.tcc \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/tls.hh \
- /home/cdipasq/simProfTheMT/globalVars.hh \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/globals.hh \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4ios.hh \
  /usr/include/c++/11/iostream /usr/include/c++/11/algorithm \
@@ -240,14 +241,31 @@ CMakeFiles/SupernovaSimulation.dir/ActionInitialization.cc.o: \
  /usr/include/c++/11/bits/parse_numbers.h \
  /usr/include/c++/11/bits/std_mutex.h \
  /usr/include/c++/11/bits/unique_lock.h \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4SystemOfUnits.hh \
+ /usr/include/c++/11/condition_variable \
+ /usr/include/c++/11/bits/shared_ptr.h \
+ /usr/include/c++/11/bits/shared_ptr_base.h \
+ /usr/include/c++/11/bits/allocated_ptr.h \
+ /usr/include/c++/11/ext/concurrence.h /usr/include/c++/11/future \
+ /usr/include/c++/11/atomic /usr/include/c++/11/bits/atomic_base.h \
+ /usr/include/c++/11/bits/atomic_lockfree_defines.h \
+ /usr/include/c++/11/bits/atomic_futex.h \
+ /usr/include/c++/11/bits/std_thread.h /usr/include/c++/11/thread \
+ /usr/include/c++/11/bits/this_thread_sleep.h \
+ /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/pwdefs.hh \
+ /usr/include/c++/11/stdlib.h \
+ /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/CLHEP/Units/PhysicalConstants.h \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/CLHEP/Units/SystemOfUnits.h \
+ /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4ParticleDefinition.icc \
+ /home/cdipasq/AstrophysicsResearch/RunAction.hh \
+ /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4UserRunAction.hh \
+ /home/cdipasq/AstrophysicsResearch/globalVars.hh \
+ /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/globals.hh \
+ /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4SystemOfUnits.hh \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4Material.hh \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4Element.hh \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4ElementTable.hh \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4ElementVector.hh \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4IonisParamElm.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/globals.hh \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4Isotope.hh \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4IsotopeVector.hh \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4IonisParamMat.hh \
@@ -269,7 +287,6 @@ CMakeFiles/SupernovaSimulation.dir/ActionInitialization.cc.o: \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4OrderedTable.hh \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4DataVector.hh \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4DataVector.icc \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/CLHEP/Units/PhysicalConstants.h \
  /usr/include/assert.h \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4NistManager.hh \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4ICRU90StoppingData.hh \
@@ -312,18 +329,6 @@ CMakeFiles/SupernovaSimulation.dir/ActionInitialization.cc.o: \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/CLHEP/Vector/Rotation.icc \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4GeomSplitter.hh \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/geomwdefs.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4AutoLock.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4Threading.hh \
- /usr/include/c++/11/condition_variable \
- /usr/include/c++/11/bits/shared_ptr.h \
- /usr/include/c++/11/bits/shared_ptr_base.h \
- /usr/include/c++/11/bits/allocated_ptr.h \
- /usr/include/c++/11/ext/concurrence.h /usr/include/c++/11/future \
- /usr/include/c++/11/atomic /usr/include/c++/11/bits/atomic_base.h \
- /usr/include/c++/11/bits/atomic_lockfree_defines.h \
- /usr/include/c++/11/bits/atomic_futex.h \
- /usr/include/c++/11/bits/std_thread.h /usr/include/c++/11/thread \
- /usr/include/c++/11/bits/this_thread_sleep.h \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4VPhysicalVolume.icc \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4StepPoint.hh \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4Allocator.hh \
@@ -376,12 +381,8 @@ CMakeFiles/SupernovaSimulation.dir/ActionInitialization.cc.o: \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/trkdefs.hh \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4DynamicParticle.hh \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4ElectronOccupancy.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/pwdefs.hh \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4LorentzVector.hh \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4ParticleDefinition.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4PDefManager.hh \
- /usr/include/c++/11/stdlib.h \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4ParticleDefinition.icc \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4ParticleMomentum.hh \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4DynamicParticle.icc \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4TrackStatus.hh \
@@ -442,9 +443,13 @@ CMakeFiles/SupernovaSimulation.dir/ActionInitialization.cc.o: \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/CLHEP/Random/RandPoissonQ.icc \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/CLHEP/Random/RandStudentT.h \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/CLHEP/Random/RandStudentT.icc \
- /home/cdipasq/simProfTheMT/SteppingAction.hh \
+ /home/cdipasq/AstrophysicsResearch/SteppingAction.hh \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4UserSteppingAction.hh \
- /home/cdipasq/simProfTheMT/TrackingAction.hh \
+ /home/cdipasq/AstrophysicsResearch/TrackingAction.hh \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4UserTrackingAction.hh \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4Track.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4Threading.hh
+ /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4Threading.hh \
+ /home/cdipasq/AstrophysicsResearch/StackingAction.hh \
+ /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4UserStackingAction.hh \
+ /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4ClassificationOfNewTrack.hh \
+ /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4ClassificationOfNewTrack.hh

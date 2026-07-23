@@ -1,8 +1,9 @@
 CMakeFiles/SupernovaSimulation.dir/SteppingAction.cc.o: \
- /home/cdipasq/simProfTheMT/SteppingAction.cc /usr/include/stdc-predef.h \
- /home/cdipasq/simProfTheMT/SteppingAction.hh \
+ /home/cdipasq/AstrophysicsResearch/SteppingAction.cc \
+ /usr/include/stdc-predef.h \
+ /home/cdipasq/AstrophysicsResearch/SteppingAction.hh \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4UserSteppingAction.hh \
- /home/cdipasq/simProfTheMT/globalVars.hh \
+ /home/cdipasq/AstrophysicsResearch/globalVars.hh \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/globals.hh \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4ios.hh \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4Types.hh \
@@ -437,6 +438,8 @@ CMakeFiles/SupernovaSimulation.dir/SteppingAction.cc.o: \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/CLHEP/Random/RandPoissonQ.icc \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/CLHEP/Random/RandStudentT.h \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/CLHEP/Random/RandStudentT.icc \
+ /home/cdipasq/AstrophysicsResearch/photonTrackingInfo.hh \
+ /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4VUserTrackInformation.hh \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4Track.hh \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4Step.hh \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4VProcess.hh \
@@ -450,107 +453,4 @@ CMakeFiles/SupernovaSimulation.dir/SteppingAction.cc.o: \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4ParticleChange.hh \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4ParticleChange.icc \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4ProcessType.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4ParticleDefinition.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4ParticleTypes.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4ChargedGeantino.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4Geantino.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4Gamma.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4OpticalPhoton.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4UnknownParticle.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4MuonPlus.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4MuonMinus.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4TauMinus.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4TauPlus.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4Electron.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4Positron.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4NeutrinoTau.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4AntiNeutrinoTau.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4NeutrinoMu.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4AntiNeutrinoMu.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4NeutrinoE.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4AntiNeutrinoE.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4PionPlus.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4PionMinus.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4PionZero.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4Eta.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4EtaPrime.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4KaonPlus.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4KaonMinus.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4KaonZero.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4AntiKaonZero.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4KaonZeroLong.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4KaonZeroShort.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4DMesonPlus.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4DMesonMinus.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4DMesonZero.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4AntiDMesonZero.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4DsMesonPlus.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4DsMesonMinus.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4JPsi.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4Etac.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4BMesonPlus.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4BMesonMinus.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4BMesonZero.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4AntiBMesonZero.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4BsMesonZero.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4AntiBsMesonZero.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4Upsilon.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4Proton.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4Ions.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4AntiProton.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4Neutron.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4AntiNeutron.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4Lambda.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4SigmaPlus.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4SigmaZero.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4SigmaMinus.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4XiMinus.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4XiZero.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4OmegaMinus.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4AntiLambda.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4AntiSigmaPlus.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4AntiSigmaZero.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4AntiSigmaMinus.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4AntiXiMinus.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4AntiXiZero.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4AntiOmegaMinus.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4LambdacPlus.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4SigmacPlusPlus.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4SigmacPlus.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4SigmacZero.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4XicPlus.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4XicZero.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4OmegacZero.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4AntiLambdacPlus.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4AntiSigmacPlusPlus.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4AntiSigmacPlus.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4AntiSigmacZero.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4AntiXicPlus.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4AntiXicZero.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4AntiOmegacZero.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4Lambdab.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4SigmabPlus.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4SigmabZero.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4SigmabMinus.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4XibZero.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4XibMinus.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4OmegabMinus.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4AntiLambdab.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4AntiSigmabPlus.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4AntiSigmabZero.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4AntiSigmabMinus.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4AntiXibZero.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4AntiXibMinus.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4AntiOmegabMinus.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4Alpha.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4Deuteron.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4He3.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4Triton.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4AntiAlpha.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4AntiDeuteron.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4AntiHe3.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4AntiTriton.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4GenericIon.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4ios.hh \
- /home/cdipasq/simProfTheMT/photonTrackingInfo.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4VUserTrackInformation.hh
+ /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4Gamma.hh

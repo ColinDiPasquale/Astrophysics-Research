@@ -57,10 +57,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/cdipasq/simProfTheMT
+CMAKE_SOURCE_DIR = /home/cdipasq/AstrophysicsResearch
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/cdipasq/simProfTheMT/build
+CMAKE_BINARY_DIR = /home/cdipasq/AstrophysicsResearch/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -132,9 +132,9 @@ install/strip/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/cdipasq/simProfTheMT/build/CMakeFiles /home/cdipasq/simProfTheMT/build//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/cdipasq/AstrophysicsResearch/build/CMakeFiles /home/cdipasq/AstrophysicsResearch/build//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/cdipasq/simProfTheMT/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/cdipasq/AstrophysicsResearch/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -294,6 +294,30 @@ RunAction.cc.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/SupernovaSimulation.dir/build.make CMakeFiles/SupernovaSimulation.dir/RunAction.cc.s
 .PHONY : RunAction.cc.s
 
+StackingAction.o: StackingAction.cc.o
+.PHONY : StackingAction.o
+
+# target to build an object file
+StackingAction.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SupernovaSimulation.dir/build.make CMakeFiles/SupernovaSimulation.dir/StackingAction.cc.o
+.PHONY : StackingAction.cc.o
+
+StackingAction.i: StackingAction.cc.i
+.PHONY : StackingAction.i
+
+# target to preprocess a source file
+StackingAction.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SupernovaSimulation.dir/build.make CMakeFiles/SupernovaSimulation.dir/StackingAction.cc.i
+.PHONY : StackingAction.cc.i
+
+StackingAction.s: StackingAction.cc.s
+.PHONY : StackingAction.s
+
+# target to generate assembly for a file
+StackingAction.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SupernovaSimulation.dir/build.make CMakeFiles/SupernovaSimulation.dir/StackingAction.cc.s
+.PHONY : StackingAction.cc.s
+
 SteppingAction.o: SteppingAction.cc.o
 .PHONY : SteppingAction.o
 
@@ -442,6 +466,9 @@ help:
 	@echo "... RunAction.o"
 	@echo "... RunAction.i"
 	@echo "... RunAction.s"
+	@echo "... StackingAction.o"
+	@echo "... StackingAction.i"
+	@echo "... StackingAction.s"
 	@echo "... SteppingAction.o"
 	@echo "... SteppingAction.i"
 	@echo "... SteppingAction.s"

@@ -18,7 +18,6 @@ G4ClassificationOfNewTrack StackingAction::ClassifyNewTrack(const G4Track* track
                 return fKill;
             }
         }
-    }eturn fKill;
     }
     return fUrgent;
 }

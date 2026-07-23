@@ -9,6 +9,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/SupernovaSimulation.dir/PrimaryGeneratorAction.cc.o.d"
   "CMakeFiles/SupernovaSimulation.dir/RunAction.cc.o"
   "CMakeFiles/SupernovaSimulation.dir/RunAction.cc.o.d"
+  "CMakeFiles/SupernovaSimulation.dir/StackingAction.cc.o"
+  "CMakeFiles/SupernovaSimulation.dir/StackingAction.cc.o.d"
   "CMakeFiles/SupernovaSimulation.dir/SteppingAction.cc.o"
   "CMakeFiles/SupernovaSimulation.dir/SteppingAction.cc.o.d"
   "CMakeFiles/SupernovaSimulation.dir/TrackingAction.cc.o"

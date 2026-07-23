@@ -1,6 +1,7 @@
 CMakeFiles/SupernovaSimulation.dir/globalVars.cc.o: \
- /home/cdipasq/simProfTheMT/globalVars.cc /usr/include/stdc-predef.h \
- /home/cdipasq/simProfTheMT/globalVars.hh \
+ /home/cdipasq/AstrophysicsResearch/globalVars.cc \
+ /usr/include/stdc-predef.h \
+ /home/cdipasq/AstrophysicsResearch/globalVars.hh \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/globals.hh \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4ios.hh \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4Types.hh \

@@ -28,6 +28,7 @@ G4ThreadLocal G4double totalPhotons = 0;
 G4ThreadLocal G4double nickelDecays = 0;
 G4ThreadLocal G4double cobaltDecays = 0;
 G4ThreadLocal G4bool isNickelEvent = false;
+G4ThreadLocal G4bool isCobaltEvent = false;
 G4ThreadLocal G4double totalDecayPhotonEnergy = 0;
 G4ThreadLocal G4double count158keV = 0;
 G4ThreadLocal G4double count812keV = 0;

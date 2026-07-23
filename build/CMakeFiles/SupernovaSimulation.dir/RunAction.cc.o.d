@@ -1,6 +1,7 @@
 CMakeFiles/SupernovaSimulation.dir/RunAction.cc.o: \
- /home/cdipasq/simProfTheMT/RunAction.cc /usr/include/stdc-predef.h \
- /home/cdipasq/simProfTheMT/RunAction.hh \
+ /home/cdipasq/AstrophysicsResearch/RunAction.cc \
+ /usr/include/stdc-predef.h \
+ /home/cdipasq/AstrophysicsResearch/RunAction.hh \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4UserRunAction.hh \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4Types.hh \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4GlobalConfig.hh \
@@ -176,7 +177,7 @@ CMakeFiles/SupernovaSimulation.dir/RunAction.cc.o: \
  /usr/include/c++/11/bits/istream.tcc \
  /usr/include/c++/11/bits/sstream.tcc \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/tls.hh \
- /home/cdipasq/simProfTheMT/globalVars.hh \
+ /home/cdipasq/AstrophysicsResearch/globalVars.hh \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/globals.hh \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4ios.hh \
  /usr/include/c++/11/iostream /usr/include/c++/11/algorithm \
@@ -438,24 +439,4 @@ CMakeFiles/SupernovaSimulation.dir/RunAction.cc.o: \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/CLHEP/Random/RandStudentT.h \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/CLHEP/Random/RandStudentT.icc \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4Gamma.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4Sphere.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4GeomTypes.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4GeomConfig.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4CSGSolid.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4VSolid.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4VSolid.icc \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4Polyhedron.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/HepPolyhedron.h \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4TwoVector.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/CLHEP/Vector/TwoVector.h \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/CLHEP/Vector/TwoVector.icc \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4Point3D.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4Normal3D.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4Visible.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4Visible.icc \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4Sphere.icc \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4LogicalVolume.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4PVPlacement.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4Box.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4Box.icc \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4Electron.hh
+ /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4Threading.hh

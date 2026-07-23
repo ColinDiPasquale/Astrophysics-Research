@@ -1,11 +1,12 @@
 CMakeFiles/SupernovaSimulation.dir/PrimaryGeneratorAction.cc.o: \
- /home/cdipasq/simProfTheMT/PrimaryGeneratorAction.cc \
+ /home/cdipasq/AstrophysicsResearch/PrimaryGeneratorAction.cc \
  /usr/include/stdc-predef.h \
- /home/cdipasq/simProfTheMT/PrimaryGeneratorAction.hh \
+ /home/cdipasq/AstrophysicsResearch/PrimaryGeneratorAction.hh \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4VUserPrimaryGeneratorAction.hh \
- /home/cdipasq/simProfTheMT/globalVars.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/globals.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4ios.hh \
+ /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4ParticleDefinition.hh \
+ /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4PDefManager.hh \
+ /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4AutoLock.hh \
+ /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4Threading.hh \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4Types.hh \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4GlobalConfig.hh \
  /usr/include/c++/11/complex \
@@ -180,6 +181,8 @@ CMakeFiles/SupernovaSimulation.dir/PrimaryGeneratorAction.cc.o: \
  /usr/include/c++/11/bits/istream.tcc \
  /usr/include/c++/11/bits/sstream.tcc \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/tls.hh \
+ /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/globals.hh \
+ /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4ios.hh \
  /usr/include/c++/11/iostream /usr/include/c++/11/algorithm \
  /usr/include/c++/11/utility /usr/include/c++/11/bits/stl_relops.h \
  /usr/include/c++/11/bits/stl_algo.h \
@@ -236,14 +239,29 @@ CMakeFiles/SupernovaSimulation.dir/PrimaryGeneratorAction.cc.o: \
  /usr/include/c++/11/bits/parse_numbers.h \
  /usr/include/c++/11/bits/std_mutex.h \
  /usr/include/c++/11/bits/unique_lock.h \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4SystemOfUnits.hh \
+ /usr/include/c++/11/condition_variable \
+ /usr/include/c++/11/bits/shared_ptr.h \
+ /usr/include/c++/11/bits/shared_ptr_base.h \
+ /usr/include/c++/11/bits/allocated_ptr.h \
+ /usr/include/c++/11/ext/concurrence.h /usr/include/c++/11/future \
+ /usr/include/c++/11/atomic /usr/include/c++/11/bits/atomic_base.h \
+ /usr/include/c++/11/bits/atomic_lockfree_defines.h \
+ /usr/include/c++/11/bits/atomic_futex.h \
+ /usr/include/c++/11/bits/std_thread.h /usr/include/c++/11/thread \
+ /usr/include/c++/11/bits/this_thread_sleep.h \
+ /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/pwdefs.hh \
+ /usr/include/c++/11/stdlib.h \
+ /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/CLHEP/Units/PhysicalConstants.h \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/CLHEP/Units/SystemOfUnits.h \
+ /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4ParticleDefinition.icc \
+ /home/cdipasq/AstrophysicsResearch/globalVars.hh \
+ /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/globals.hh \
+ /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4SystemOfUnits.hh \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4Material.hh \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4Element.hh \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4ElementTable.hh \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4ElementVector.hh \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4IonisParamElm.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/globals.hh \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4Isotope.hh \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4IsotopeVector.hh \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4IonisParamMat.hh \
@@ -265,7 +283,6 @@ CMakeFiles/SupernovaSimulation.dir/PrimaryGeneratorAction.cc.o: \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4OrderedTable.hh \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4DataVector.hh \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4DataVector.icc \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/CLHEP/Units/PhysicalConstants.h \
  /usr/include/assert.h \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4NistManager.hh \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4ICRU90StoppingData.hh \
@@ -308,18 +325,6 @@ CMakeFiles/SupernovaSimulation.dir/PrimaryGeneratorAction.cc.o: \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/CLHEP/Vector/Rotation.icc \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4GeomSplitter.hh \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/geomwdefs.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4AutoLock.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4Threading.hh \
- /usr/include/c++/11/condition_variable \
- /usr/include/c++/11/bits/shared_ptr.h \
- /usr/include/c++/11/bits/shared_ptr_base.h \
- /usr/include/c++/11/bits/allocated_ptr.h \
- /usr/include/c++/11/ext/concurrence.h /usr/include/c++/11/future \
- /usr/include/c++/11/atomic /usr/include/c++/11/bits/atomic_base.h \
- /usr/include/c++/11/bits/atomic_lockfree_defines.h \
- /usr/include/c++/11/bits/atomic_futex.h \
- /usr/include/c++/11/bits/std_thread.h /usr/include/c++/11/thread \
- /usr/include/c++/11/bits/this_thread_sleep.h \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4VPhysicalVolume.icc \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4StepPoint.hh \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4Allocator.hh \
@@ -372,12 +377,8 @@ CMakeFiles/SupernovaSimulation.dir/PrimaryGeneratorAction.cc.o: \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/trkdefs.hh \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4DynamicParticle.hh \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4ElectronOccupancy.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/pwdefs.hh \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4LorentzVector.hh \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4ParticleDefinition.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4PDefManager.hh \
- /usr/include/c++/11/stdlib.h \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4ParticleDefinition.icc \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4ParticleMomentum.hh \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4DynamicParticle.icc \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4TrackStatus.hh \
@@ -442,96 +443,12 @@ CMakeFiles/SupernovaSimulation.dir/PrimaryGeneratorAction.cc.o: \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4VPrimaryGenerator.hh \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4PrimaryVertex.hh \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4PrimaryParticle.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4ParticleTable.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4ParticleTableIterator.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4ParticleTable.icc \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4Electron.hh \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4Gamma.hh \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4IonTable.hh \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4Ions.hh \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4ParticleTable.hh \
+ /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4ParticleTableIterator.hh \
+ /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4ParticleTable.icc \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4GenericIon.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4RunManager.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4Event.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/evtdefs.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4HCofThisEvent.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4VHitsCollection.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4DCofThisEvent.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4VDigiCollection.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4TrajectoryContainer.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4VTrajectory.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4VUserEventInformation.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4EventManager.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4StackManager.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4UserStackingAction.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4ClassificationOfNewTrack.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4StackedTrack.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4TrackStack.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4SmartTrackStack.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4SubEventTrackStack.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4SubEvent.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4PrimaryTransformer.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4TrackingManager.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4SteppingManager.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4Navigator.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4NormalNavigation.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4VNavigation.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4VSolid.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4VSolid.icc \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4AuxiliaryNavServices.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4AuxiliaryNavServices.icc \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4NormalNavigation.icc \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4VoxelNavigation.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4NavigationLogger.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4BlockingList.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4BlockingList.icc \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4SmartVoxelProxy.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4SmartVoxelProxy.icc \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4SmartVoxelNode.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4SmartVoxelNode.icc \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4SmartVoxelHeader.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4SmartVoxelHeader.icc \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4VoxelNavigation.icc \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4ParameterisedNavigation.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4VPVParameterisation.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4VVolumeMaterialScanner.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4ParameterisedNavigation.icc \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4ReplicaNavigation.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4ReplicaNavigation.icc \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4RegularNavigation.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4VExternalNavigation.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4Navigator.icc \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4NoProcess.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4VProcess.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/Randomize.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4PhysicsTable.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4PhysicsTable.icc \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4VParticleChange.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4VParticleChange.icc \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4ForceCondition.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4GPILSelection.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4ParticleChange.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4ParticleChange.icc \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4ProcessType.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4ProcessManager.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4ProcessVector.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4ProcessVector.icc \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4ProcessManager.icc \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4UserSteppingAction.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4VSteppingVerbose.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/trkgdefs.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4TrackingMessenger.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4UImessenger.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4UIdirectory.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4UIcommand.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4ApplicationState.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4UIparameter.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4UItokenNum.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4UserTrackingAction.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4RunManagerKernel.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/rundefs.hh \
- /usr/include/c++/11/list /usr/include/c++/11/bits/stl_list.h \
- /usr/include/c++/11/bits/list.tcc \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4UnitsTable.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4UnitsTable.icc \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4ios.hh
+ /usr/include/c++/11/numeric /usr/include/c++/11/bits/stl_numeric.h \
+ /usr/include/c++/11/pstl/glue_numeric_defs.h

@@ -1,6 +1,7 @@
 CMakeFiles/SupernovaSimulation.dir/PhysicsList.cc.o: \
- /home/cdipasq/simProfTheMT/PhysicsList.cc /usr/include/stdc-predef.h \
- /home/cdipasq/simProfTheMT/PhysicsList.hh \
+ /home/cdipasq/AstrophysicsResearch/PhysicsList.cc \
+ /usr/include/stdc-predef.h \
+ /home/cdipasq/AstrophysicsResearch/PhysicsList.hh \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4VModularPhysicsList.hh \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4VPhysicsConstructor.hh \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4ParticleTable.hh \
@@ -494,10 +495,6 @@ CMakeFiles/SupernovaSimulation.dir/PhysicsList.cc.o: \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4ParticleChangeForDecay.hh \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4DecayProcessType.hh \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4RadioactiveDecayPhysics.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4EmStandardPhysics.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4IonPhysics.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4OpticalPhysics.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4OpticalParameters.hh \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4LossTableManager.hh \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4VEnergyLossProcess.hh \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4VContinuousDiscreteProcess.hh \
@@ -520,5 +517,4 @@ CMakeFiles/SupernovaSimulation.dir/PhysicsList.cc.o: \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4UAtomicDeexcitation.hh \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4VAtomDeexcitation.hh \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4AtomicShell.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4AtomicShellEnumerator.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4SystemOfUnits.hh
+ /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4AtomicShellEnumerator.hh

@@ -1,8 +1,9 @@
 CMakeFiles/SupernovaSimulation.dir/TrackingAction.cc.o: \
- /home/cdipasq/simProfTheMT/TrackingAction.cc /usr/include/stdc-predef.h \
- /home/cdipasq/simProfTheMT/TrackingAction.hh \
+ /home/cdipasq/AstrophysicsResearch/TrackingAction.cc \
+ /usr/include/stdc-predef.h \
+ /home/cdipasq/AstrophysicsResearch/TrackingAction.hh \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4UserTrackingAction.hh \
- /home/cdipasq/simProfTheMT/globalVars.hh \
+ /home/cdipasq/AstrophysicsResearch/globalVars.hh \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/globals.hh \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4ios.hh \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4Types.hh \
@@ -439,8 +440,9 @@ CMakeFiles/SupernovaSimulation.dir/TrackingAction.cc.o: \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/CLHEP/Random/RandStudentT.icc \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4Track.hh \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4Threading.hh \
+ /home/cdipasq/AstrophysicsResearch/photonTrackingInfo.hh \
+ /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4VUserTrackInformation.hh \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4Gamma.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4Electron.hh \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4VProcess.hh \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/Randomize.hh \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4PhysicsTable.hh \
@@ -451,6 +453,4 @@ CMakeFiles/SupernovaSimulation.dir/TrackingAction.cc.o: \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4GPILSelection.hh \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4ParticleChange.hh \
  /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4ParticleChange.icc \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4ProcessType.hh \
- /home/cdipasq/simProfTheMT/photonTrackingInfo.hh \
- /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4VUserTrackInformation.hh
+ /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/include/Geant4/G4ProcessType.hh

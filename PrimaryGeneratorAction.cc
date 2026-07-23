@@ -93,10 +93,12 @@ void PrimaryGeneratorAction::GeneratePrimaries(G4Event* Event) {
         if (G4UniformRand() < p_Ni) {
             nickelDecays++;
             isNickelEvent = true;
+            isCobaltEvent = false;
             fParticleGun->SetParticleDefinition(fNi56);
         } else {
             cobaltDecays++;
             isNickelEvent = false;
+            isCobaltEvent = true;
             fParticleGun->SetParticleDefinition(fCo56);
         }
         fParticleGun->SetParticleEnergy(0 * MeV);
