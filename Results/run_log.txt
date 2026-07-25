@@ -85,3 +85,15 @@ t=90d  events=1e6  time=6m 45s  date=2026-07-23 00:47
 t=100d  events=1e6  time=5m 39s  date=2026-07-23 00:52
 t=120d  events=1e6  time=4m 26s  date=2026-07-23 00:57
 t=200d  events=1e6  time=4m 34s  date=2026-07-23 01:01
+t=10d  events=1e6  time=18m 10s  date=2026-07-24 17:59
+t=20d  events=1e6  time=21m 47s  date=2026-07-24 18:21
+t=30d  events=1e6  time=20m 49s  date=2026-07-24 18:42
+t=40d  events=1e6  time=17m 41s  date=2026-07-24 19:00
+t=50d  events=1e6  time=14m 32s  date=2026-07-24 19:14
+t=60d  events=1e6  time=11m 49s  date=2026-07-24 19:26
+t=70d  events=1e6  time=9m 40s  date=2026-07-24 19:36
+t=80d  events=1e6  time=7m 53s  date=2026-07-24 19:44
+t=90d  events=1e6  time=6m 52s  date=2026-07-24 19:50
+t=100d  events=1e6  time=6m 0s  date=2026-07-24 19:57
+t=120d  events=1e6  time=4m 42s  date=2026-07-24 20:01
+t=200d  events=1e6  time=4m 35s  date=2026-07-24 20:06

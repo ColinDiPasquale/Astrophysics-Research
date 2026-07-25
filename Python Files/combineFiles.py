@@ -159,7 +159,7 @@ for f in infoFiles:
                 cobaltDecays += float(line.split(':')[1].strip())
             elif 'Total Decay Photon Energy (MeV):' in line:
                 totalDecayPhotonEnergy += float(line.split(':')[1].strip())
-            elif '158.58 keV Decay Photons:' in line:
+            elif '158.38 keV Decay Photons:' in line:
                 count158keV += float(line.split(':')[1].strip())
             elif '811.85 keV Decay Photons:' in line:
                 count812keV += float(line.split(':')[1].strip())
@@ -167,7 +167,7 @@ for f in infoFiles:
                 count847keV += float(line.split(':')[1].strip())
             elif '1238.3 keV Decay Photons:' in line:
                 count1238keV += float(line.split(':')[1].strip())
-            elif '158.58 keV Direct Escape:' in line:
+            elif '158.38 keV Direct Escape:' in line:
                 escape158keV += float(line.split(':')[1].strip())
             elif '811.85 keV Direct Escape:' in line:
                 escape812keV += float(line.split(':')[1].strip())
@@ -175,7 +175,7 @@ for f in infoFiles:
                 escape847keV += float(line.split(':')[1].strip())
             elif '1238.3 keV Direct Escape:' in line:
                 escape1238keV += float(line.split(':')[1].strip())
-            elif '158.58 keV Decay Photons (Nickel only):' in line:
+            elif '158.38 keV Decay Photons (Nickel only):' in line:
                 count158keVNickelOnly += float(line.split(':')[1].strip())
             elif '811.85 keV Decay Photons (Nickel only):' in line:
                 count812keVNickelOnly += float(line.split(':')[1].strip())
@@ -183,7 +183,7 @@ for f in infoFiles:
                 count847keVCobaltOnly += float(line.split(':')[1].strip())
             elif '1238.3 keV Decay Photons (Cobalt only):' in line:
                 count1238keVCobaltOnly += float(line.split(':')[1].strip())
-            elif '158.58 keV Direct Escape (Nickel only):' in line:
+            elif '158.38 keV Direct Escape (Nickel only):' in line:
                 escape158keVNickelOnly += float(line.split(':')[1].strip())
             elif '811.85 keV Direct Escape (Nickel only):' in line:
                 escape812keVNickelOnly += float(line.split(':')[1].strip())
@@ -209,19 +209,19 @@ with open('../Combined_info_summary.txt', 'w') as out:
     out.write(f"Nickel Decays: {nickelDecays}\n")
     out.write(f"Cobalt Decays: {cobaltDecays}\n\n")
     out.write(f"Total Decay Photon Energy (MeV): {totalDecayPhotonEnergy}\n\n")
-    out.write(f"158.58 keV Decay Photons: {count158keV}\n")
+    out.write(f"158.38 keV Decay Photons: {count158keV}\n")
     out.write(f"811.85 keV Decay Photons: {count812keV}\n")
     out.write(f"847 keV Decay Photons: {count847keV}\n")
     out.write(f"1238.3 keV Decay Photons: {count1238keV}\n")
-    out.write(f"158.58 keV Direct Escape: {escape158keV}\n")
+    out.write(f"158.38 keV Direct Escape: {escape158keV}\n")
     out.write(f"811.85 keV Direct Escape: {escape812keV}\n")
     out.write(f"847 keV Direct Escape: {escape847keV}\n")
     out.write(f"1238.3 keV Direct Escape: {escape1238keV}\n\n")
-    out.write(f"158.58 keV Decay Photons (Nickel only): {count158keVNickelOnly}\n")
+    out.write(f"158.38 keV Decay Photons (Nickel only): {count158keVNickelOnly}\n")
     out.write(f"811.85 keV Decay Photons (Nickel only): {count812keVNickelOnly}\n")
     out.write(f"847 keV Decay Photons (Cobalt only): {count847keVCobaltOnly}\n")
     out.write(f"1238.3 keV Decay Photons (Cobalt only): {count1238keVCobaltOnly}\n")
-    out.write(f"158.58 keV Direct Escape (Nickel only): {escape158keVNickelOnly}\n")
+    out.write(f"158.38 keV Direct Escape (Nickel only): {escape158keVNickelOnly}\n")
     out.write(f"811.85 keV Direct Escape (Nickel only): {escape812keVNickelOnly}\n")
     out.write(f"847 keV Direct Escape (Cobalt only): {escape847keVCobaltOnly}\n")
     out.write(f"1238.3 keV Direct Escape (Cobalt only): {escape1238keVCobaltOnly}\n\n")
