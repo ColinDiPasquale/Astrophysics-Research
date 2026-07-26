@@ -1,24 +1,19 @@
 #include "PrimaryGeneratorAction.hh"
 #include "globalVars.hh"
+#include "DecayModel.hh"
 
 #include "G4ParticleGun.hh"
 #include "G4Gamma.hh"
 #include "G4SystemOfUnits.hh"
 #include "Randomize.hh"
-#include "G4IonTable.hh"
-#include "G4GenericIon.hh"
 
 #include <algorithm>
 #include <numeric>
 
 PrimaryGeneratorAction::PrimaryGeneratorAction() {
     fParticleGun = new G4ParticleGun(1);
-
-    if (particleName == "photon")
-        fParticleGun->SetParticleDefinition(G4Gamma::GammaDefinition());
-
+    fParticleGun->SetParticleDefinition(G4Gamma::GammaDefinition());
     fParticleGun->SetParticleEnergy(particleEnergy);
-
 }
 
 PrimaryGeneratorAction::~PrimaryGeneratorAction() {
@@ -64,58 +59,82 @@ void PrimaryGeneratorAction::GeneratePrimaries(G4Event* Event) {
         phi  = CLHEP::twopi * G4UniformRand();
     }
 
-    fParticleGun->SetParticlePosition(G4ThreeVector(
-        r * sinT * std::cos(phi),
-        r * sinT * std::sin(phi),
-        r * cosT));
+    G4ThreeVector position(r * sinT * std::cos(phi),
+                            r * sinT * std::sin(phi),
+                            r * cosT);
 
-    // Lazy init — ion table is only ready after G4RunManager::Initialize()
-    if (!fNi56 && (particleName == "Decays" || particleName == "Ni56")) {
-        G4GenericIon::GenericIonDefinition();
-        G4IonTable* ionTable = G4IonTable::GetIonTable();
-        fNi56 = ionTable->GetIon(28, 56, 0.0);
-        if (particleName == "Decays")
-            fCo56 = ionTable->GetIon(27, 56, 0.0);
-    }
+    if (particleName == "Decays" || particleName == "Ni56") {
+        G4bool nickelEvent = true;
 
-    if (particleName == "Decays") {
-        const G4double lambda_Ni = 1.319e-6; // 1/s
-        const G4double lambda_Co = 1.039e-7; // 1/s
-        const G4double N0_Ni    = 1.3e55;
+        if (particleName == "Decays") {
+            const G4double lambda_Ni = 1.319e-6; // 1/s
+            const G4double lambda_Co = 1.039e-7; // 1/s
+            const G4double N0_Ni    = 1.3e55;
 
-        G4double t     = timeSinceSupernova * 24.0 * 3600.0;
-        G4double R_Ni  = lambda_Ni * N0_Ni * std::exp(-lambda_Ni * t);
-        G4double N_Co  = (lambda_Ni * N0_Ni / (lambda_Co - lambda_Ni)) *
-                         (std::exp(-lambda_Ni * t) - std::exp(-lambda_Co * t));
-        G4double R_tot = R_Ni + lambda_Co * N_Co;
-        G4double p_Ni  = R_Ni / R_tot;
+            G4double t     = timeSinceSupernova * 24.0 * 3600.0;
+            G4double R_Ni  = lambda_Ni * N0_Ni * std::exp(-lambda_Ni * t);
+            G4double N_Co  = (lambda_Ni * N0_Ni / (lambda_Co - lambda_Ni)) *
+                             (std::exp(-lambda_Ni * t) - std::exp(-lambda_Co * t));
+            G4double R_tot = R_Ni + lambda_Co * N_Co;
+            G4double p_Ni  = R_Ni / R_tot;
 
-        if (G4UniformRand() < p_Ni) {
-            nickelDecays++;
-            isNickelEvent = true;
-            isCobaltEvent = false;
-            fParticleGun->SetParticleDefinition(fNi56);
-        } else {
-            cobaltDecays++;
-            isNickelEvent = false;
-            isCobaltEvent = true;
-            fParticleGun->SetParticleDefinition(fCo56);
+            nickelEvent = (G4UniformRand() < p_Ni);
         }
-        fParticleGun->SetParticleEnergy(0 * MeV);
-        // No direction needed — ion at rest decays isotropically via G4RadioactiveDecayPhysics
-        fParticleGun->SetParticleMomentumDirection(G4ThreeVector(1, 0, 0));
-    } else if (particleName == "Ni56") {
-        fParticleGun->SetParticleDefinition(fNi56);
-        fParticleGun->SetParticleEnergy(0 * MeV);
-        fParticleGun->SetParticleMomentumDirection(G4ThreeVector(1, 0, 0));
+
+        isNickelEvent = nickelEvent;
+        isCobaltEvent = !nickelEvent;
+        if (nickelEvent) nickelDecays++;
+        else              cobaltDecays++;
+
+        const std::vector<GammaEmission>& lines = nickelEvent ? kNi56Lines : kCo56Lines;
+
+        // One event = one decay, but a decay can cascade through several of
+        // these lines at once: sample each line independently against its
+        // probabilityPerDecay and fire a primary vertex for every line that
+        // "hits". All vertices share the decay position and time; only the
+        // direction is resampled per photon.
+        for (const auto& line : lines) {
+            if (G4UniformRand() >= line.probabilityPerDecay) continue;
+
+            G4double cosTheta = 1.0 - 2.0 * G4UniformRand();
+            G4double sinTheta = std::sqrt(1.0 - cosTheta * cosTheta);
+            G4double phiDir   = CLHEP::twopi * G4UniformRand();
+
+            fParticleGun->SetParticlePosition(position);
+            fParticleGun->SetParticleEnergy(line.energy);
+            fParticleGun->SetParticleMomentumDirection(
+                G4ThreeVector(sinTheta * std::cos(phiDir), sinTheta * std::sin(phiDir), cosTheta));
+            fParticleGun->GeneratePrimaryVertex(Event);
+        }
+
+        // Co-56's beta-plus branch isn't a line in kCo56Lines: a selected
+        // beta-plus decay yields one positron, which (in the
+        // local-annihilation approximation) produces a correlated,
+        // back-to-back pair of 511 keV photons rather than an independent line.
+        if (!nickelEvent && G4UniformRand() < kCo56PositronBranchingRatio) {
+            G4double cosTheta = 1.0 - 2.0 * G4UniformRand();
+            G4double sinTheta = std::sqrt(1.0 - cosTheta * cosTheta);
+            G4double phiDir   = CLHEP::twopi * G4UniformRand();
+            G4ThreeVector direction(sinTheta * std::cos(phiDir), sinTheta * std::sin(phiDir), cosTheta);
+
+            fParticleGun->SetParticlePosition(position);
+            fParticleGun->SetParticleEnergy(511.0 * keV);
+
+            fParticleGun->SetParticleMomentumDirection(direction);
+            fParticleGun->GeneratePrimaryVertex(Event);
+
+            fParticleGun->SetParticleMomentumDirection(-direction);
+            fParticleGun->GeneratePrimaryVertex(Event);
+        }
     } else {
-        // photon — direction matters
+        // photon — direction matters, single fixed-energy source
         G4double cosTheta = 1.0 - 2.0 * G4UniformRand();
         G4double sinTheta = std::sqrt(1.0 - cosTheta * cosTheta);
         G4double phiDir   = CLHEP::twopi * G4UniformRand();
+
+        fParticleGun->SetParticlePosition(position);
         fParticleGun->SetParticleMomentumDirection(
             G4ThreeVector(sinTheta * std::cos(phiDir), sinTheta * std::sin(phiDir), cosTheta));
+        fParticleGun->GeneratePrimaryVertex(Event);
     }
-
-    fParticleGun->GeneratePrimaryVertex(Event);
 }

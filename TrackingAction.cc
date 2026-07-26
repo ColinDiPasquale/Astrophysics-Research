@@ -97,8 +97,10 @@ void TrackingAction::PreUserTrackingAction(const G4Track* track) {
     auto info = new PhotonTrackInfo();
     const_cast<G4Track*>(track)->SetUserInformation(info);
 
-    const G4VProcess* process = track->GetCreatorProcess();
-    if (!process || process->GetProcessName() != "Radioactivation") return;
+    // Decay-line gammas are now primaries (PrimaryGeneratorAction emits them
+    // directly instead of relying on G4RadioactiveDecayPhysics), so they have
+    // no creator process — GetParentID() == 0 identifies them instead.
+    if (track->GetParentID() != 0) return;
 
     G4double energy = track->GetKineticEnergy();
     G4double energyKeV = energy / CLHEP::keV;
@@ -127,7 +129,10 @@ void TrackingAction::PostUserTrackingAction(const G4Track* track) {
     if (binIndex < 0) return;
 
     const G4VProcess* process = track->GetCreatorProcess();
-    if (!process) {
+    // Decay-line gammas are primaries and have no creator process — that is
+    // now the expected case for them, not an error. Anything else without a
+    // creator process is unexpected.
+    if (!process && track->GetParentID() != 0) {
         G4cout << "Photon with no creator process." << G4endl;
         return;
     }
@@ -135,13 +140,14 @@ void TrackingAction::PostUserTrackingAction(const G4Track* track) {
     (*allEmissionsHistogram)[binIndex]++;
     totalPhotons++;
 
-    G4String processName = process->GetProcessName();
+    G4String processName = (track->GetParentID() == 0) ? "PrimaryDecay"
+                                                         : process->GetProcessName();
     auto info = (PhotonTrackInfo*) track->GetUserInformation();
 
     if (processName == "eBrem") { // Bremsstrahlung
         (*bremsstrahlungHistogram)[binIndex]++;
         bremsstrahlungPhotons++;
-    } else if (processName == "Radioactivation") { // Nuclear decay
+    } else if (processName == "PrimaryDecay") { // Nuclear decay (line emitted directly as a primary)
         (*directEscapeHistogram)[binIndex]++;
         if (info && info->hasCompton) {
             modifiedEscapeCounter++;

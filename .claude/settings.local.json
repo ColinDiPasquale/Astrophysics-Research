@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cmake .)",
+      "Read(//tmp/**)",
+      "Bash(ls -la \"/mnt/c/Users/colin/Downloads/Ni56DirectGamma_Geant4_10_4_2_fixed5/src/\" 2>&1)"
+    ]
+  }
+}

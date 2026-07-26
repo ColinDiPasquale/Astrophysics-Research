@@ -198,6 +198,30 @@ ActionInitialization.cc.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/SupernovaSimulation.dir/build.make CMakeFiles/SupernovaSimulation.dir/ActionInitialization.cc.s
 .PHONY : ActionInitialization.cc.s
 
+DecayModel.o: DecayModel.cc.o
+.PHONY : DecayModel.o
+
+# target to build an object file
+DecayModel.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SupernovaSimulation.dir/build.make CMakeFiles/SupernovaSimulation.dir/DecayModel.cc.o
+.PHONY : DecayModel.cc.o
+
+DecayModel.i: DecayModel.cc.i
+.PHONY : DecayModel.i
+
+# target to preprocess a source file
+DecayModel.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SupernovaSimulation.dir/build.make CMakeFiles/SupernovaSimulation.dir/DecayModel.cc.i
+.PHONY : DecayModel.cc.i
+
+DecayModel.s: DecayModel.cc.s
+.PHONY : DecayModel.s
+
+# target to generate assembly for a file
+DecayModel.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SupernovaSimulation.dir/build.make CMakeFiles/SupernovaSimulation.dir/DecayModel.cc.s
+.PHONY : DecayModel.cc.s
+
 DetectorConstruction.o: DetectorConstruction.cc.o
 .PHONY : DetectorConstruction.o
 
@@ -454,6 +478,9 @@ help:
 	@echo "... ActionInitialization.o"
 	@echo "... ActionInitialization.i"
 	@echo "... ActionInitialization.s"
+	@echo "... DecayModel.o"
+	@echo "... DecayModel.i"
+	@echo "... DecayModel.s"
 	@echo "... DetectorConstruction.o"
 	@echo "... DetectorConstruction.i"
 	@echo "... DetectorConstruction.s"
