@@ -11,19 +11,30 @@ import glob
 import os
 import re
 
-SCRIPT_DIR  = os.path.dirname(os.path.abspath(__file__))
-PROJECT_DIR = os.path.join(SCRIPT_DIR, "..")
-RESULTS_DIR = os.path.join(PROJECT_DIR, "Results")
-PLBPL_DIR   = os.path.join(PROJECT_DIR, "PlBpl")
-OUT_DIR     = os.path.join(PROJECT_DIR, "Graphs", "Current")
+SCRIPT_DIR   = os.path.dirname(os.path.abspath(__file__))
+PROJECT_DIR  = os.path.join(SCRIPT_DIR, "..")
+RESULTS_DIR  = os.path.join(PROJECT_DIR, "Results")
+PLBPL_DIR    = os.path.join(PROJECT_DIR, "BplPl")
+OUT_DIR      = os.path.join(PROJECT_DIR, "Results", "BplPl")
+BATCH_SCRIPT = os.path.join(PROJECT_DIR, "run_batch.sh")
 os.makedirs(OUT_DIR, exist_ok=True)
 
-DISTANCE_MPC = 1
+DISTANCE_MPC = 3.5
 MPC_TO_CM    = 3.0857e24
 
 LAM_NI = 1.319e-6   # 1/s
 LAM_CO = 1.039e-7   # 1/s
 N0_NI  = 1.3e55
+
+def read_days_from_batch_script(path):
+    """Parse the DAYS=(...) array out of run_batch.sh so this script always
+    covers the same set of days the batch run actually simulated."""
+    with open(path) as f:
+        text = f.read()
+    m = re.search(r'DAYS=\(([^)]*)\)', text)
+    if not m:
+        raise ValueError(f"Could not find DAYS=(...) array in {path}")
+    return [int(tok) for tok in m.group(1).split()]
 
 
 def decay_rate(t_days):
@@ -142,17 +153,11 @@ def process_time_step(t_day, sim_dir, n_events):
     print(f"  Saved: {outfile}")
 
 
-# ── Main: loop over all Results/t<N>d directories ────────────────────────────
-TARGET_DAYS = [20, 30, 40, 60, 80, 100]   # as requested by professor
-
-for entry in sorted(os.listdir(RESULTS_DIR)):
-    match = re.match(r'^t(\d+)d$', entry)
-    if not match:
+# ── Main: loop over every day in run_batch.sh's DAYS array ──────────────────
+for t_day in read_days_from_batch_script(BATCH_SCRIPT):
+    sim_dir = os.path.join(RESULTS_DIR, f"t{t_day}d")
+    if not os.path.isdir(sim_dir):
         continue
-    t_day   = int(match.group(1))
-    if t_day not in TARGET_DAYS:
-        continue
-    sim_dir = os.path.join(RESULTS_DIR, entry)
 
     # Read n_events from the Combined_info_summary.txt
     summary = os.path.join(sim_dir, "Combined_info_summary.txt")
