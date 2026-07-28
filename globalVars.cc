@@ -5,7 +5,7 @@
 const G4int threadCount = 16;
 const G4long eventCount = 1e6;
 
-const G4double timeSinceSupernova = 200.0; // In days
+const G4double timeSinceSupernova = 20.0; // In days
 const G4double densityMultiplier = 1.0;
 
 const G4String particleName = "Decays";
