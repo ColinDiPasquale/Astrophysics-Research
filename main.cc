@@ -31,6 +31,7 @@ int main(int argc, char** argv) {
     std::system("python3 \"../Python Files/plot_escape_flux_vs_time.py\"");
     std::system("python3 \"../Python Files/plot_line_rates_vs_time.py\"");
     std::system("python3 \"../Python Files/plotForPlBpl.py\"");
+    std::system("python3 \"../Python Files/plot_tau_vs_menc.py\"");
 
     G4cout << "Done" << G4endl;
     return 0;

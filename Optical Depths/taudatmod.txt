@@ -1,0 +1,2 @@
+taumod.time file contains
+izn GMrsun taup3keV taup6keV tau1keV tau2keV tau5keV tau10keV tau20keV tau50keV tau100keV tau200keV tau500keV tau847keV tau1000keV tau1238keV tau2000keV

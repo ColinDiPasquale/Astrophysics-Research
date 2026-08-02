@@ -62,12 +62,15 @@ void RunAction::WriteOpticalDepthTable() {
         }
     }
 
-    std::filesystem::path outDir = "/home/cdipasq/AstrophysicsResearch/Optical Depths";
+    std::string dayLabel = "t" + std::to_string((int)timeSinceSupernova) + "d";
+    std::filesystem::path outDir = std::filesystem::path("/home/cdipasq/AstrophysicsResearch/Optical Depths") / dayLabel;
     std::filesystem::create_directories(outDir);
-    std::string fileName = "optical_depth_table_t" + std::to_string((int)timeSinceSupernova) + "d.txt";
+    std::string fileName = "optical_depth_table_" + dayLabel + ".txt";
     std::ofstream out(outDir / fileName);
 
-    out << std::left << std::setw(6) << "izn";
+    out << std::left << std::setw(6) << "izn"
+        << std::right << std::setw(colWidth) << "menc_Msun"
+        << std::right << std::setw(colWidth) << "radius_cm";
     for (G4int e : tableEnergiesKeV) {
         std::ostringstream label;
         label << "tau" << e << "keV";
@@ -77,7 +80,9 @@ void RunAction::WriteOpticalDepthTable() {
 
     out << std::scientific << std::setprecision(6);
     for (int zone = 0; zone < numberOfZones; zone++) {
-        out << std::left << std::setw(6) << zone;
+        out << std::left << std::setw(6) << zone
+            << std::right << std::setw(colWidth) << zoneEnclosedMassMsun[zone]
+            << std::right << std::setw(colWidth) << outerRadii[zone] / cm;
         for (size_t iE = 0; iE < tableEnergiesKeV.size(); ++iE) {
             out << std::right << std::setw(colWidth) << cumulativeTau[zone][iE];
         }

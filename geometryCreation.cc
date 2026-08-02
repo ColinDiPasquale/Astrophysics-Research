@@ -143,6 +143,7 @@ void createGeometry(const std::string& filename,
 
         zoneNi56Fractions.push_back(X_Ni);
         zoneDensitiesGCC.push_back(zoneDensity);
+        zoneEnclosedMassMsun.push_back(shellData[zone].Menc_Msun);
 
         // Create material
         G4Material* zoneMaterial = new G4Material(materialName,
