@@ -17,8 +17,20 @@ SCRIPT_DIR   = os.path.dirname(os.path.abspath(__file__))
 PROJECT_DIR  = os.path.join(SCRIPT_DIR, "..")
 RESULTS_DIR  = os.path.join(PROJECT_DIR, "Results")
 MODELS_DIR   = os.path.join(PROJECT_DIR, "Supernova Models")
-OUT_DIR      = os.path.join(PROJECT_DIR, "Graphs", "Current")
+OUT_DIR      = os.path.join(PROJECT_DIR, "Results", "flux&line rates")
+BATCH_SCRIPT = os.path.join(PROJECT_DIR, "run_batch.sh")
 os.makedirs(OUT_DIR, exist_ok=True)
+
+
+def read_days_from_batch_script(path):
+    """Parse the DAYS=(...) array out of run_batch.sh so this script always
+    covers the same set of days the batch run actually simulated."""
+    with open(path) as f:
+        text = f.read()
+    m = re.search(r'DAYS=\(([^)]*)\)', text)
+    if not m:
+        raise ValueError(f"Could not find DAYS=(...) array in {path}")
+    return [int(tok) for tok in m.group(1).split()]
 
 DISTANCE_CM  = 1.0 * 3.086e24   # 1 Mpc in cm
 SPHERE_AREA  = 4 * math.pi * DISTANCE_CM**2
@@ -40,7 +52,7 @@ def parse_summary(path):
     with open(path) as f:
         for line in f:
             for key in ('Nickel Decays', 'Cobalt Decays',
-                        '158.58 keV Direct Escape',
+                        '158.38 keV Direct Escape',
                         '811.85 keV Direct Escape',
                         '847 keV Direct Escape',
                         '1238.3 keV Direct Escape'):
@@ -56,12 +68,8 @@ sim_F812  = []
 sim_F847  = []
 sim_F1238 = []
 
-for entry in sorted(os.listdir(RESULTS_DIR)):
-    m = re.match(r'^t(\d+)d$', entry)
-    if not m:
-        continue
-    t_day = int(m.group(1))
-    summary_path = os.path.join(RESULTS_DIR, entry, "Combined_info_summary.txt")
+for t_day in read_days_from_batch_script(BATCH_SCRIPT):
+    summary_path = os.path.join(RESULTS_DIR, f"t{t_day}d", "Combined_info_summary.txt")
     if not os.path.isfile(summary_path):
         continue
     v = parse_summary(summary_path)
@@ -71,7 +79,7 @@ for entry in sorted(os.listdir(RESULTS_DIR)):
     R_tot = R_total(t_day)
     sim_days.append(t_day)
     # flux in ph/cm^2/s (escape counts normalized by total events × rate / area)
-    sim_F158.append( (v.get('158.58 keV Direct Escape', 0) / total_decays) * R_tot / SPHERE_AREA)
+    sim_F158.append( (v.get('158.38 keV Direct Escape', 0) / total_decays) * R_tot / SPHERE_AREA)
     sim_F812.append( (v.get('811.85 keV Direct Escape', 0) / total_decays) * R_tot / SPHERE_AREA)
     sim_F847.append( (v.get('847 keV Direct Escape',    0) / total_decays) * R_tot / SPHERE_AREA)
     sim_F1238.append((v.get('1238.3 keV Direct Escape', 0) / total_decays) * R_tot / SPHERE_AREA)
@@ -132,6 +140,27 @@ else:
     print(f"Analytical file not found: {CO_FILE}")
 
 
+# --- Ratio of each simulated point (158 keV=blue, 812 keV=orange) to the
+# analytical curve interpolated to that same day ---
+ratio_rows = [f"{'day':>6}  {'158keV_sim':>14}  {'158keV_analytic':>16}  {'158keV_sim/analytic':>20}  "
+              f"{'812keV_sim':>14}  {'812keV_analytic':>16}  {'812keV_sim/analytic':>20}"]
+if ana_t_ni is not None and len(sim_days):
+    a158_at_sim = np.interp(sim_days, ana_t_ni, ana_F158)
+    a812_at_sim = np.interp(sim_days, ana_t_ni, ana_F812)
+    for day, s158, a158, s812, a812 in zip(sim_days, sim_F158, a158_at_sim, sim_F812, a812_at_sim):
+        r158 = s158 / a158 if a158 else float('nan')
+        r812 = s812 / a812 if a812 else float('nan')
+        ratio_rows.append(f"{day:6.0f}  {s158:14.6e}  {a158:16.6e}  {r158:20.4f}  "
+                           f"{s812:14.6e}  {a812:16.6e}  {r812:20.4f}")
+else:
+    ratio_rows.append("# analytical Ni56 escape-flux table not found or no simulation points -- no ratios computed")
+
+ratio_outfile = os.path.join(OUT_DIR, "sim_vs_analytical_ratio_158_812_escapeflux.txt")
+with open(ratio_outfile, "w") as f:
+    f.write("\n".join(ratio_rows) + "\n")
+print(f"Saved: {ratio_outfile}")
+
+
 # ─── Plot 1: 158 keV and 812 keV (Ni56 lines) ────────────────────────────────
 fig1, ax1 = plt.subplots(figsize=(10, 6))
 
@@ -174,11 +203,11 @@ zoom_axes(ax1,
 ax1.set_yscale('log')
 ax1.set_xlabel('Time (days)', fontsize=12)
 ax1.set_ylabel(r'Escape Flux (photons cm$^{-2}$ s$^{-1}$)', fontsize=12)
-ax1.set_title('Ni56 Gamma-line Escape Flux — W7, 1 Mpc, 0.58 M$_\odot$ Ni56', fontsize=13)
+ax1.set_title(f'Ni56 Gamma-line Escape Flux — W7, {DISTANCE_CM / 3.086e24} Mpc, 0.58 M$_\odot$ Ni56', fontsize=13)
 ax1.grid(True, which='both', ls='--', lw=0.5)
 ax1.legend(fontsize=10)
 fig1.tight_layout()
-out1 = os.path.join(OUT_DIR, "F158_F812_W7_1Mpc_0p5894MsunNi56_sim.png")
+out1 = os.path.join(OUT_DIR, "nickelEscapeFlux.png")
 fig1.savefig(out1, dpi=300)
 plt.close(fig1)
 print(f"Saved: {out1}")
@@ -207,11 +236,11 @@ zoom_axes(ax2,
 ax2.set_yscale('log')
 ax2.set_xlabel('Time (days)', fontsize=12)
 ax2.set_ylabel(r'Escape Flux (photons cm$^{-2}$ s$^{-1}$)', fontsize=12)
-ax2.set_title('Co56 Gamma-line Escape Flux — W7, 1 Mpc, 0.58 M$_\odot$ Ni56', fontsize=13)
+ax2.set_title(f'Co56 Gamma-line Escape Flux — W7, {DISTANCE_CM / 3.086e24} Mpc, 0.58 M$_\odot$ Ni56', fontsize=13)
 ax2.grid(True, which='both', ls='--', lw=0.5)
 ax2.legend(fontsize=10)
 fig2.tight_layout()
-out2 = os.path.join(OUT_DIR, "F847_F1238_vs_t_W7_1Mpc_0p5894MsunNi56_sim.png")
+out2 = os.path.join(OUT_DIR, "cobaltEscapeFlux.png")
 fig2.savefig(out2, dpi=300)
 plt.close(fig2)
 print(f"Saved: {out2}")

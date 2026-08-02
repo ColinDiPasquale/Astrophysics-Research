@@ -83,10 +83,24 @@ CMakeFiles/SupernovaSimulation.dir/ActionInitialization.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SupernovaSimulation.dir/ActionInitialization.cc.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/cdipasq/AstrophysicsResearch/ActionInitialization.cc -o CMakeFiles/SupernovaSimulation.dir/ActionInitialization.cc.s
 
+CMakeFiles/SupernovaSimulation.dir/DecayModel.cc.o: CMakeFiles/SupernovaSimulation.dir/flags.make
+CMakeFiles/SupernovaSimulation.dir/DecayModel.cc.o: ../DecayModel.cc
+CMakeFiles/SupernovaSimulation.dir/DecayModel.cc.o: CMakeFiles/SupernovaSimulation.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cdipasq/AstrophysicsResearch/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/SupernovaSimulation.dir/DecayModel.cc.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/SupernovaSimulation.dir/DecayModel.cc.o -MF CMakeFiles/SupernovaSimulation.dir/DecayModel.cc.o.d -o CMakeFiles/SupernovaSimulation.dir/DecayModel.cc.o -c /home/cdipasq/AstrophysicsResearch/DecayModel.cc
+
+CMakeFiles/SupernovaSimulation.dir/DecayModel.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/SupernovaSimulation.dir/DecayModel.cc.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/cdipasq/AstrophysicsResearch/DecayModel.cc > CMakeFiles/SupernovaSimulation.dir/DecayModel.cc.i
+
+CMakeFiles/SupernovaSimulation.dir/DecayModel.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SupernovaSimulation.dir/DecayModel.cc.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/cdipasq/AstrophysicsResearch/DecayModel.cc -o CMakeFiles/SupernovaSimulation.dir/DecayModel.cc.s
+
 CMakeFiles/SupernovaSimulation.dir/DetectorConstruction.cc.o: CMakeFiles/SupernovaSimulation.dir/flags.make
 CMakeFiles/SupernovaSimulation.dir/DetectorConstruction.cc.o: ../DetectorConstruction.cc
 CMakeFiles/SupernovaSimulation.dir/DetectorConstruction.cc.o: CMakeFiles/SupernovaSimulation.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cdipasq/AstrophysicsResearch/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/SupernovaSimulation.dir/DetectorConstruction.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cdipasq/AstrophysicsResearch/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/SupernovaSimulation.dir/DetectorConstruction.cc.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/SupernovaSimulation.dir/DetectorConstruction.cc.o -MF CMakeFiles/SupernovaSimulation.dir/DetectorConstruction.cc.o.d -o CMakeFiles/SupernovaSimulation.dir/DetectorConstruction.cc.o -c /home/cdipasq/AstrophysicsResearch/DetectorConstruction.cc
 
 CMakeFiles/SupernovaSimulation.dir/DetectorConstruction.cc.i: cmake_force
@@ -100,7 +114,7 @@ CMakeFiles/SupernovaSimulation.dir/DetectorConstruction.cc.s: cmake_force
 CMakeFiles/SupernovaSimulation.dir/PhysicsList.cc.o: CMakeFiles/SupernovaSimulation.dir/flags.make
 CMakeFiles/SupernovaSimulation.dir/PhysicsList.cc.o: ../PhysicsList.cc
 CMakeFiles/SupernovaSimulation.dir/PhysicsList.cc.o: CMakeFiles/SupernovaSimulation.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cdipasq/AstrophysicsResearch/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/SupernovaSimulation.dir/PhysicsList.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cdipasq/AstrophysicsResearch/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/SupernovaSimulation.dir/PhysicsList.cc.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/SupernovaSimulation.dir/PhysicsList.cc.o -MF CMakeFiles/SupernovaSimulation.dir/PhysicsList.cc.o.d -o CMakeFiles/SupernovaSimulation.dir/PhysicsList.cc.o -c /home/cdipasq/AstrophysicsResearch/PhysicsList.cc
 
 CMakeFiles/SupernovaSimulation.dir/PhysicsList.cc.i: cmake_force
@@ -114,7 +128,7 @@ CMakeFiles/SupernovaSimulation.dir/PhysicsList.cc.s: cmake_force
 CMakeFiles/SupernovaSimulation.dir/PrimaryGeneratorAction.cc.o: CMakeFiles/SupernovaSimulation.dir/flags.make
 CMakeFiles/SupernovaSimulation.dir/PrimaryGeneratorAction.cc.o: ../PrimaryGeneratorAction.cc
 CMakeFiles/SupernovaSimulation.dir/PrimaryGeneratorAction.cc.o: CMakeFiles/SupernovaSimulation.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cdipasq/AstrophysicsResearch/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/SupernovaSimulation.dir/PrimaryGeneratorAction.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cdipasq/AstrophysicsResearch/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/SupernovaSimulation.dir/PrimaryGeneratorAction.cc.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/SupernovaSimulation.dir/PrimaryGeneratorAction.cc.o -MF CMakeFiles/SupernovaSimulation.dir/PrimaryGeneratorAction.cc.o.d -o CMakeFiles/SupernovaSimulation.dir/PrimaryGeneratorAction.cc.o -c /home/cdipasq/AstrophysicsResearch/PrimaryGeneratorAction.cc
 
 CMakeFiles/SupernovaSimulation.dir/PrimaryGeneratorAction.cc.i: cmake_force
@@ -128,7 +142,7 @@ CMakeFiles/SupernovaSimulation.dir/PrimaryGeneratorAction.cc.s: cmake_force
 CMakeFiles/SupernovaSimulation.dir/RunAction.cc.o: CMakeFiles/SupernovaSimulation.dir/flags.make
 CMakeFiles/SupernovaSimulation.dir/RunAction.cc.o: ../RunAction.cc
 CMakeFiles/SupernovaSimulation.dir/RunAction.cc.o: CMakeFiles/SupernovaSimulation.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cdipasq/AstrophysicsResearch/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/SupernovaSimulation.dir/RunAction.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cdipasq/AstrophysicsResearch/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/SupernovaSimulation.dir/RunAction.cc.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/SupernovaSimulation.dir/RunAction.cc.o -MF CMakeFiles/SupernovaSimulation.dir/RunAction.cc.o.d -o CMakeFiles/SupernovaSimulation.dir/RunAction.cc.o -c /home/cdipasq/AstrophysicsResearch/RunAction.cc
 
 CMakeFiles/SupernovaSimulation.dir/RunAction.cc.i: cmake_force
@@ -142,7 +156,7 @@ CMakeFiles/SupernovaSimulation.dir/RunAction.cc.s: cmake_force
 CMakeFiles/SupernovaSimulation.dir/StackingAction.cc.o: CMakeFiles/SupernovaSimulation.dir/flags.make
 CMakeFiles/SupernovaSimulation.dir/StackingAction.cc.o: ../StackingAction.cc
 CMakeFiles/SupernovaSimulation.dir/StackingAction.cc.o: CMakeFiles/SupernovaSimulation.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cdipasq/AstrophysicsResearch/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/SupernovaSimulation.dir/StackingAction.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cdipasq/AstrophysicsResearch/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/SupernovaSimulation.dir/StackingAction.cc.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/SupernovaSimulation.dir/StackingAction.cc.o -MF CMakeFiles/SupernovaSimulation.dir/StackingAction.cc.o.d -o CMakeFiles/SupernovaSimulation.dir/StackingAction.cc.o -c /home/cdipasq/AstrophysicsResearch/StackingAction.cc
 
 CMakeFiles/SupernovaSimulation.dir/StackingAction.cc.i: cmake_force
@@ -156,7 +170,7 @@ CMakeFiles/SupernovaSimulation.dir/StackingAction.cc.s: cmake_force
 CMakeFiles/SupernovaSimulation.dir/SteppingAction.cc.o: CMakeFiles/SupernovaSimulation.dir/flags.make
 CMakeFiles/SupernovaSimulation.dir/SteppingAction.cc.o: ../SteppingAction.cc
 CMakeFiles/SupernovaSimulation.dir/SteppingAction.cc.o: CMakeFiles/SupernovaSimulation.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cdipasq/AstrophysicsResearch/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/SupernovaSimulation.dir/SteppingAction.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cdipasq/AstrophysicsResearch/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/SupernovaSimulation.dir/SteppingAction.cc.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/SupernovaSimulation.dir/SteppingAction.cc.o -MF CMakeFiles/SupernovaSimulation.dir/SteppingAction.cc.o.d -o CMakeFiles/SupernovaSimulation.dir/SteppingAction.cc.o -c /home/cdipasq/AstrophysicsResearch/SteppingAction.cc
 
 CMakeFiles/SupernovaSimulation.dir/SteppingAction.cc.i: cmake_force
@@ -170,7 +184,7 @@ CMakeFiles/SupernovaSimulation.dir/SteppingAction.cc.s: cmake_force
 CMakeFiles/SupernovaSimulation.dir/TrackingAction.cc.o: CMakeFiles/SupernovaSimulation.dir/flags.make
 CMakeFiles/SupernovaSimulation.dir/TrackingAction.cc.o: ../TrackingAction.cc
 CMakeFiles/SupernovaSimulation.dir/TrackingAction.cc.o: CMakeFiles/SupernovaSimulation.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cdipasq/AstrophysicsResearch/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/SupernovaSimulation.dir/TrackingAction.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cdipasq/AstrophysicsResearch/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/SupernovaSimulation.dir/TrackingAction.cc.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/SupernovaSimulation.dir/TrackingAction.cc.o -MF CMakeFiles/SupernovaSimulation.dir/TrackingAction.cc.o.d -o CMakeFiles/SupernovaSimulation.dir/TrackingAction.cc.o -c /home/cdipasq/AstrophysicsResearch/TrackingAction.cc
 
 CMakeFiles/SupernovaSimulation.dir/TrackingAction.cc.i: cmake_force
@@ -184,7 +198,7 @@ CMakeFiles/SupernovaSimulation.dir/TrackingAction.cc.s: cmake_force
 CMakeFiles/SupernovaSimulation.dir/geometryCreation.cc.o: CMakeFiles/SupernovaSimulation.dir/flags.make
 CMakeFiles/SupernovaSimulation.dir/geometryCreation.cc.o: ../geometryCreation.cc
 CMakeFiles/SupernovaSimulation.dir/geometryCreation.cc.o: CMakeFiles/SupernovaSimulation.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cdipasq/AstrophysicsResearch/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/SupernovaSimulation.dir/geometryCreation.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cdipasq/AstrophysicsResearch/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/SupernovaSimulation.dir/geometryCreation.cc.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/SupernovaSimulation.dir/geometryCreation.cc.o -MF CMakeFiles/SupernovaSimulation.dir/geometryCreation.cc.o.d -o CMakeFiles/SupernovaSimulation.dir/geometryCreation.cc.o -c /home/cdipasq/AstrophysicsResearch/geometryCreation.cc
 
 CMakeFiles/SupernovaSimulation.dir/geometryCreation.cc.i: cmake_force
@@ -198,7 +212,7 @@ CMakeFiles/SupernovaSimulation.dir/geometryCreation.cc.s: cmake_force
 CMakeFiles/SupernovaSimulation.dir/globalVars.cc.o: CMakeFiles/SupernovaSimulation.dir/flags.make
 CMakeFiles/SupernovaSimulation.dir/globalVars.cc.o: ../globalVars.cc
 CMakeFiles/SupernovaSimulation.dir/globalVars.cc.o: CMakeFiles/SupernovaSimulation.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cdipasq/AstrophysicsResearch/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/SupernovaSimulation.dir/globalVars.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cdipasq/AstrophysicsResearch/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/SupernovaSimulation.dir/globalVars.cc.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/SupernovaSimulation.dir/globalVars.cc.o -MF CMakeFiles/SupernovaSimulation.dir/globalVars.cc.o.d -o CMakeFiles/SupernovaSimulation.dir/globalVars.cc.o -c /home/cdipasq/AstrophysicsResearch/globalVars.cc
 
 CMakeFiles/SupernovaSimulation.dir/globalVars.cc.i: cmake_force
@@ -212,7 +226,7 @@ CMakeFiles/SupernovaSimulation.dir/globalVars.cc.s: cmake_force
 CMakeFiles/SupernovaSimulation.dir/main.cc.o: CMakeFiles/SupernovaSimulation.dir/flags.make
 CMakeFiles/SupernovaSimulation.dir/main.cc.o: ../main.cc
 CMakeFiles/SupernovaSimulation.dir/main.cc.o: CMakeFiles/SupernovaSimulation.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cdipasq/AstrophysicsResearch/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/SupernovaSimulation.dir/main.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cdipasq/AstrophysicsResearch/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/SupernovaSimulation.dir/main.cc.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/SupernovaSimulation.dir/main.cc.o -MF CMakeFiles/SupernovaSimulation.dir/main.cc.o.d -o CMakeFiles/SupernovaSimulation.dir/main.cc.o -c /home/cdipasq/AstrophysicsResearch/main.cc
 
 CMakeFiles/SupernovaSimulation.dir/main.cc.i: cmake_force
@@ -226,6 +240,7 @@ CMakeFiles/SupernovaSimulation.dir/main.cc.s: cmake_force
 # Object files for target SupernovaSimulation
 SupernovaSimulation_OBJECTS = \
 "CMakeFiles/SupernovaSimulation.dir/ActionInitialization.cc.o" \
+"CMakeFiles/SupernovaSimulation.dir/DecayModel.cc.o" \
 "CMakeFiles/SupernovaSimulation.dir/DetectorConstruction.cc.o" \
 "CMakeFiles/SupernovaSimulation.dir/PhysicsList.cc.o" \
 "CMakeFiles/SupernovaSimulation.dir/PrimaryGeneratorAction.cc.o" \
@@ -241,6 +256,7 @@ SupernovaSimulation_OBJECTS = \
 SupernovaSimulation_EXTERNAL_OBJECTS =
 
 SupernovaSimulation: CMakeFiles/SupernovaSimulation.dir/ActionInitialization.cc.o
+SupernovaSimulation: CMakeFiles/SupernovaSimulation.dir/DecayModel.cc.o
 SupernovaSimulation: CMakeFiles/SupernovaSimulation.dir/DetectorConstruction.cc.o
 SupernovaSimulation: CMakeFiles/SupernovaSimulation.dir/PhysicsList.cc.o
 SupernovaSimulation: CMakeFiles/SupernovaSimulation.dir/PrimaryGeneratorAction.cc.o
@@ -289,7 +305,7 @@ SupernovaSimulation: /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/l
 SupernovaSimulation: /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/lib/libG4clhep.so
 SupernovaSimulation: /home/cdipasq/geant4/geant4-v11.2.1-install-multithreaded/lib/libG4ptl.so.2.3.3
 SupernovaSimulation: CMakeFiles/SupernovaSimulation.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/cdipasq/AstrophysicsResearch/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Linking CXX executable SupernovaSimulation"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/cdipasq/AstrophysicsResearch/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Linking CXX executable SupernovaSimulation"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/SupernovaSimulation.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

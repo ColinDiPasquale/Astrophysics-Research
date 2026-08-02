@@ -73,6 +73,7 @@ extern std::vector<double> outerRadii;
 extern std::vector<G4Material*> zoneMaterials;
 extern std::vector<double> zoneNi56Fractions; // normalized Ni-56 mass fraction per zone
 extern std::vector<double> zoneDensitiesGCC;  // density in g/cc per zone
+extern std::vector<double> zoneEnclosedMassMsun; // enclosed mass (Menc_Msun) per zone, in solar masses
 extern G4double sphereRadius;
 extern G4double worldSize;
 extern const G4double densityMultiplier;

@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cmake .)",
+      "Read(//tmp/**)",
+      "Bash(ls -la \"/mnt/c/Users/colin/Downloads/Ni56DirectGamma_Geant4_10_4_2_fixed5/src/\" 2>&1)",
+      "Bash(python3 \"Python Files/plot_line_rates_vs_time.py\")",
+      "Bash(python3 \"Python Files/plot_escape_flux_vs_time.py\")",
+      "Bash(python3 -)",
+      "Bash(python3 \"Python Files/plotForPlBpl.py\")",
+      "Bash(git status *)",
+      "Bash(python3 -c \"import matplotlib; print\\(matplotlib.__version__\\)\")",
+      "Bash(python3 \"Python Files/plot_tau_vs_menc.py\")"
+    ]
+  }
+}

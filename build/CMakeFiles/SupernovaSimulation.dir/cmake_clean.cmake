@@ -1,6 +1,8 @@
 file(REMOVE_RECURSE
   "CMakeFiles/SupernovaSimulation.dir/ActionInitialization.cc.o"
   "CMakeFiles/SupernovaSimulation.dir/ActionInitialization.cc.o.d"
+  "CMakeFiles/SupernovaSimulation.dir/DecayModel.cc.o"
+  "CMakeFiles/SupernovaSimulation.dir/DecayModel.cc.o.d"
   "CMakeFiles/SupernovaSimulation.dir/DetectorConstruction.cc.o"
   "CMakeFiles/SupernovaSimulation.dir/DetectorConstruction.cc.o.d"
   "CMakeFiles/SupernovaSimulation.dir/PhysicsList.cc.o"

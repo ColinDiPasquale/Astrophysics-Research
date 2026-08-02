@@ -9,11 +9,23 @@ import math
 import numpy as np
 import matplotlib.pyplot as plt
 
-SCRIPT_DIR  = os.path.dirname(os.path.abspath(__file__))
-PROJECT_DIR = os.path.join(SCRIPT_DIR, "..")
-RESULTS_DIR = os.path.join(PROJECT_DIR, "Results")
-OUT_DIR     = os.path.join(PROJECT_DIR, "Graphs", "Current")
+SCRIPT_DIR   = os.path.dirname(os.path.abspath(__file__))
+PROJECT_DIR  = os.path.join(SCRIPT_DIR, "..")
+RESULTS_DIR  = os.path.join(PROJECT_DIR, "Results")
+OUT_DIR      = os.path.join(PROJECT_DIR, "Results", "flux&line rates")
+BATCH_SCRIPT = os.path.join(PROJECT_DIR, "run_batch.sh")
 os.makedirs(OUT_DIR, exist_ok=True)
+
+
+def read_days_from_batch_script(path):
+    """Parse the DAYS=(...) array out of run_batch.sh so this script always
+    covers the same set of days the batch run actually simulated."""
+    with open(path) as f:
+        text = f.read()
+    m = re.search(r'DAYS=\(([^)]*)\)', text)
+    if not m:
+        raise ValueError(f"Could not find DAYS=(...) array in {path}")
+    return [int(tok) for tok in m.group(1).split()]
 
 # Physical constants (from professor's PDF)
 HALF_LIFE_NI56 = 6.095          # days
@@ -72,7 +84,7 @@ def parse_summary(path):
     with open(path) as f:
         for line in f:
             for key in ('Nickel Decays', 'Cobalt Decays',
-                        '158.58 keV Decay Photons',
+                        '158.38 keV Decay Photons',
                         '811.85 keV Decay Photons',
                         '847 keV Decay Photons',
                         '1238.3 keV Decay Photons'):
@@ -88,12 +100,8 @@ sim_N812  = []
 sim_N847  = []
 sim_N1238 = []
 
-for entry in sorted(os.listdir(RESULTS_DIR)):
-    m = re.match(r'^t(\d+)d$', entry)
-    if not m:
-        continue
-    t_day = int(m.group(1))
-    summary_path = os.path.join(RESULTS_DIR, entry, "Combined_info_summary.txt")
+for t_day in read_days_from_batch_script(BATCH_SCRIPT):
+    summary_path = os.path.join(RESULTS_DIR, f"t{t_day}d", "Combined_info_summary.txt")
     if not os.path.isfile(summary_path):
         continue
     v = parse_summary(summary_path)
@@ -102,7 +110,7 @@ for entry in sorted(os.listdir(RESULTS_DIR)):
         continue
     R_tot = R_total_code(t_day)
     sim_days.append(t_day)
-    sim_N158.append((v.get('158.58 keV Decay Photons', 0) / total_decays) * R_tot)
+    sim_N158.append((v.get('158.38 keV Decay Photons', 0) / total_decays) * R_tot)
     sim_N812.append((v.get('811.85 keV Decay Photons', 0) / total_decays) * R_tot)
     sim_N847.append((v.get('847 keV Decay Photons', 0)    / total_decays) * R_tot)
     sim_N1238.append((v.get('1238.3 keV Decay Photons', 0) / total_decays) * R_tot)
@@ -112,6 +120,22 @@ sim_N158  = np.array(sim_N158)
 sim_N812  = np.array(sim_N812)
 sim_N847  = np.array(sim_N847)
 sim_N1238 = np.array(sim_N1238)
+
+# --- Ratio of each simulated point (158 keV=blue, 812 keV=orange) to the
+# analytical curve evaluated at that same day ---
+ratio_rows = [f"{'day':>6}  {'158keV_sim':>14}  {'158keV_analytic':>16}  {'158keV_sim/analytic':>20}  "
+              f"{'812keV_sim':>14}  {'812keV_analytic':>16}  {'812keV_sim/analytic':>20}"]
+for day, s158, s812 in zip(sim_days, sim_N158, sim_N812):
+    a158, a812, _, _ = analytical_rates(day)
+    r158 = s158 / a158 if a158 else float('nan')
+    r812 = s812 / a812 if a812 else float('nan')
+    ratio_rows.append(f"{day:6.0f}  {s158:14.6e}  {a158:16.6e}  {r158:20.4f}  "
+                       f"{s812:14.6e}  {a812:16.6e}  {r812:20.4f}")
+
+ratio_outfile = os.path.join(OUT_DIR, "sim_vs_analytical_ratio_158_812_NCreated.txt")
+with open(ratio_outfile, "w") as f:
+    f.write("\n".join(ratio_rows) + "\n")
+print(f"Saved: {ratio_outfile}")
 
 # --- Analytical curves ---
 t_ana = np.linspace(10, 110, 500)
@@ -146,7 +170,7 @@ ax.grid(True, which='both', ls='--', lw=0.5)
 ax.legend(fontsize=9)
 fig.tight_layout()
 
-outfile = os.path.join(OUT_DIR, "NCreated_vs_time_W7.png")
+outfile = os.path.join(OUT_DIR, "combinedLineRates.png")
 fig.savefig(outfile, dpi=300)
 plt.close(fig)
 print(f"Saved: {outfile}")

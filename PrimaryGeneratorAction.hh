@@ -2,7 +2,6 @@
 #define PRIMARY_GENERATOR_ACTION_HH
 
 #include "G4VUserPrimaryGeneratorAction.hh"
-#include "G4ParticleDefinition.hh"
 #include <vector>
 
 class G4ParticleGun;
@@ -16,8 +15,6 @@ public:
 
 private:
     G4ParticleGun*        fParticleGun;
-    G4ParticleDefinition* fNi56 = nullptr;
-    G4ParticleDefinition* fCo56 = nullptr;
     std::vector<double>   fCumWeights; // cumulative Ni-56 mass weights per zone
 };
 

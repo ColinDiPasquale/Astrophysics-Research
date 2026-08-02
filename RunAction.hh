@@ -12,6 +12,7 @@ public:
     void BeginOfRunAction(const G4Run*) override;
     void EndOfRunAction(const G4Run*) override;
 private:
+    void WriteOpticalDepthTable();
     std::chrono::time_point<std::chrono::high_resolution_clock> start;
 };
 
