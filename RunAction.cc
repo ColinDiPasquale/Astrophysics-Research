@@ -7,6 +7,11 @@
 #include "G4Threading.hh"
 
 #include <cmath>
+#include <filesystem>
+#include <fstream>
+#include <iomanip>
+#include <sstream>
+#include <vector>
 
 void RunAction::BeginOfRunAction(const G4Run*) {
     if (!G4Threading::IsMasterThread()) return;
@@ -25,8 +30,59 @@ void RunAction::BeginOfRunAction(const G4Run*) {
     G4cout << "Optical depth (tau) at 1 MeV: " << opticalDepth << G4endl;
     G4cout << "Direct escape fraction: " << directEscapeFraction << G4endl;
 
+    WriteOpticalDepthTable();
+
     start = std::chrono::high_resolution_clock::now();
     G4cout << "Running simulation..." << G4endl;
+}
+
+// Writes, per zone, the Compton-scattering optical depth from that zone
+// out to the surface (i.e. what a photon born there must traverse to
+// escape), at a fixed grid of energies. Zone 0 is innermost. One file is
+// written per simulated time (timeSinceSupernova) so re-running at a
+// different day doesn't clobber earlier tables.
+void RunAction::WriteOpticalDepthTable() {
+    static const std::vector<G4int> tableEnergiesKeV = {
+        3, 6, 1, 2, 5, 10, 20, 50, 100, 200, 500, 847, 1000, 1238, 2000
+    };
+    constexpr int colWidth = 16;
+
+    G4EmCalculator emCal;
+    G4int numberOfZones = zoneMaterials.size();
+    std::vector<std::vector<G4double>> cumulativeTau(
+        numberOfZones, std::vector<G4double>(tableEnergiesKeV.size(), 0.0));
+
+    for (size_t iE = 0; iE < tableEnergiesKeV.size(); ++iE) {
+        G4double energy = tableEnergiesKeV[iE] * keV;
+        G4double opticalDepth = 0.0;
+        for (int zone = numberOfZones - 1; zone >= 0; zone--) {
+            G4double opacity = emCal.ComputeCrossSectionPerVolume(energy, G4Gamma::GammaDefinition(), "compt", zoneMaterials[zone]);
+            opticalDepth += opacity * (outerRadii[zone] - innerRadii[zone]);
+            cumulativeTau[zone][iE] = opticalDepth;
+        }
+    }
+
+    std::filesystem::path outDir = "/home/cdipasq/AstrophysicsResearch/Optical Depths";
+    std::filesystem::create_directories(outDir);
+    std::string fileName = "optical_depth_table_t" + std::to_string((int)timeSinceSupernova) + "d.txt";
+    std::ofstream out(outDir / fileName);
+
+    out << std::left << std::setw(6) << "izn";
+    for (G4int e : tableEnergiesKeV) {
+        std::ostringstream label;
+        label << "tau" << e << "keV";
+        out << std::right << std::setw(colWidth) << label.str();
+    }
+    out << "\n";
+
+    out << std::scientific << std::setprecision(6);
+    for (int zone = 0; zone < numberOfZones; zone++) {
+        out << std::left << std::setw(6) << zone;
+        for (size_t iE = 0; iE < tableEnergiesKeV.size(); ++iE) {
+            out << std::right << std::setw(colWidth) << cumulativeTau[zone][iE];
+        }
+        out << "\n";
+    }
 }
 
 void RunAction::EndOfRunAction(const G4Run*) {
