@@ -5,7 +5,7 @@
 const G4int threadCount = 16;
 const G4long eventCount = 1e6;
 
-const G4double timeSinceSupernova = 10.0; // In days
+const G4double timeSinceSupernova = 200.0; // In days
 const G4double densityMultiplier = 1.0;
 
 const G4String particleName = "Decays";
@@ -46,6 +46,10 @@ G4ThreadLocal G4double escape158keVNickelOnly = 0;
 G4ThreadLocal G4double escape812keVNickelOnly = 0;
 G4ThreadLocal G4double escape847keVCobaltOnly = 0;
 G4ThreadLocal G4double escape1238keVCobaltOnly = 0;
+G4ThreadLocal G4double escape158keVUnscattered = 0;
+G4ThreadLocal G4double escape812keVUnscattered = 0;
+G4ThreadLocal G4double escape847keVUnscattered = 0;
+G4ThreadLocal G4double escape1238keVUnscattered = 0;
 
 // Histograms
 G4ThreadLocal std::vector<G4int>* bremsstrahlungHistogram = nullptr;

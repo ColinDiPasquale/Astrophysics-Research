@@ -1,58 +1,69 @@
-Total Photons Tracked: 287735.0
+Total Photons Tracked: 2418182.0
 
-Total Listed Photons: 287735.0
-Direct Escape Photons: 285513.0
-Unmodified Escape Count: 227468.0
-Modified Escape Count: 58045.0
+Total Listed Photons: 2418182.0
+Direct Escape Photons: 2379158.0
+Unmodified Escape Count: 1348319.0
+Modified Escape Count: 1030839.0
 
-Bremsstrahlung: 1294.0
-Compton: 58045.0
-Annihilation: 928.0
+Bremsstrahlung: 18852.0
+Compton: 1030839.0
+Annihilation: 20172.0
 
-Nickel Decays: 0.0
-Cobalt Decays: 100000.0
+Nickel Decays: 21048.0
+Cobalt Decays: 978952.0
 
-Total Decay Photon Energy (MeV): 359626.0999999999
+Total Decay Photon Energy (MeV): 3551470.0
 
-158.38 keV Decay Photons: 0.0
-811.85 keV Decay Photons: 0.0
-847 keV Decay Photons: 99949.0
-1238.3 keV Decay Photons: 66568.0
-158.38 keV Direct Escape: 0.0
-811.85 keV Direct Escape: 0.0
-847 keV Direct Escape: 98268.0
-1238.3 keV Direct Escape: 65795.0
+158.38 keV Decay Photons: 20792.0
+811.85 keV Decay Photons: 18006.0
+847 keV Decay Photons: 978431.0
+1238.3 keV Decay Photons: 649968.0
+158.38 keV Direct Escape: 7700.0
+811.85 keV Direct Escape: 14489.0
+847 keV Direct Escape: 790651.0
+1238.3 keV Direct Escape: 549300.0
 
-158.38 keV Decay Photons (Nickel only): 0.0
-811.85 keV Decay Photons (Nickel only): 0.0
-847 keV Decay Photons (Cobalt only): 99949.0
-1238.3 keV Decay Photons (Cobalt only): 66568.0
-158.38 keV Direct Escape (Nickel only): 0.0
-811.85 keV Direct Escape (Nickel only): 0.0
-847 keV Direct Escape (Cobalt only): 98268.0
-1238.3 keV Direct Escape (Cobalt only): 65795.0
+158.38 keV Decay Photons (Nickel only): 20792.0
+811.85 keV Decay Photons (Nickel only): 18006.0
+847 keV Decay Photons (Cobalt only): 978431.0
+1238.3 keV Decay Photons (Cobalt only): 649968.0
+158.38 keV Direct Escape (Nickel only): 7700.0
+811.85 keV Direct Escape (Nickel only): 14489.0
+847 keV Direct Escape (Cobalt only): 790651.0
+1238.3 keV Direct Escape (Cobalt only): 549300.0
+
+158.38 keV Direct Escape (Unscattered): 4284.0
+811.85 keV Direct Escape (Unscattered): 7714.0
+847 keV Direct Escape (Unscattered): 423787.0
+1238.3 keV Direct Escape (Unscattered): 314630.0
 
 
---- Simulated Photon Line Rates at t=200d (photons/s) ---
-N158keVLineCreated: 0.000000e+00
-N812keVLineCreated: 0.000000e+00
-N847keVLineCreated: 2.325102e+47
-N1238keVLineCreated: 1.548564e+47
+--- Simulated Photon Line Rates at t=60d (photons/s) ---
+N158keVLineCreated: 1.731315e+46
+N812keVLineCreated: 1.499330e+46
+N847keVLineCreated: 8.147232e+47
+N1238keVLineCreated: 5.412175e+47
 
---- Simulated Photon Line Rates at t=200d (photons/s) (Nickel/Cobalt only) ---
-N158keVLineCreated: 0.000000e+00
-N812keVLineCreated: 0.000000e+00
-N847keVLineCreated: 2.325102e+47
-N1238keVLineCreated: 1.548564e+47
+--- Simulated Photon Line Rates at t=60d (photons/s) (Nickel/Cobalt only) ---
+N158keVLineCreated: 1.731315e+46
+N812keVLineCreated: 1.499330e+46
+N847keVLineCreated: 8.147232e+47
+N1238keVLineCreated: 5.412175e+47
 
---- Simulated Escape Fluxes at t=200d (ph/cm^2/s) ---
-F158keVDirectEscape: 0.000000e+00
-F812keVDirectEscape: 0.000000e+00
-F847keVDirectEscape: 1.910179e-03
-F1238keVDirectEscape: 1.278954e-03
+--- Simulated Escape Fluxes at t=60d (ph/cm^2/s) ---
+F158keVDirectEscape: 5.357583e-05
+F812keVDirectEscape: 1.008130e-04
+F847keVDirectEscape: 5.501271e-03
+F1238keVDirectEscape: 3.821974e-03
 
---- Simulated Escape Fluxes at t=200d (ph/cm^2/s) (Nickel/Cobalt only) ---
-F158keVDirectEscape: 0.000000e+00
-F812keVDirectEscape: 0.000000e+00
-F847keVDirectEscape: 1.910179e-03
-F1238keVDirectEscape: 1.278954e-03
+--- Simulated Escape Fluxes at t=60d (ph/cm^2/s) (Nickel/Cobalt only) ---
+F158keVDirectEscape: 5.357583e-05
+F812keVDirectEscape: 1.008130e-04
+F847keVDirectEscape: 5.501271e-03
+F1238keVDirectEscape: 3.821974e-03
+
+--- Simulated Escape Fluxes at t=60d (ph/cm^2/s) (Unscattered only) ---
+F158keVDirectEscape: 2.980764e-05
+F812keVDirectEscape: 5.367324e-05
+F847keVDirectEscape: 2.948668e-03
+F1238keVDirectEscape: 2.189164e-03

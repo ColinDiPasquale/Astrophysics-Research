@@ -51,6 +51,13 @@ extern G4ThreadLocal G4double escape158keVNickelOnly;
 extern G4ThreadLocal G4double escape812keVNickelOnly;
 extern G4ThreadLocal G4double escape847keVCobaltOnly;
 extern G4ThreadLocal G4double escape1238keVCobaltOnly;
+// Escape counts restricted to photons that never Compton scattered
+// (info->hasCompton == false), for comparison against analytical escape
+// fractions that assume any interaction removes the photon from the line.
+extern G4ThreadLocal G4double escape158keVUnscattered;
+extern G4ThreadLocal G4double escape812keVUnscattered;
+extern G4ThreadLocal G4double escape847keVUnscattered;
+extern G4ThreadLocal G4double escape1238keVUnscattered;
 
 // Binning constants
 extern const G4double gEmin;

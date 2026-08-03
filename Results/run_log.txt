@@ -157,3 +157,15 @@ t=90d  events=1  time=0m 3s  date=2026-08-02 14:12
 t=100d  events=1  time=0m 2s  date=2026-08-02 14:13
 t=120d  events=1  time=0m 3s  date=2026-08-02 14:13
 t=200d  events=1  time=0m 3s  date=2026-08-02 14:13
+t=10d  events=1e6  time=16m 23s  date=2026-08-02 16:53
+t=20d  events=1e6  time=18m 47s  date=2026-08-02 17:12
+t=30d  events=1e6  time=18m 12s  date=2026-08-02 17:30
+t=40d  events=1e6  time=15m 41s  date=2026-08-02 17:46
+t=50d  events=1e6  time=12m 53s  date=2026-08-02 17:59
+t=60d  events=1e6  time=10m 19s  date=2026-08-02 18:09
+t=70d  events=1e6  time=8m 24s  date=2026-08-02 18:18
+t=80d  events=1e6  time=6m 45s  date=2026-08-02 18:25
+t=90d  events=1e6  time=5m 56s  date=2026-08-02 18:31
+t=100d  events=1e6  time=5m 9s  date=2026-08-02 18:36
+t=120d  events=1e6  time=3m 48s  date=2026-08-02 18:40
+t=200d  events=1e6  time=3m 42s  date=2026-08-02 18:43
