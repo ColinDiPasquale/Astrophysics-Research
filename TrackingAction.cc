@@ -52,6 +52,10 @@ TrackingAction::~TrackingAction() {
     (*outFileInfo) << "811.85 keV Direct Escape (Nickel only): " << escape812keVNickelOnly << "\n";
     (*outFileInfo) << "847 keV Direct Escape (Cobalt only): " << escape847keVCobaltOnly << "\n";
     (*outFileInfo) << "1238.3 keV Direct Escape (Cobalt only): " << escape1238keVCobaltOnly << "\n\n";
+    (*outFileInfo) << "158.38 keV Direct Escape (Unscattered): " << escape158keVUnscattered << "\n";
+    (*outFileInfo) << "811.85 keV Direct Escape (Unscattered): " << escape812keVUnscattered << "\n";
+    (*outFileInfo) << "847 keV Direct Escape (Unscattered): " << escape847keVUnscattered << "\n";
+    (*outFileInfo) << "1238.3 keV Direct Escape (Unscattered): " << escape1238keVUnscattered << "\n\n";
 
     outFileInfo->close();
     delete outFileInfo;
@@ -157,7 +161,10 @@ void TrackingAction::PostUserTrackingAction(const G4Track* track) {
             unmodifiedEscapeCounter++;
         }
         // Use original emission energy so scattered photons still count toward
-        // the line that produced them (matches analytical escape-fraction definition).
+        // the line that produced them. Note this counts a photon as an
+        // "escape" even if it Compton scattered en route (see the
+        // *Unscattered counters below for the subset that never scattered,
+        // which is what a naive exp(-tau) analytical estimate corresponds to).
         G4double eKeV = (info && info->originalEnergy > 0) ? info->originalEnergy
                                                             : energy / CLHEP::keV;
         if (std::abs(eKeV - 158.38)  < .05)  escape158keV++;
@@ -168,6 +175,13 @@ void TrackingAction::PostUserTrackingAction(const G4Track* track) {
         if (isNickelEvent && std::abs(eKeV - 811.844) < .05)  escape812keVNickelOnly++;
         if (isCobaltEvent && std::abs(eKeV - 846.771) < .05)  escape847keVCobaltOnly++;
         if (isCobaltEvent && std::abs(eKeV - 1238.31) < .05)  escape1238keVCobaltOnly++;
+
+        if (!(info && info->hasCompton)) {
+            if (std::abs(eKeV - 158.38)  < .05)  escape158keVUnscattered++;
+            if (std::abs(eKeV - 811.844) < .05)  escape812keVUnscattered++;
+            if (std::abs(eKeV - 846.771) < .05)  escape847keVUnscattered++;
+            if (std::abs(eKeV - 1238.31) < .05)  escape1238keVUnscattered++;
+        }
     } else if (processName == "annihil") { // Annihilation
         annihilationPhotons++;
     } else { // Misc

@@ -137,6 +137,10 @@ escape158keVNickelOnly = 0
 escape812keVNickelOnly = 0
 escape847keVCobaltOnly = 0
 escape1238keVCobaltOnly = 0
+escape158keVUnscattered = 0
+escape812keVUnscattered = 0
+escape847keVUnscattered = 0
+escape1238keVUnscattered = 0
 
 for f in infoFiles:
     with open(f, 'r') as file:
@@ -191,6 +195,14 @@ for f in infoFiles:
                 escape847keVCobaltOnly += float(line.split(':')[1].strip())
             elif '1238.3 keV Direct Escape (Cobalt only):' in line:
                 escape1238keVCobaltOnly += float(line.split(':')[1].strip())
+            elif '158.38 keV Direct Escape (Unscattered):' in line:
+                escape158keVUnscattered += float(line.split(':')[1].strip())
+            elif '811.85 keV Direct Escape (Unscattered):' in line:
+                escape812keVUnscattered += float(line.split(':')[1].strip())
+            elif '847 keV Direct Escape (Unscattered):' in line:
+                escape847keVUnscattered += float(line.split(':')[1].strip())
+            elif '1238.3 keV Direct Escape (Unscattered):' in line:
+                escape1238keVUnscattered += float(line.split(':')[1].strip())
 
 # Compute derived value
 direct_escape = unmodified_escape + modified_escape
@@ -225,6 +237,10 @@ with open('../Combined_info_summary.txt', 'w') as out:
     out.write(f"811.85 keV Direct Escape (Nickel only): {escape812keVNickelOnly}\n")
     out.write(f"847 keV Direct Escape (Cobalt only): {escape847keVCobaltOnly}\n")
     out.write(f"1238.3 keV Direct Escape (Cobalt only): {escape1238keVCobaltOnly}\n\n")
+    out.write(f"158.38 keV Direct Escape (Unscattered): {escape158keVUnscattered}\n")
+    out.write(f"811.85 keV Direct Escape (Unscattered): {escape812keVUnscattered}\n")
+    out.write(f"847 keV Direct Escape (Unscattered): {escape847keVUnscattered}\n")
+    out.write(f"1238.3 keV Direct Escape (Unscattered): {escape1238keVUnscattered}\n\n")
 
     # Photon rates at each time point
     M_SUN_G  = 1.98847e33
@@ -272,6 +288,12 @@ with open('../Combined_info_summary.txt', 'w') as out:
     out.write(f"F812keVDirectEscape: {(escape812keVNickelOnly / total_decays) * R_tot_sim / sphere_area:.6e}\n")
     out.write(f"F847keVDirectEscape: {(escape847keVCobaltOnly / total_decays) * R_tot_sim / sphere_area:.6e}\n")
     out.write(f"F1238keVDirectEscape: {(escape1238keVCobaltOnly / total_decays) * R_tot_sim / sphere_area:.6e}\n")
+
+    out.write(f"\n--- Simulated Escape Fluxes at t={t_sim:.0f}d (ph/cm^2/s) (Unscattered only) ---\n")
+    out.write(f"F158keVDirectEscape: {(escape158keVUnscattered / total_decays) * R_tot_sim / sphere_area:.6e}\n")
+    out.write(f"F812keVDirectEscape: {(escape812keVUnscattered / total_decays) * R_tot_sim / sphere_area:.6e}\n")
+    out.write(f"F847keVDirectEscape: {(escape847keVUnscattered / total_decays) * R_tot_sim / sphere_area:.6e}\n")
+    out.write(f"F1238keVDirectEscape: {(escape1238keVUnscattered / total_decays) * R_tot_sim / sphere_area:.6e}\n")
 
 # Optional: delete original files
 for f in infoFiles:

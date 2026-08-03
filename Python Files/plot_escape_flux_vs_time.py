@@ -55,7 +55,11 @@ def parse_summary(path):
                         '158.38 keV Direct Escape',
                         '811.85 keV Direct Escape',
                         '847 keV Direct Escape',
-                        '1238.3 keV Direct Escape'):
+                        '1238.3 keV Direct Escape',
+                        '158.38 keV Direct Escape (Unscattered)',
+                        '811.85 keV Direct Escape (Unscattered)',
+                        '847 keV Direct Escape (Unscattered)',
+                        '1238.3 keV Direct Escape (Unscattered)'):
                 if line.startswith(key + ':'):
                     vals[key] = float(line.split(':')[1].strip())
     return vals
@@ -67,6 +71,14 @@ sim_F158  = []
 sim_F812  = []
 sim_F847  = []
 sim_F1238 = []
+# "Unscattered" = escape counters restricted to photons that never Compton
+# scattered en route, i.e. the subset a naive exp(-tau) estimate corresponds
+# to. Plotted alongside the (Compton-inclusive) "Direct Escape" counters to
+# check whether scattered-but-escaping photons explain excess sim flux.
+sim_F158_unsc  = []
+sim_F812_unsc  = []
+sim_F847_unsc  = []
+sim_F1238_unsc = []
 
 for t_day in read_days_from_batch_script(BATCH_SCRIPT):
     summary_path = os.path.join(RESULTS_DIR, f"t{t_day}d", "Combined_info_summary.txt")
@@ -83,12 +95,20 @@ for t_day in read_days_from_batch_script(BATCH_SCRIPT):
     sim_F812.append( (v.get('811.85 keV Direct Escape', 0) / total_decays) * R_tot / SPHERE_AREA)
     sim_F847.append( (v.get('847 keV Direct Escape',    0) / total_decays) * R_tot / SPHERE_AREA)
     sim_F1238.append((v.get('1238.3 keV Direct Escape', 0) / total_decays) * R_tot / SPHERE_AREA)
+    sim_F158_unsc.append( (v.get('158.38 keV Direct Escape (Unscattered)', 0) / total_decays) * R_tot / SPHERE_AREA)
+    sim_F812_unsc.append( (v.get('811.85 keV Direct Escape (Unscattered)', 0) / total_decays) * R_tot / SPHERE_AREA)
+    sim_F847_unsc.append( (v.get('847 keV Direct Escape (Unscattered)',    0) / total_decays) * R_tot / SPHERE_AREA)
+    sim_F1238_unsc.append((v.get('1238.3 keV Direct Escape (Unscattered)', 0) / total_decays) * R_tot / SPHERE_AREA)
 
 sim_days  = np.array(sim_days,  dtype=float)
 sim_F158  = np.array(sim_F158)
 sim_F812  = np.array(sim_F812)
 sim_F847  = np.array(sim_F847)
 sim_F1238 = np.array(sim_F1238)
+sim_F158_unsc  = np.array(sim_F158_unsc)
+sim_F812_unsc  = np.array(sim_F812_unsc)
+sim_F847_unsc  = np.array(sim_F847_unsc)
+sim_F1238_unsc = np.array(sim_F1238_unsc)
 
 # --- Load analytical files (if available) ---
 NI_FILE = os.path.join(SCRIPT_DIR, "tfluxni56.W7_1Mpc_0p5894MsunNi56")
@@ -141,17 +161,26 @@ else:
 
 
 # --- Ratio of each simulated point (158 keV=blue, 812 keV=orange) to the
-# analytical curve interpolated to that same day ---
+# analytical curve interpolated to that same day. Also reports the
+# unscattered-only ratio, to check whether Compton-scattered-but-escaping
+# photons explain a sim/analytic mismatch in the (Compton-inclusive) columns. ---
 ratio_rows = [f"{'day':>6}  {'158keV_sim':>14}  {'158keV_analytic':>16}  {'158keV_sim/analytic':>20}  "
-              f"{'812keV_sim':>14}  {'812keV_analytic':>16}  {'812keV_sim/analytic':>20}"]
+              f"{'158keV_sim_unsc':>16}  {'158keV_unsc/analytic':>21}  "
+              f"{'812keV_sim':>14}  {'812keV_analytic':>16}  {'812keV_sim/analytic':>20}  "
+              f"{'812keV_sim_unsc':>16}  {'812keV_unsc/analytic':>21}"]
 if ana_t_ni is not None and len(sim_days):
     a158_at_sim = np.interp(sim_days, ana_t_ni, ana_F158)
     a812_at_sim = np.interp(sim_days, ana_t_ni, ana_F812)
-    for day, s158, a158, s812, a812 in zip(sim_days, sim_F158, a158_at_sim, sim_F812, a812_at_sim):
-        r158 = s158 / a158 if a158 else float('nan')
-        r812 = s812 / a812 if a812 else float('nan')
+    for day, s158, a158, s158u, s812, a812, s812u in zip(
+            sim_days, sim_F158, a158_at_sim, sim_F158_unsc, sim_F812, a812_at_sim, sim_F812_unsc):
+        r158  = s158  / a158 if a158 else float('nan')
+        r158u = s158u / a158 if a158 else float('nan')
+        r812  = s812  / a812 if a812 else float('nan')
+        r812u = s812u / a812 if a812 else float('nan')
         ratio_rows.append(f"{day:6.0f}  {s158:14.6e}  {a158:16.6e}  {r158:20.4f}  "
-                           f"{s812:14.6e}  {a812:16.6e}  {r812:20.4f}")
+                           f"{s158u:16.6e}  {r158u:21.4f}  "
+                           f"{s812:14.6e}  {a812:16.6e}  {r812:20.4f}  "
+                           f"{s812u:16.6e}  {r812u:21.4f}")
 else:
     ratio_rows.append("# analytical Ni56 escape-flux table not found or no simulation points -- no ratios computed")
 
@@ -176,6 +205,13 @@ if len(sim_days):
     mask = sim_F812 > 0
     ax1.scatter(sim_days[mask], sim_F812[mask], color='tab:orange', marker='s', s=60, zorder=5, label='812 keV (Geant4)')
 
+    mask = sim_F158_unsc > 0
+    ax1.scatter(sim_days[mask], sim_F158_unsc[mask], facecolors='none', edgecolors='tab:blue',
+                marker='o', s=60, zorder=5, label='158 keV (Geant4, unscattered)')
+    mask = sim_F812_unsc > 0
+    ax1.scatter(sim_days[mask], sim_F812_unsc[mask], facecolors='none', edgecolors='tab:orange',
+                marker='s', s=60, zorder=5, label='812 keV (Geant4, unscattered)')
+
 # Zoom x-axis around simulation points (±15 days padding), fall back to 10–110 if no sim data
 if len(sim_days):
     x_lo, x_hi = sim_days.min() - 15, sim_days.max() + 15
@@ -197,8 +233,8 @@ def zoom_axes(ax, t_arrays, f_arrays, x_lo, x_hi):
 
 ax1.set_xlim(x_lo, x_hi)
 zoom_axes(ax1,
-          [ana_t_ni, ana_t_ni, sim_days, sim_days],
-          [ana_F158, ana_F812, sim_F158, sim_F812],
+          [ana_t_ni, ana_t_ni, sim_days, sim_days, sim_days, sim_days],
+          [ana_F158, ana_F812, sim_F158, sim_F812, sim_F158_unsc, sim_F812_unsc],
           x_lo, x_hi)
 ax1.set_yscale('log')
 ax1.set_xlabel('Time (days)', fontsize=12)
@@ -228,10 +264,17 @@ if len(sim_days):
     mask = sim_F1238 > 0
     ax2.scatter(sim_days[mask], sim_F1238[mask], color='tab:red',   marker='D', s=60, zorder=5, label='1238 keV (Geant4)')
 
+    mask = sim_F847_unsc > 0
+    ax2.scatter(sim_days[mask], sim_F847_unsc[mask], facecolors='none', edgecolors='tab:green',
+                marker='^', s=60, zorder=5, label='847 keV (Geant4, unscattered)')
+    mask = sim_F1238_unsc > 0
+    ax2.scatter(sim_days[mask], sim_F1238_unsc[mask], facecolors='none', edgecolors='tab:red',
+                marker='D', s=60, zorder=5, label='1238 keV (Geant4, unscattered)')
+
 ax2.set_xlim(x_lo, x_hi)
 zoom_axes(ax2,
-          [ana_t_co, ana_t_co, sim_days, sim_days],
-          [ana_F847, ana_F1238, sim_F847, sim_F1238],
+          [ana_t_co, ana_t_co, sim_days, sim_days, sim_days, sim_days],
+          [ana_F847, ana_F1238, sim_F847, sim_F1238, sim_F847_unsc, sim_F1238_unsc],
           x_lo, x_hi)
 ax2.set_yscale('log')
 ax2.set_xlabel('Time (days)', fontsize=12)
