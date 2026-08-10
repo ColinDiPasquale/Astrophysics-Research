@@ -11,7 +11,16 @@
       "Bash(git status *)",
       "Bash(python3 -c \"import matplotlib; print\\(matplotlib.__version__\\)\")",
       "Bash(python3 \"Python Files/plot_tau_vs_menc.py\")",
-      "Bash(python3 -m py_compile \"Python Files/combineFiles.py\" \"Python Files/plot_escape_flux_vs_time.py\")"
+      "Bash(python3 -m py_compile \"Python Files/combineFiles.py\" \"Python Files/plot_escape_flux_vs_time.py\")",
+      "Bash(awk 'NR==1{print NF}' \"Supernova Models/177 Zones/model52_W7_columns.dat\")",
+      "Bash(awk '$1!=\"shell\" && $1!~/^#/ {sum=$5+$6+$7; print $1, sum}' \"Supernova Models/model52_W7_20shells_CSiNi56_t20d.dat\")",
+      "Bash(python3 -c ' *)",
+      "Bash(awk 'NR>=3 && NR<=8 {print $2, $3, $4}' \"Supernova Models/177 Zones/model52_W7.dat\")",
+      "Bash(awk 'NR<=6 {print $1, $2, $3}' \"Supernova Models/177 Zones/model52_W7_columns.dat\")",
+      "Bash(python3 \"Python Files/generate_177zone_models.py\")",
+      "Bash(make -j16)",
+      "Bash(timeout 120 ./SupernovaSimulation)",
+      "Bash(timeout 180 ./SupernovaSimulation)"
     ]
   }
 }

@@ -6,6 +6,7 @@
 DAYS=(10 20 30 40 50 60 70 80 90 100 120 200)  # days since supernova to simulate
 EVENTS=1e6          # total decay events passed to /run/beamOn (distributed across threads by Geant4)
 THREADS=16          # must match threadCount in globalVars.cc
+NZONES=177           # must match nZones in globalVars.cc (20 or 177)
 # ──────────────────────────────────────────────────────────────────────────────
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
@@ -23,7 +24,7 @@ for DAY in "${DAYS[@]}"; do
     echo "=========================================="
 
     # Check that the model file exists before wasting time building
-    MODEL="$SCRIPT_DIR/Supernova Models/model52_W7_20shells_CSiNi56_t${DAY}d.dat"
+    MODEL="$SCRIPT_DIR/Supernova Models/model52_W7_${NZONES}shells_CSiNi56_t${DAY}d.dat"
     if [ ! -f "$MODEL" ]; then
         echo "ERROR: Model file not found: $MODEL"
         echo "Skipping t = ${DAY} days."
@@ -33,7 +34,8 @@ for DAY in "${DAYS[@]}"; do
     # Patch globalVars.cc
     sed -i "s/const G4double timeSinceSupernova = [0-9.]*/const G4double timeSinceSupernova = ${DAY}.0/" "$GLOBALVARS"
     sed -i "s/const G4long eventCount = [0-9eE+.]*/const G4long eventCount = ${EVENTS}/" "$GLOBALVARS"
-    echo "Set timeSinceSupernova = ${DAY}.0, eventCount = ${EVENTS}"
+    sed -i "s/const G4int nZones = [0-9]*/const G4int nZones = ${NZONES}/" "$GLOBALVARS"
+    echo "Set timeSinceSupernova = ${DAY}.0, eventCount = ${EVENTS}, nZones = ${NZONES}"
 
     # Rebuild
     echo "Building..."
