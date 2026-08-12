@@ -20,7 +20,8 @@
       "Bash(python3 \"Python Files/generate_177zone_models.py\")",
       "Bash(make -j16)",
       "Bash(timeout 120 ./SupernovaSimulation)",
-      "Bash(timeout 180 ./SupernovaSimulation)"
+      "Bash(timeout 180 ./SupernovaSimulation)",
+      "Bash(python3 \"Python Files/plot_177_vs_20_zone.py\")"
     ]
   }
 }
