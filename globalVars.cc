@@ -2,8 +2,8 @@
 #include <map>
 
 // Global constants
-const G4int threadCount = 16;
-const G4long eventCount = 1e6;
+const G4int threadCount = 192;
+const G4long eventCount = 1e7;
 
 const G4double timeSinceSupernova = 200.0; // In days
 const G4int nZones = 177; // 20 or 177, must match a model52_W7_<N>shells_CSiNi56_t<day>d.dat file
@@ -63,7 +63,7 @@ G4ThreadLocal std::ofstream* outFileInfo = nullptr;
 std::vector<double> zoneNi56Fractions;
 std::vector<double> zoneDensitiesGCC;
 std::vector<double> zoneEnclosedMassMsun;
-const G4String geometryFile = "/home/cdipasq/AstrophysicsResearch/Supernova Models/model52_W7_"
+const G4String geometryFile = "/scratch/cdipasq/AstrophysicsResearch/Supernova Models/model52_W7_"
     + std::to_string(nZones) + "shells_CSiNi56_t" + std::to_string((int)timeSinceSupernova) + "d.dat";
 std::vector<G4Material*> zoneMaterials;
 std::vector<double> innerRadii;

@@ -63,7 +63,7 @@ void RunAction::WriteOpticalDepthTable() {
     }
 
     std::string dayLabel = "t" + std::to_string((int)timeSinceSupernova) + "d";
-    std::filesystem::path outDir = std::filesystem::path("/home/cdipasq/AstrophysicsResearch/Optical Depths") / dayLabel;
+    std::filesystem::path outDir = std::filesystem::path("/scratch/cdipasq/AstrophysicsResearch/Optical Depths") / dayLabel;
     std::filesystem::create_directories(outDir);
     std::string fileName = "optical_depth_table_" + dayLabel + ".txt";
     std::ofstream out(outDir / fileName);
