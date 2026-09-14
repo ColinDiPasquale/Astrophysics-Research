@@ -4,7 +4,7 @@
 
 # ── Configure here ─────────────────────────────────────────────────────────────
 DAYS=(10 20 30 40 50 60 70 80 90 100 120 200)  # days since supernova to simulate
-EVENTS=1e6          # total decay events passed to /run/beamOn (distributed across threads by Geant4)
+EVENTS=1e4          # total decay events passed to /run/beamOn (distributed across threads by Geant4)
 THREADS=16          # must match threadCount in globalVars.cc
 NZONES=177           # must match nZones in globalVars.cc (20 or 177)
 # ──────────────────────────────────────────────────────────────────────────────
@@ -35,7 +35,8 @@ for DAY in "${DAYS[@]}"; do
     sed -i "s/const G4double timeSinceSupernova = [0-9.]*/const G4double timeSinceSupernova = ${DAY}.0/" "$GLOBALVARS"
     sed -i "s/const G4long eventCount = [0-9eE+.]*/const G4long eventCount = ${EVENTS}/" "$GLOBALVARS"
     sed -i "s/const G4int nZones = [0-9]*/const G4int nZones = ${NZONES}/" "$GLOBALVARS"
-    echo "Set timeSinceSupernova = ${DAY}.0, eventCount = ${EVENTS}, nZones = ${NZONES}"
+    sed -i "s|const G4String projectDir = \".*\";|const G4String projectDir = \"${SCRIPT_DIR}\";|" "$GLOBALVARS"
+    echo "Set timeSinceSupernova = ${DAY}.0, eventCount = ${EVENTS}, nZones = ${NZONES}, projectDir = ${SCRIPT_DIR}"
 
     # Rebuild
     echo "Building..."

@@ -16,6 +16,7 @@
 #include <vector>
 
 // Global constants
+extern const G4String projectDir; // repo root; patched by run_batch.sh via sed
 extern const G4int threadCount;
 extern const G4long eventCount;
 extern const G4String particleName;

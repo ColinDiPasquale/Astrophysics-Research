@@ -200,16 +200,11 @@ if ana_t_ni is not None:
     ax1.plot(ana_t_ni[mask], ana_F812[mask], color='tab:orange', lw=2, label='812 keV (analytical)')
 
 if len(sim_days):
-    mask = sim_F158 > 0
-    ax1.scatter(sim_days[mask], sim_F158[mask], color='tab:blue',   marker='o', s=60, zorder=5, label='158 keV (Geant4)')
-    mask = sim_F812 > 0
-    ax1.scatter(sim_days[mask], sim_F812[mask], color='tab:orange', marker='s', s=60, zorder=5, label='812 keV (Geant4)')
-
     mask = sim_F158_unsc > 0
-    ax1.scatter(sim_days[mask], sim_F158_unsc[mask], facecolors='none', edgecolors='tab:blue',
+    ax1.scatter(sim_days[mask], sim_F158_unsc[mask], color='tab:blue',
                 marker='o', s=60, zorder=5, label='158 keV (Geant4, unscattered)')
     mask = sim_F812_unsc > 0
-    ax1.scatter(sim_days[mask], sim_F812_unsc[mask], facecolors='none', edgecolors='tab:orange',
+    ax1.scatter(sim_days[mask], sim_F812_unsc[mask], color='tab:orange',
                 marker='s', s=60, zorder=5, label='812 keV (Geant4, unscattered)')
 
 # Zoom x-axis around simulation points (±15 days padding), fall back to 10–110 if no sim data
@@ -233,8 +228,8 @@ def zoom_axes(ax, t_arrays, f_arrays, x_lo, x_hi):
 
 ax1.set_xlim(x_lo, x_hi)
 zoom_axes(ax1,
-          [ana_t_ni, ana_t_ni, sim_days, sim_days, sim_days, sim_days],
-          [ana_F158, ana_F812, sim_F158, sim_F812, sim_F158_unsc, sim_F812_unsc],
+          [ana_t_ni, ana_t_ni, sim_days, sim_days],
+          [ana_F158, ana_F812, sim_F158_unsc, sim_F812_unsc],
           x_lo, x_hi)
 ax1.set_yscale('log')
 ax1.set_xlabel('Time (days)', fontsize=12)
@@ -259,22 +254,17 @@ if ana_t_co is not None:
     ax2.plot(ana_t_co[mask],  ana_F1238[mask], color='tab:red',   lw=2, label='1238 keV (analytical)')
 
 if len(sim_days):
-    mask = sim_F847 > 0
-    ax2.scatter(sim_days[mask], sim_F847[mask],  color='tab:green', marker='^', s=60, zorder=5, label='847 keV (Geant4)')
-    mask = sim_F1238 > 0
-    ax2.scatter(sim_days[mask], sim_F1238[mask], color='tab:red',   marker='D', s=60, zorder=5, label='1238 keV (Geant4)')
-
     mask = sim_F847_unsc > 0
-    ax2.scatter(sim_days[mask], sim_F847_unsc[mask], facecolors='none', edgecolors='tab:green',
+    ax2.scatter(sim_days[mask], sim_F847_unsc[mask], color='tab:green',
                 marker='^', s=60, zorder=5, label='847 keV (Geant4, unscattered)')
     mask = sim_F1238_unsc > 0
-    ax2.scatter(sim_days[mask], sim_F1238_unsc[mask], facecolors='none', edgecolors='tab:red',
+    ax2.scatter(sim_days[mask], sim_F1238_unsc[mask], color='tab:red',
                 marker='D', s=60, zorder=5, label='1238 keV (Geant4, unscattered)')
 
 ax2.set_xlim(x_lo, x_hi)
 zoom_axes(ax2,
-          [ana_t_co, ana_t_co, sim_days, sim_days, sim_days, sim_days],
-          [ana_F847, ana_F1238, sim_F847, sim_F1238, sim_F847_unsc, sim_F1238_unsc],
+          [ana_t_co, ana_t_co, sim_days, sim_days],
+          [ana_F847, ana_F1238, sim_F847_unsc, sim_F1238_unsc],
           x_lo, x_hi)
 ax2.set_yscale('log')
 ax2.set_xlabel('Time (days)', fontsize=12)

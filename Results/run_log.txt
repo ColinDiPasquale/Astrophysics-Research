@@ -206,3 +206,15 @@ t=90d  events=1e8  time=23m 32s  date=2026-08-23 22:18
 t=100d  events=1e8  time=21m 58s  date=2026-08-23 22:40
 t=120d  events=1e8  time=19m 5s  date=2026-08-23 23:00
 t=200d  events=1e8  time=14m 29s  date=2026-08-23 23:14
+t=10d  events=1e4  time=1m 19s  date=2026-09-14 11:46
+t=20d  events=1e4  time=1m 22s  date=2026-09-14 11:48
+t=30d  events=1e4  time=1m 42s  date=2026-09-14 11:49
+t=40d  events=1e4  time=1m 19s  date=2026-09-14 11:51
+t=50d  events=1e4  time=1m 16s  date=2026-09-14 11:52
+t=60d  events=1e4  time=1m 14s  date=2026-09-14 11:53
+t=70d  events=1e4  time=1m 27s  date=2026-09-14 11:55
+t=80d  events=1e4  time=1m 28s  date=2026-09-14 11:56
+t=90d  events=1e4  time=1m 19s  date=2026-09-14 11:58
+t=100d  events=1e4  time=1m 19s  date=2026-09-14 11:59
+t=120d  events=1e4  time=1m 19s  date=2026-09-14 12:00
+t=200d  events=1e4  time=1m 19s  date=2026-09-14 12:02
