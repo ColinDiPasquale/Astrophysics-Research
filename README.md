@@ -5,3 +5,5 @@ Non-thermal bremsstrahlung emission—a new type of radiation from Type Ia super
 Their pioneering calculation relied on a simplified, post-processing method: bremsstrahlung emissivity was estimated using the average electron-recoil spectrum produced by Compton scattering in each zone of the ejecta model. 
 However, no subsequent calculations or observations have confirmed this result. In this work, we present a novel approach using GEANT4 (GEometry ANd Tracking), a powerful simulation toolkit developed at CERN, to model the full chain of processes: 
 from radioactive decay and radiation transport to electron transport and bremsstrahlung emission within the supernova ejecta.
+
+Results will mostly go in results folder. However, data on Menc vs Tau will be in Optical Depths folder.

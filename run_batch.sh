@@ -3,8 +3,8 @@
 # and archive outputs into Results/t<N>d/ so nothing is overwritten.
 
 # ── Configure here ─────────────────────────────────────────────────────────────
-DAYS=(10 20 30 40 50 60 70 80 90 100 120 200)  # days since supernova to simulate
-EVENTS=1e4          # total decay events passed to /run/beamOn (distributed across threads by Geant4)
+DAYS=(20 40 60)  # days since supernova to simulate
+EVENTS=1e3          # total decay events passed to /run/beamOn (distributed across threads by Geant4)
 THREADS=16          # must match threadCount in globalVars.cc
 NZONES=177           # must match nZones in globalVars.cc (20 or 177)
 # ──────────────────────────────────────────────────────────────────────────────
@@ -79,6 +79,14 @@ for DAY in "${DAYS[@]}"; do
 done
 
 echo ""
+echo " Runs complete."
+
+echo ""
+echo "Generating cross-time-step plots..."
+python3 "$SCRIPT_DIR/Python Files/plotForPlBpl.py"
+python3 "$SCRIPT_DIR/Python Files/plot_tau_vs_menc.py"
+
+echo ""
 echo "=========================================="
-echo " All runs complete."
+echo " Simulation done."
 echo "=========================================="

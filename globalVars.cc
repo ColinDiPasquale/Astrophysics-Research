@@ -4,9 +4,9 @@
 // Global constants
 const G4String projectDir = "/home/cdipasq/AstrophysicsResearch"; // patched by run_batch.sh via sed
 const G4int threadCount = 192;
-const G4long eventCount = 1e4;
+const G4long eventCount = 1e3;
 
-const G4double timeSinceSupernova = 200.0; // In days
+const G4double timeSinceSupernova = 60.0; // In days
 const G4int nZones = 177; // 20 or 177, must match a model52_W7_<N>shells_CSiNi56_t<day>d.dat file
 const G4double densityMultiplier = 1.0;
 
