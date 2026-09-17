@@ -1,3 +1,0 @@
-   day      158keV_sim   158keV_analytic   158keV_sim/analytic   158keV_sim_unsc   158keV_unsc/analytic      812keV_sim   812keV_analytic   812keV_sim/analytic   812keV_sim_unsc   812keV_unsc/analytic
-    20    2.365052e-04      4.892000e-05                4.8345      4.730103e-05                 0.9669    1.773789e-03      2.554000e-04                6.9451      2.838062e-04                 1.1112
-    40    1.489262e-04      1.236000e-04                1.2049      7.942731e-05                 0.6426    7.446311e-04      2.492000e-04                2.9881      3.276377e-04                 1.3148

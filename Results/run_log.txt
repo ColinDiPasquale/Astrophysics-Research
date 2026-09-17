@@ -1,4 +1,0 @@
-t=20d  events=1e3  time=1m 4s  date=2026-09-17 13:03
-t=20d  events=1e3  time=0m 40s  date=2026-09-17 13:08
-t=40d  events=1e3  time=0m 47s  date=2026-09-17 13:09
-t=60d  events=1e3  time=0m 48s  date=2026-09-17 13:09

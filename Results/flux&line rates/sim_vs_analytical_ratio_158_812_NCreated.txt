@@ -1,3 +1,0 @@
-   day      158keV_sim   158keV_analytic   158keV_sim/analytic      812keV_sim   812keV_analytic   812keV_sim/analytic
-    20    1.791621e+48      1.681673e+48                1.0654    1.573683e+48      1.488281e+48                1.0574
-    40    1.889203e+47      1.729611e+47                1.0923    1.580277e+47      1.530705e+47                1.0324
