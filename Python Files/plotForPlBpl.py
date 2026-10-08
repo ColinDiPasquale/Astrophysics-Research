@@ -19,7 +19,7 @@ OUT_DIR      = os.path.join(PROJECT_DIR, "Results", "BplPl")
 BATCH_SCRIPT = os.path.join(PROJECT_DIR, "run_batch.sh")
 os.makedirs(OUT_DIR, exist_ok=True)
 
-DISTANCE_MPC = 3.5
+DISTANCE_MPC = 1.0
 MPC_TO_CM    = 3.0857e24
 
 LAM_NI = 1.319e-6   # 1/s
@@ -29,6 +29,9 @@ N0_NI  = 1.3e55
 def read_days_from_batch_script(path):
     """Parse the DAYS=(...) array out of run_batch.sh so this script always
     covers the same set of days the batch run actually simulated."""
+    # submit_palmetto.sh has its own DAYS list and passes it in SN_DAYS
+    if os.environ.get("SN_DAYS"):
+        return [int(tok) for tok in os.environ["SN_DAYS"].split()]
     with open(path) as f:
         text = f.read()
     m = re.search(r'DAYS=\(([^)]*)\)', text)

@@ -20,6 +20,9 @@ os.makedirs(OUT_DIR, exist_ok=True)
 def read_days_from_batch_script(path):
     """Parse the DAYS=(...) array out of run_batch.sh so this script always
     covers the same set of days the batch run actually simulated."""
+    # submit_palmetto.sh has its own DAYS list and passes it in SN_DAYS
+    if os.environ.get("SN_DAYS"):
+        return [int(tok) for tok in os.environ["SN_DAYS"].split()]
     with open(path) as f:
         text = f.read()
     m = re.search(r'DAYS=\(([^)]*)\)', text)

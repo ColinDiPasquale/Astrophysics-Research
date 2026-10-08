@@ -10,18 +10,24 @@
 
 # ── Configure here ─────────────────────────────────────────────────────────────
 DAYS=(10 20 30 40 50 60 70 80 90 100 120 200)  # one job per entry
-EVENTS=1e3          # decay events per time step
+EVENTS=1e9          # decay events per time step
 THREADS=32          # cores requested per job; also patched into threadCount
 NZONES=177          # 20 or 177
 WALLTIME=24:00:00   # per job
 MEM=32G             # per job
+CONSTRAINT=genoa    # node feature to require (see: sinfo -o "%N %f"); empty for any node
 
-# Commands every job runs first to get Geant4, cmake and Python.
-ENV_SETUP='
+# Commands every job runs first to get Geant4 and cmake.
+ENV_BUILD='
 module load gcc/12.3.0
 module load spack
 spack load geant4@11.2.2
-# Python last, so python3 is the conda one and not one spack puts on PATH
+'
+# Commands that add Python. Run only after the build: with the conda
+# environment active the linker picks up conda's libtinfo instead of the
+# spack one and the link fails with undefined NCURSES6_TINFO references.
+# Loaded last so python3 is the conda one and not one spack puts on PATH.
+ENV_PYTHON='
 module load anaconda3
 source activate astro
 '
@@ -65,6 +71,9 @@ for DAY in "${DAYS[@]}"; do
 
     OUT="$RESULTS_DIR/t${DAY}d"
 
+    CONSTRAINT_LINE=""
+    [ -n "$CONSTRAINT" ] && CONSTRAINT_LINE="#SBATCH --constraint=${CONSTRAINT}"
+
     # Job script for this day. Unescaped variables are filled in now;
     # escaped ones (\$) are evaluated when the job runs.
     cat > "$RUN_DIR/job.sh" <<EOF
@@ -76,14 +85,25 @@ for DAY in "${DAYS[@]}"; do
 #SBATCH --mem=${MEM}
 #SBATCH --time=${WALLTIME}
 #SBATCH --output=${RUN_DIR}/slurm-%j.out
-${ENV_SETUP}
-export MPLBACKEND=Agg
+${CONSTRAINT_LINE}
+${ENV_BUILD}
 
 cd "${RUN_DIR}/build" || exit 1
 
 echo "Building..."
 cmake .. > cmake.log || { echo "ERROR: cmake failed, see ${RUN_DIR}/build/cmake.log"; exit 1; }
 make -j${THREADS} --quiet || { echo "ERROR: Build failed for t = ${DAY} days."; exit 1; }
+
+# Python is needed from here on (main.cc calls the scripts via std::system).
+# The anaconda module puts its own lib/ on LD_LIBRARY_PATH, whose older
+# libstdc++ breaks the Geant4 libraries, so restore the build-time value.
+# conda's python3 stays first on PATH and finds its own libraries by itself.
+BUILD_LD_LIBRARY_PATH="\$LD_LIBRARY_PATH"
+${ENV_PYTHON}
+export LD_LIBRARY_PATH="\$BUILD_LD_LIBRARY_PATH"
+export MPLBACKEND=Agg
+# Days for the cross-time-step scripts main.cc calls (run_batch.sh is not copied here)
+export SN_DAYS="${DAY}"
 
 # Runs the simulation, then combineFiles.py and plotSpectra.py via main.cc
 echo "Running simulation..."
@@ -98,6 +118,10 @@ if [ \$SIM_EXIT -ne 0 ]; then
     echo "ERROR: Simulation exited with code \$SIM_EXIT for t = ${DAY} days (after \${RUN_MINS}m \${RUN_SECS}s)."
     exit 1
 fi
+
+# The cross-time-step scripts leave an empty Results/ in this run copy;
+# the real results go to ${RESULTS_DIR}
+rm -rf "${RUN_DIR}/Results"
 
 # Archive outputs for this day into the main project
 mkdir -p "${OUT}" "${SCRIPT_DIR}/Optical Depths/t${DAY}d" "${SCRIPT_DIR}/Graphs/Current"
@@ -135,8 +159,10 @@ cat > "$RUN_ROOT/plots.sh" <<EOF
 #SBATCH --mem=8G
 #SBATCH --time=00:30:00
 #SBATCH --output=${RUN_ROOT}/slurm-plots-%j.out
-${ENV_SETUP}
+${ENV_PYTHON}
 export MPLBACKEND=Agg
+# Plot the days simulated here, not the DAYS list in run_batch.sh
+export SN_DAYS="${DAYS[*]}"
 
 python3 "${SCRIPT_DIR}/Python Files/plotForPlBpl.py"
 python3 "${SCRIPT_DIR}/Python Files/plot_tau_vs_menc.py"
