@@ -13,9 +13,9 @@ DAYS=(10 20 30 40 50 60 70 80 90 100 120 200)  # one job per entry
 EVENTS=1e9          # decay events per time step
 THREADS=32          # cores requested per job; also patched into threadCount
 NZONES=177          # 20 or 177
-WALLTIME=24:00:00   # per job
+WALLTIME=72:00:00   # per job
 MEM=32G             # per job
-CONSTRAINT=genoa    # node feature to require (see: sinfo -o "%N %f"); empty for any node
+CONSTRAINT=cpu_gen_genoa    # node feature to require (see: sinfo -o "%N %f"); empty for any node
 
 # Commands every job runs first to get Geant4 and cmake.
 ENV_BUILD='
